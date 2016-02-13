@@ -1,0 +1,43 @@
+.root {
+  background-color: black;
+}
+
+.items {
+  align-items: center;
+  display: flex;
+  height: 4rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+.item {
+  list-style: none;
+
+  &:not(:last-child) {
+    margin-right: 1.5rem;
+  }
+}
+
+.itemInner {
+  color: white;
+  display: block;
+  height: 24px;
+  text-decoration: none;
+  width: 24px;
+
+  &:hover {
+    color: limegreen;
+  }
+}
+
+.logo {
+  fill: currentColor;
+}
+
+@media (width > 48em) {
+  .items {
+    justify-content: flex-end;
+    padding: 0 2rem;
+  }
+}

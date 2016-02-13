@@ -1,0 +1,150 @@
+@custom-selector :--headings h1, h2, h3, h4, h5, h6;
+
+.root {
+  margin: 0 auto 2rem auto;
+  max-width: 48rem;
+  padding: 0 1rem;
+
+  & * + * {
+    margin: 1em 0;
+  }
+
+  & :--headings {
+    color: color(black a(68%));
+    font-family: "Work Sans", sans-serif;
+    font-feature-settings: "liga" 1, "kern";
+    font-weight: 300;
+    line-height: 1.33;
+    position: relative;
+
+    & :global(.markdownIt-Anchor) {
+      display: none;
+    }
+
+    &:hover {
+      & :global(.markdownIt-Anchor) {
+        display: block;
+        position: absolute;
+        right: 0;
+        text-decoration: none;
+        top: -0.015em;
+      }
+    }
+  }
+
+  & h1 {
+    font-size: 2.5em;
+    line-height: 1.125em;
+  }
+
+  & h2 {
+    border-bottom: 1px solid gainsboro;
+    font-size: 1.875em;
+    padding-bottom: 0.75rem;
+  }
+
+  & h3 {
+    font-size: 1.5em;
+  }
+
+  & h4 {
+    font-size: 1.25em;
+  }
+
+  & h5 {
+    font-size: 1.125em;
+  }
+
+  & h6 {
+    font-size: 1em;
+  }
+
+  & p {
+    color: color(black a(87%));
+    font-family: "Alegreya Sans", sans-serif;
+    font-feature-settings: "liga" 1, "kern";
+    font-size: 1em;
+    line-height: 1.5;
+  }
+
+  & blockquote {
+    border-left: 3px solid gainsboro;
+    padding-left: 10px;
+  }
+
+  & a {
+    color: crimson;
+
+    &:hover {
+      color: limegreen;
+    }
+  }
+
+  & code {
+    background: whitesmoke;
+    border-radius: 0.25em;
+    display: inline-block;
+    font-family: "Oxygen Mono", monospace;
+    font-size: 0.75em;
+    margin: 0;
+    max-width: 100%;
+    padding: 0 0.25em;
+    vertical-align: middle;
+  }
+
+  & pre {
+    position: relative;
+
+    &::after,
+    &::before {
+      background: color(whitesmoke a(50%));
+      bottom: 0;
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1em;
+    }
+
+    &::before {
+      background: color(whitesmoke a(75%));
+      width: 0.5em;
+    }
+
+    & code {
+      display: block;
+      line-height: 1.5;
+      overflow: auto;
+      padding: 1em 1.5em 1em 1em;
+    }
+  }
+
+  & ul {
+    padding-left: 1.75em;
+  }
+
+  & li {
+    color: color(black a(87%));
+    font-family: "Alegreya Sans", sans-serif;
+    font-feature-settings: "liga" 1, "kern";
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+
+    & ul {
+      margin-top: 0;
+    }
+  }
+
+  & img {
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+@media (width > 48em) {
+  .root {
+    font-size: 1.125rem;
+    padding: 0 2rem;
+  }
+}

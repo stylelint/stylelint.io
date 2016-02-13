@@ -1,0 +1,4 @@
+content
+dist
+node_modules
+*.log

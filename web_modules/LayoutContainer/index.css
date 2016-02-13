@@ -1,0 +1,32 @@
+:global {
+  & body {
+    margin: 0;
+  }
+}
+
+@media (min-width: 48em) {
+  .root {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .header {
+    flex: 0 0 25%;
+    order: 1;
+  }
+
+  .main {
+    flex: 0 0 100%;
+    order: 4;
+  }
+
+  .navigation {
+    flex: 0 0 50%;
+    order: 2;
+  }
+
+  .social {
+    flex: 0 0 25%;
+    order: 3;
+  }
+}
