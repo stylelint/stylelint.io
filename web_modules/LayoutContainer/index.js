@@ -47,8 +47,7 @@ export default class LayoutContainer extends Component {
             ] }
 
             meta={ [
-              { property: "og:site_name", content: pkg.name },
-              { name: "twitter:site", content: `@${ pkg.twitter }` },
+              { name: "description", content: `${ pkg.description }` },
             ] }
           />
           <div className={ styles.header }>
