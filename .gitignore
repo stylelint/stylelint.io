@@ -1,4 +1,5 @@
 content
-dist
+dist/*/
+!dist/assets
 node_modules
 *.log
