@@ -1,4 +1,4 @@
-import addNewline from "./addNewline"
+import addNewLine from "./addNewLine"
 import toYAML from "./toYAML"
 
 const getTitle = function(contents) {
@@ -11,5 +11,5 @@ export default function(path, contents, properties) {
     title: getTitle(contents),
   }
 
-  return addNewline(toYAML(newProps))
+  return addNewLine(toYAML(newProps))
 }

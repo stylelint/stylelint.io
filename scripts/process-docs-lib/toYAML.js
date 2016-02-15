@@ -1,5 +1,5 @@
 import wrap from "./wrap"
-import addNewline from "./addNewline"
+import addNewLine from "./addNewLine"
 
 export default function(obj) {
   const keys = Object.keys(obj)
@@ -7,7 +7,7 @@ export default function(obj) {
   const str = keys.map(function(k) {
     return [ k, obj[k] ].join(": ")
   })
-  .map(addNewline)
+  .map(addNewLine)
   .join("")
 
   return wrap("---\n", function() {
