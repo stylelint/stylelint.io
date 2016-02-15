@@ -1,5 +1,5 @@
-content
-dist/*/
-!dist/assets
+content/*/
+!content/assets
+dist
 node_modules
 *.log
