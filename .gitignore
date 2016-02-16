@@ -1,5 +1,4 @@
-content/*/
-!content/assets
+content
 dist
 node_modules
 *.log
