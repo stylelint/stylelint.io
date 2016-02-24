@@ -21,18 +21,23 @@ export default class Page extends Component {
   render() {
 
     const {
+      pkg,
+    } = this.context.metadata
+
+    const {
       head,
       body,
     } = this.props
 
     invariant(typeof head.title === "string", "Your page needs a title")
 
+    const title = head.title + " - " + pkg.name
     const meta = []
 
     return (
       <div className={ styles.root }>
         <Helmet
-          title={ head.title }
+          title={ title }
           meta={ meta }
         />
         {
