@@ -5,6 +5,9 @@ import ExtractTextPlugin from "extract-text-webpack-plugin"
 import config from "./config.js"
 
 export default {
+  ...config.dev && {
+    devtool: "cheap-module-eval-source-map",
+  },
   module: {
     loaders: [
       { // statinamic requirement
