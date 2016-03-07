@@ -23,20 +23,20 @@
   padding: 1rem;
   text-decoration: none;
 
-  &:hover {
-    color: limegreen;
-  }
-
   &::after {
     content: ">";
     float: right;
     top: 0;
   }
+
+  &:hover {
+    color: limegreen;
+  }
 }
 
 .secondaryItems {
-  border-top: 1px solid grey;
   composes: items;
+  border-top: 1px solid grey;
 }
 
 .itemSecondary {
@@ -48,8 +48,8 @@
 }
 
 .itemInnerSecondary {
-  color: color(white a(70%));
   composes: itemInner;
+  color: color(white a(70%));
   padding-left: 2rem;
   padding-right: 2rem;
 }
