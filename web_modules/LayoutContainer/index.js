@@ -9,6 +9,7 @@ import Footer from "../Footer"
 import GoogleAnalyticsTracker from "../GoogleAnalyticsTracker"
 
 import styles from "./index.css"
+import favicon from "./favicon.ico"
 
 export default class LayoutContainer extends Component {
 
@@ -43,6 +44,11 @@ export default class LayoutContainer extends Component {
               { "rel": "stylesheet",
                 "href":
                 "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/github-gist.min.css",
+              },
+              {
+                "rel": "shortcut icon",
+                "type": "image/png",
+                "href": favicon,
               },
             ] }
 
