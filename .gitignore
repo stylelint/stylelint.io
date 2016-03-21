@@ -1,4 +1,5 @@
-content
+content/*
+!content/favicon.ico
 dist
 node_modules
 *.log
