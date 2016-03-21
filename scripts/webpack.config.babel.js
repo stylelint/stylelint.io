@@ -2,9 +2,9 @@ import path from "path"
 import webpack from "webpack"
 import ExtractTextPlugin from "extract-text-webpack-plugin"
 
-import config from "./config.js"
+import config from "./config.js" // eslint-disable-line no-unused-vars
 
-export default ({ config, pkg }) => ({
+export default ({ config  }) => ({
   module: {
     loaders: [
       { // statinamic requirement
