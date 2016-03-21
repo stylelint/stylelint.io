@@ -15,7 +15,7 @@
     "prebuild": "npm run stylelint-docs",
     "build": "npm run statinamic -- --static --production",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -r https://github.com/stylelint/stylelint.github.io.git -b master",
+    "deploy": "gh-pages -d dist -r git@github.com:stylelint/stylelint.github.io.git -b master",
     "prestart": "npm run stylelint-docs",
     "start": "npm run statinamic -- --server --open --dev"
   },
