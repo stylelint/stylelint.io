@@ -4,19 +4,15 @@ import ExtractTextPlugin from "extract-text-webpack-plugin"
 
 import config from "./config.js"
 
-export default {
-  ...config.dev && {
-    devtool: "cheap-module-eval-source-map",
-  },
+export default ({ config, pkg }) => ({
   module: {
     loaders: [
       { // statinamic requirement
         test: /\.md$/,
-        loader: "statinamic/lib/md-collection-loader" +
-          `?${ JSON.stringify({
-            context: path.join(config.cwd, config.source),
-            basepath: config.baseUrl.path,
-          }) }`,
+        loader: "statinamic/lib/content-loader",
+        query: {
+          context: path.join(config.cwd, config.source),
+        },
       },
       {
         test: /\.css$/,
@@ -55,35 +51,15 @@ export default {
     require("postcss-reporter")(),
   ],
 
-  markdownIt: (
-    require("markdown-it")({
-      html: true,
-      linkify: true,
-      typographer: true,
-      highlight: (code, lang) => {
-        // code = code.trim()
-        const hljs = require("highlight.js")
-        // language is recognized by highlight.js
-        if (lang && hljs.getLanguage(lang)) {
-          return hljs.highlight(lang, code).value
-        }
-        // ...or fallback to auto
-        return hljs.highlightAuto(code).value
-      },
-    })
-      .use(require("markdown-it-toc-and-anchor"), { tocFirstLevel: 2 })
-  ),
-
   plugins: [
     new ExtractTextPlugin("[name].[hash].css", { disable: config.dev }),
     new webpack.DefinePlugin({ "process.env": {
       NODE_ENV: JSON.stringify(
         config.production ? "production" : process.env.NODE_ENV
       ),
-      CLIENT: true,
-      REDUX_DEVTOOLS: Boolean(process.env.REDUX_DEVTOOLS),
       STATINAMIC_PATHNAME: JSON.stringify(process.env.STATINAMIC_PATHNAME),
     } }),
+
     ...config.production && [
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
@@ -94,16 +70,9 @@ export default {
     ],
   ],
 
-  // ↓ HANDLE WITH CARE ↓ \\
-
   output: {
-    libraryTarget: "commonjs2", // for node usage, undone in client config
     path: path.join(config.cwd, config.destination),
-    publicPath: config.baseUrl.path,
+    publicPath: config.baseUrl.pathname,
+    filename: "[name].[hash].js",
   },
-  resolve: {
-    extensions: [ ".js", ".json", "" ],
-    root: [ path.join(config.cwd, "node_modules") ],
-  },
-  resolveLoader: { root: [ path.join(config.cwd, "node_modules") ] },
-}
+})

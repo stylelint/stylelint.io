@@ -17,12 +17,12 @@
     line-height: 1.33;
     position: relative;
 
-    & :global(.markdownIt-Anchor) {
+    & :global(.statinamic-HeadingAnchor) {
       display: none;
     }
 
     &:hover {
-      & :global(.markdownIt-Anchor) {
+      & :global(.statinamic-HeadingAnchor) {
         display: block;
         position: absolute;
         right: 0;
