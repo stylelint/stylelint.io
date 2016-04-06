@@ -3,15 +3,16 @@ import { PropTypes } from "react"
 import Helmet from "react-helmet"
 import invariant from "invariant"
 
+import Demo from "../../Demo"
+
 import styles from "./index.css"
 
-export default class Page extends Component {
+export default class DemoPage extends Component {
 
   static propTypes = {
     children: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
     __url: PropTypes.string.isRequired,
     head: PropTypes.object.isRequired,
-    body: PropTypes.string.isRequired,
   };
 
   static contextTypes = {
@@ -33,7 +34,6 @@ export default class Page extends Component {
 
     const {
       head,
-      body,
     } = this.props
 
     invariant(typeof head.title === "string", "Your page needs a title")
@@ -47,14 +47,9 @@ export default class Page extends Component {
           title={ title }
           meta={ meta }
         />
-        {
-          body &&
-          <div className={ styles.inner }
-            dangerouslySetInnerHTML={ { __html: body } }
-          />
-        }
-        <div dangerouslySetInnerHTML={ this.createMarkup() } />
+        <Demo />
         { this.props.children }
+        <div dangerouslySetInnerHTML={ this.createMarkup() } />
       </div>
     )
   }

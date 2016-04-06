@@ -1,0 +1,14 @@
+.root { /* placeholder */ }
+.section { /* placholder */ }
+.results { /* placholder */ }
+
+.code,
+.config {
+  min-height: 300px;
+  width: 100%;
+}
+
+.console {
+  color: red;
+  font-weight: bold;
+}

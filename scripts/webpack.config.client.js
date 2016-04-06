@@ -29,6 +29,10 @@ export default ({ config }) => {
       ],
     },
 
+    externals: {
+      "stylelint-browser-bundle": "StylelintBrowserBundle",
+    },
+
     entry: {
       "phenomic-client": path.join(__dirname, "index-client"),
     },
