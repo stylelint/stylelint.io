@@ -26,3 +26,16 @@ rootFiles.forEach(function(file) {
 
 // rename main readme
 fs.renameSync("content/README.md", "content/index.md")
+
+// create demo.md
+const demo = `---
+title: Demo
+description: Try stylelint in your browser
+layout: Demo
+---
+`
+const demoPath = "content/demo"
+if (!fs.existsSync(demoPath)) {
+  fs.mkdirSync(demoPath)
+}
+fs.writeFileSync(`${demoPath}/index.md`, demo)
