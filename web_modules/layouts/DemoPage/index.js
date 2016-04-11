@@ -3,11 +3,17 @@ import { PropTypes } from "react"
 import Helmet from "react-helmet"
 import invariant from "invariant"
 
-import Demo from "../../Demo"
-
 import styles from "./index.css"
 
-export default class DemoPage extends Component {
+import DemoLoader from "../../Demo/loader.js"
+
+module.exports = class DemoPage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      something: false,
+    }
+  }
 
   static propTypes = {
     children: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
@@ -19,11 +25,11 @@ export default class DemoPage extends Component {
     metadata: PropTypes.object.isRequired,
   };
 
-  createMarkup() {
-    const src = "https://rawgit.com/m-allanson/stylelint-browser-bundle/7ab3e6f/dist/stylelint-browser-bundle.js" // eslint-disable-line max-len
-    return {
-      __html: `<script src="${src}"></script>`,
-    }
+  componentWillMount() {
+    // Only load Demo when this layout will be rendered
+    DemoLoader().then(({ Demo }) => {
+      this.setState({ Demo })
+    })
   }
 
   render() {
@@ -47,9 +53,21 @@ export default class DemoPage extends Component {
           title={ title }
           meta={ meta }
         />
-        <Demo />
+        { this.state.Demo ?
+          <this.state.Demo.default /> :
+          <p className={ styles.loadingMessage }>{ "Loading stylelint..." }</p>
+        }
+        <link
+          rel={ "stylesheet" }
+          type={ "text/css" }
+          href={ "https://rawgit.com/codemirror/CodeMirror/master/lib/codemirror.css" } // eslint-disable-line max-len
+        />
+        <link
+          rel={ "stylesheet" }
+          type={ "text/css" }
+          href={ "https://rawgit.com/codemirror/CodeMirror/master/theme/eclipse.css" } // eslint-disable-line max-len
+        />
         { this.props.children }
-        <div dangerouslySetInnerHTML={ this.createMarkup() } />
       </div>
     )
   }

@@ -1,0 +1,19 @@
+.root { /* placeholder */ }
+
+.result {
+  align-items: baseline;
+  display: flex;
+  font-family: "Oxygen Mono", monospace;
+}
+
+.location {
+  flex: none;
+  font-size: 0.75em;
+  margin: 0 1em 0 0;
+  min-width: 9em;
+}
+
+.message {
+  font-size: 0.875em;
+  margin: 0;
+}

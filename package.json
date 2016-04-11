@@ -49,6 +49,7 @@
     }
   },
   "stylelint": {
+    "ignoreFiles": "**/codemirror/**/*.css",
     "extends": "stylelint-config-standard",
     "rules": {
       "declaration-block-properties-order": [
@@ -99,8 +100,11 @@
   },
   "dependencies": {
     "history": "^2.1.0",
+    "codemirror": "^5.13.4",
     "invariant": "^2.2.1",
     "react": "^15.0.1",
+    "lodash.debounce": "^4.0.6",
+    "react-codemirror": "^0.2.6",
     "react-dom": "^15.0.1",
     "react-google-analytics": "^0.2.0",
     "react-helmet": "^3.1.0",
