@@ -1,4 +1,5 @@
 import path from "path"
+import webpack from "webpack"
 
 // ! client side loader only \\
 export default ({ config }) => {
@@ -29,12 +30,19 @@ export default ({ config }) => {
       ],
     },
 
-    externals: {
-      "stylelint-browser-bundle": "StylelintBrowserBundle",
-    },
+    noParse: [ /stylelint-browser-bundle/, /react-codemirror/, /codemirror/ ],
 
     entry: {
       "phenomic-client": path.join(__dirname, "index-client"),
     },
+
+    plugins: [
+      ...webpackConfig.plugins,
+      new webpack.optimize.CommonsChunkPlugin(
+        "statinamic-client",
+        "[name].[hash].js",
+        Infinity,
+      ),
+    ],
   }
 }

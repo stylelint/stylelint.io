@@ -1,14 +1,22 @@
-.root { /* placeholder */ }
-.section { /* placholder */ }
-.results { /* placholder */ }
+.root {
+  padding: 0 1rem;
+}
 
-.code,
-.config {
+.input {
+  border: 1px solid #b3b3b3;
+  margin-top: 1em;
+  max-width: 100%;
   min-height: 300px;
-  width: 100%;
+}
+
+.results {
+  margin-top: 1em;
 }
 
 .console {
-  color: red;
+  color: crimson;
+  display: block;
+  font-family: "Oxygen Mono", monospace;
   font-weight: bold;
+  white-space: pre;
 }
