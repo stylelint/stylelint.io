@@ -5,7 +5,7 @@ export default function(paths) {
 
     let contents = fs.readFileSync(path, "utf-8")
 
-    contents = contents.replace(/(\.md)(\))/g, "$2")
+    contents = contents.replace(/\.md/g, "/")
     contents = contents.replace(/docs\//g, "")
     contents = contents.replace(/\/README/g, "")
     contents = contents.replace(/\.\.\/\.\.\/src\/rules\//g, "")
