@@ -1,5 +1,6 @@
 import path from "path"
 
+// ! client side loader only \\
 export default ({ config }) => {
   const { webpackConfig } = config
   return {
@@ -29,7 +30,7 @@ export default ({ config }) => {
     },
 
     entry: {
-      "statinamic-client": path.join(__dirname, "index-client"),
+      "phenomic-client": path.join(__dirname, "index-client"),
     },
   }
 }

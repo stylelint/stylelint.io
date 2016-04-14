@@ -1,15 +1,17 @@
 import path from "path"
+
 import webpack from "webpack"
 import ExtractTextPlugin from "extract-text-webpack-plugin"
 
-import config from "./config.js" // eslint-disable-line no-unused-vars
-
-export default ({ config  }) => ({
+export default ({ config }) => ({
+  ...config.dev && {
+    devtool: "#cheap-module-eval-source-map",
+  },
   module: {
     loaders: [
-      { // statinamic requirement
+      { // phenomic requirement
         test: /\.md$/,
-        loader: "statinamic/lib/content-loader",
+        loader: "phenomic/lib/content-loader",
         query: {
           context: path.join(config.cwd, config.source),
         },
@@ -18,25 +20,27 @@ export default ({ config  }) => ({
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
           "style-loader",
-        // loader:
-        //   "style-loader" +
-        //   "!" +
-          "css-loader" +
+          "css-loader" + (
             "?modules"+
-            "&localIdentName=[path][name]--[local]--[hash:base64:5]" +
-          "!" +
+            "&localIdentName=" +
+            (
+              process.env.NODE_ENV === "production"
+              ? "[hash:base64:5]"
+              : "[path][name]--[local]--[hash:base64:5]"
+            ).toString()
+          ) + "!" +
           "postcss-loader",
         ),
       },
       {
-        test: /content(\/|\\).*\.(html|ico|jpe?g|png|gif)$/,
+        test: /\.(html|ico|jpe?g|png|gif)$/,
         loader: "file-loader" +
           "?name=[path][name].[ext]&context=" +
           path.join(config.cwd, config.source),
       },
       {
-        test: /web_modules(\/|\\).*\.(html|ico|jpe?g|png|gif)$/,
-        loader: "file-loader?name=_/[path][name].[ext]&context=./web_modules",
+        test: /\.svg$/,
+        loader: "raw-loader",
       },
     ],
   },
@@ -56,7 +60,6 @@ export default ({ config  }) => ({
       ),
       STATINAMIC_PATHNAME: JSON.stringify(process.env.STATINAMIC_PATHNAME),
     } }),
-
     ...config.production && [
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
@@ -72,4 +75,10 @@ export default ({ config  }) => ({
     publicPath: config.baseUrl.pathname,
     filename: "[name].[hash].js",
   },
+
+  resolve: {
+    extensions: [ ".js", ".json", "" ],
+    root: [ path.join(config.cwd, "node_modules") ],
+  },
+  resolveLoader: { root: [ path.join(config.cwd, "node_modules") ] },
 })

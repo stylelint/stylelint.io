@@ -17,12 +17,12 @@
     line-height: 1.33;
     position: relative;
 
-    & :global(.statinamic-HeadingAnchor) {
+    & :global(.phenomic-HeadingAnchor) {
       display: none;
     }
 
     &:hover {
-      & :global(.statinamic-HeadingAnchor) {
+      & :global(.phenomic-HeadingAnchor) {
         display: block;
         position: absolute;
         right: 0;

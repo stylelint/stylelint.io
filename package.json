@@ -11,15 +11,15 @@
     "lint": "eslint --ignore-path .gitignore . && stylelint web_modules/**/*.css",
     "pretest": "npm run lint",
     "test": "npm run build",
-    "statinamic": "cross-env BABEL_DISABLE_CACHE=1 BABEL_ENV=statinamic DEBUG=statinamic:* babel-node scripts/build",
+    "phenomic": "cross-env BABEL_DISABLE_CACHE=1 BABEL_ENV=phenomic DEBUG=phenomic:* babel-node scripts/build",
     "prebuild": "npm run stylelint-docs",
-    "build": "statinamic build",
+    "build": "phenomic build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist -r git@github.com:stylelint/stylelint.github.io.git -b master",
     "prestart": "npm run stylelint-docs",
-    "start": "statinamic start"
+    "start": "phenomic start"
   },
-  "statinamic": {
+  "phenomic": {
     "assets": false,
     "CNAME": true
   },
@@ -34,7 +34,10 @@
     "parser": "babel-eslint",
     "extends": [
       "eslint-config-i-am-meticulous/react"
-    ]
+    ],
+    "rules": {
+      "react/prefer-stateless-function": 0
+    }
   },
   "stylelint": {
     "extends": "stylelint-config-standard",
@@ -50,48 +53,49 @@
     }
   },
   "devDependencies": {
-    "babel-cli": "^6.6.5",
-    "babel-core": "^6.7.2",
-    "babel-eslint": "^6.0.0-beta.6",
+    "babel-cli": "^6.7.5",
+    "babel-core": "^6.7.6",
+    "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.4",
-    "babel-plugin-webpack-loaders": "^0.3.10",
+    "babel-plugin-webpack-loaders": "^0.4.0",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-1": "^6.5.0",
     "css-loader": "^0.23.1",
-    "eslint": "^2.4.0",
-    "eslint-config-i-am-meticulous": "^3.0.0",
+    "eslint": "^2.7.0",
+    "eslint-config-i-am-meticulous": "^4.2.1",
     "eslint-loader": "^1.3.0",
-    "eslint-plugin-react": "^4.2.3",
+    "eslint-plugin-react": "^4.3.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "fs-extra": "^0.26.7",
     "gh-pages": "^0.11.0",
     "glob": "^7.0.3",
-    "highlight.js": "^9.2.0",
+    "highlight.js": "^9.3.0",
     "json-loader": "^0.5.4",
+    "phenomic": "^0.10.1",
     "postcss-browser-reporter": "^0.4.0",
-    "postcss-cssnext": "^2.5.1",
+    "postcss-cssnext": "^2.5.2",
     "postcss-loader": "^0.8.2",
     "postcss-reporter": "^1.3.3",
     "raw-loader": "^0.5.1",
-    "statinamic": "^0.9.0",
-    "style-loader": "^0.13.0",
-    "stylelint": "^5.3.0",
+    "style-loader": "^0.13.1",
+    "stylelint": "^5.4.0",
     "stylelint-config-standard": "^5.0.0",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.15"
   },
   "dependencies": {
     "history": "^2.0.1",
     "invariant": "^2.2.1",
-    "react": "^15.0.0-rc.2",
-    "react-dom": "^15.0.0-rc.2",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
     "react-google-analytics": "^0.2.0",
-    "react-helmet": "^2.3.1",
-    "react-redux": "^4.4.1",
-    "react-router": "^2.0.1",
-    "redux": "^3.3.1",
+    "react-helmet": "^2.1.1",
+    "react-redux": "^4.4.4",
+    "react-router": "^2.1.1",
+    "react-topbar-progress-indicator": "^1.0.0",
+    "redux": "^3.4.0",
     "whatwg-fetch": "^0.11.0"
   }
 }
