@@ -27,8 +27,8 @@ export default class Demo extends Component {
 
     this.lint = this.lint.bind(this)
     this.parseConfig = this.parseConfig.bind(this)
-    this.updateCode = this.updateCode.bind(this)
-    this.updateConfig = this.updateConfig.bind(this)
+    this.handleCode = this.handleCode.bind(this)
+    this.handleConfig = this.handleConfig.bind(this)
   }
 
   componentDidMount() {
@@ -82,14 +82,14 @@ export default class Demo extends Component {
     }
   }
 
-  updateCode(code) {
+  handleCode(code) {
     this.setState({
       code,
       error: false,
     }, this.lint)
   }
 
-  updateConfig(config) {
+  handleConfig(config) {
     this.setState({
       config,
       error: false,
@@ -104,7 +104,7 @@ export default class Demo extends Component {
             ref={ ref => this.codeMirrorRefs[0] = ref }
             name={ "code" }
             value={ this.state.code }
-            onChange={ this.updateCode }
+            onChange={ this.handleCode }
             options={ {
               mode: "css",
               theme: "eclipse",
@@ -121,7 +121,7 @@ export default class Demo extends Component {
           name={ "config" }
           className={ styles.input }
           value={ this.state.config }
-          onChange={ this.updateConfig }
+          onChange={ this.handleConfig }
           options={ {
             mode: { name: "javascript", json: true },
             theme: "eclipse",
@@ -144,7 +144,7 @@ export default class Demo extends Component {
   theme="github"
   className={ styles.section }
   value={ this.state.code }
-  onChange={ this.updateCode }
+  onChange={ this.handleCode }
   showPrintMargin={ false }
   editorProps={ {
     useWorker: false,

@@ -45,7 +45,13 @@
       "eslint-config-i-am-meticulous/react"
     ],
     "rules": {
-      "react/prefer-stateless-function": 0
+      "react/prefer-stateless-function": 0,
+      "react/jsx-no-bind": [
+        2,
+        {
+          "ignoreRefs": true
+        }
+      ]
     }
   },
   "stylelint": {
