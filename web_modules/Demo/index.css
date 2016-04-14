@@ -3,7 +3,7 @@
 }
 
 .input {
-  border: 1px solid #b3b3b3;
+  border: 1px solid grey;
   margin-top: 1em;
   max-width: 100%;
   min-height: 300px;
@@ -18,5 +18,6 @@
   display: block;
   font-family: "Oxygen Mono", monospace;
   font-weight: bold;
+  margin: 1em auto;
   white-space: pre;
 }

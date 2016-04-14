@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import LintWarnings from "../LintWarnings/"
 import Codemirror from "react-codemirror"
+import LintWarnings from "../LintWarnings/"
 import debounce from "lodash.debounce"
 import standardConfig from "stylelint-config-standard"
 import stylelintBrowserBundle from "stylelint-browser-bundle"
@@ -20,15 +20,12 @@ export default class Demo extends Component {
       errors: [],
       warnings: [],
     }
-    this.lint = debounce(this.lint, 250, {
-      leading: false,
-      trailing: true,
-    })
+    this.lint = debounce(this.lint, 200)
 
-    this.lint = this.lint.bind(this)
-    this.parseConfig = this.parseConfig.bind(this)
     this.handleCode = this.handleCode.bind(this)
     this.handleConfig = this.handleConfig.bind(this)
+    this.lint = this.lint.bind(this)
+    this.parseConfig = this.parseConfig.bind(this)
   }
 
   componentDidMount() {
@@ -46,37 +43,39 @@ export default class Demo extends Component {
   }
 
   lint() {
-    if (this.state.error) return
     const config = this.parseConfig(this.state.config)
     if (!config) return
 
-    const options = {
-      ...this.state,
-      config: JSON.parse(this.state.config),
-    }
-
-    stylelintBrowserBundle(options)
+    stylelintBrowserBundle({ ...this.state, config })
       .then(output => {
         this.setState({
           warnings: output.results[0].warnings,
-          error: false,
+          errors: [],
         })
       }).catch(err => {
         this.setState({
-          error: `Failed to lint CSS! \n\n ${err}`,
-          warnings: [],
+          errors: [
+            ...this.state.errors,
+            `Unable to lint CSS: \n\n ${err}`,
+          ],
         })
       })
   }
 
   parseConfig(config) {
     try {
-      return JSON.parse(config)
+      const parsed = JSON.parse(config)
+      this.setState ({
+        errors: [],
+      })
+      return parsed
     }
     catch (err) {
       this.setState ({
-        error: `There was a problem with the config:\n\n ${err}`,
-        warnings: [],
+        errors: [
+          ...this.state.errors,
+          `Unable to parse config:\n\n ${err}`,
+        ],
       })
       return false
     }
@@ -85,37 +84,43 @@ export default class Demo extends Component {
   handleCode(code) {
     this.setState({
       code,
-      error: false,
     }, this.lint)
   }
 
   handleConfig(config) {
     this.setState({
       config,
-      error: false,
     }, this.lint)
   }
 
   render() {
+    const error = (
+      <div className={ styles.console }>
+        { this.state.errors[this.state.errors.length - 1] }
+      </div>
+    )
+
+    const warnings = (
+      <div className={ styles.results }>
+        <LintWarnings warnings={ this.state.warnings } />
+      </div>
+    )
+
     return (
       <div className={ styles.root }>
-        <div className={ styles.input }>
-          <Codemirror
-            ref={ ref => this.codeMirrorRefs[0] = ref }
-            name={ "code" }
-            value={ this.state.code }
-            onChange={ this.handleCode }
-            options={ {
-              mode: "css",
-              theme: "eclipse",
-              lineNumbers: true,
-            } }
-          />
-        </div>
-        <div className={ styles.results }>
-          <LintWarnings warnings={ this.state.warnings } />
-        </div>
-        <div className={ styles.console }>{ this.state.error }</div>
+        <Codemirror
+          ref={ ref => this.codeMirrorRefs[0] = ref }
+          name={ "code" }
+          className={ styles.input }
+          value={ this.state.code }
+          onChange={ this.handleCode }
+          options={ {
+            mode: "css",
+            theme: "eclipse",
+            lineNumbers: true,
+          } }
+        />
+        { this.state.errors.length > 0 ? error : warnings }
         <Codemirror
           ref={ ref => this.codeMirrorRefs[1] = ref }
           name={ "config" }
@@ -132,23 +137,3 @@ export default class Demo extends Component {
     )
   }
 }
-
-// import brace from "brace" // eslint-disable-line no-unused-vars
-// import AceEditor from "react-ace"
-// import AceModeCSS from "brace/mode/css"
-// import "brace/theme/github"
-
-/*
-<AceEditor
-  mode="css"
-  theme="github"
-  className={ styles.section }
-  value={ this.state.code }
-  onChange={ this.handleCode }
-  showPrintMargin={ false }
-  editorProps={ {
-    useWorker: false,
-    showPrintMargin: false,
-  } }
-/>
-*/

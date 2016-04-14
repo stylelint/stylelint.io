@@ -1,9 +1,14 @@
-.root { /* placeholder */ }
+.root {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
 .result {
   align-items: baseline;
   display: flex;
   font-family: "Oxygen Mono", monospace;
+  margin-top: 0.2em;
 }
 
 .location {

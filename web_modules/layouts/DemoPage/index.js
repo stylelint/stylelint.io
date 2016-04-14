@@ -1,5 +1,4 @@
-import React, { Component } from "react"
-import { PropTypes } from "react"
+import React, { Component, PropTypes } from "react"
 import Helmet from "react-helmet"
 import invariant from "invariant"
 
@@ -20,9 +19,7 @@ export default class DemoPage extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      something: false,
-    }
+    this.state = {}
   }
 
   componentWillMount() {
