@@ -5,6 +5,7 @@ import LayoutContainer from "../LayoutContainer"
 import PhenomicPageContainer from "phenomic/lib/PageContainer"
 
 import Page from "../layouts/Page"
+import DemoPage from "../layouts/DemoPage"
 import PageError from "../layouts/PageError"
 import PageLoading from "../layouts/PageLoading"
 
@@ -16,6 +17,7 @@ class PageContainer extends Component {
         { ...props }
         layouts={ {
           Page,
+          DemoPage,
           PageError,
           PageLoading,
         } }

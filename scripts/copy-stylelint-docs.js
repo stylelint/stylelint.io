@@ -31,7 +31,7 @@ fs.renameSync("content/README.md", "content/index.md")
 const demo = `---
 title: Demo
 description: Try stylelint in your browser
-layout: Demo
+layout: DemoPage
 ---
 `
 const demoPath = "content/demo"

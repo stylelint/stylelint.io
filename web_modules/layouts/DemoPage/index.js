@@ -7,23 +7,23 @@ import styles from "./index.css"
 
 import DemoLoader from "../../Demo/loader.js"
 
-module.exports = class DemoPage extends Component {
+export default class DemoPage extends Component {
+  static propTypes = {
+    children: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
+    __url: PropTypes.string.isRequired,
+    head: PropTypes.object.isRequired,
+  }
+
+  static contextTypes = {
+    metadata: PropTypes.object.isRequired,
+  }
+
   constructor(props) {
     super(props)
     this.state = {
       something: false,
     }
   }
-
-  static propTypes = {
-    children: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
-    __url: PropTypes.string.isRequired,
-    head: PropTypes.object.isRequired,
-  };
-
-  static contextTypes = {
-    metadata: PropTypes.object.isRequired,
-  };
 
   componentWillMount() {
     // Only load Demo when this layout will be rendered

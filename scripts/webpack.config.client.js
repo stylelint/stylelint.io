@@ -39,7 +39,7 @@ export default ({ config }) => {
     plugins: [
       ...webpackConfig.plugins,
       new webpack.optimize.CommonsChunkPlugin(
-        "statinamic-client",
+        "phenomic-client",
         "[name].[hash].js",
         Infinity,
       ),
