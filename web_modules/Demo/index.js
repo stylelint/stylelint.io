@@ -120,7 +120,9 @@ export default class Demo extends Component {
             lineNumbers: true,
           } }
         />
-        { this.state.errors.length > 0 ? error : warnings }
+        <output className={ styles.output }>
+          { this.state.errors.length > 0 ? error : warnings }
+        </output>
         <Codemirror
           ref={ ref => this.codeMirrorRefs[1] = ref }
           name={ "config" }

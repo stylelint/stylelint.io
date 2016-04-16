@@ -14,11 +14,48 @@
 .location {
   flex: none;
   font-size: 0.75em;
+  font-weight: bold;
+  margin: 0 0.5em 0 0;
+  min-width: 3em;
+}
+
+.severity {
+  background: grey;
+  border-radius: 2px;
+  color: white;
+  flex: none;
+  font-size: 0.625em;
   margin: 0 1em 0 0;
-  min-width: 9em;
+  min-width: 5em;
+  text-align: center;
+}
+
+.errorSeverity {
+  composes: severity;
+  background: crimson;
+}
+
+.warningSeverity {
+  composes: severity;
+  background: gold;
 }
 
 .message {
-  font-size: 0.875em;
+  font-size: 0.75em;
   margin: 0;
+}
+
+.ruleLink {
+  color: crimson;
+
+  &:hover,
+  &:visited {
+    color: limegreen;
+  }
+}
+
+@media (width > 48em) {
+  .root {
+    font-size: 1.125rem;
+  }
 }

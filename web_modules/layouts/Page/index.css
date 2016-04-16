@@ -75,7 +75,8 @@
   & a {
     color: crimson;
 
-    &:hover {
+    &:hover,
+    &:visited {
       color: limegreen;
     }
   }
