@@ -3,7 +3,7 @@ import Codemirror from "react-codemirror"
 import LintWarnings from "../LintWarnings/"
 import debounce from "lodash.debounce"
 import standardConfig from "stylelint-config-standard"
-import stylelintBrowserBundle from "stylelint-browser-bundle"
+import stylelintBrowserBundle from "../../lib/stylelint-browser-bundle.js"
 
 import "codemirror/mode/css/css"
 import "codemirror/mode/javascript/javascript"
