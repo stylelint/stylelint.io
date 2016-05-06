@@ -16,7 +16,7 @@ npm start
 
 Or to update the website to the latest version of stylelint:
 
-```
+```shell
 npm install --save-dev stylelint@latest
 npm run deploy
 ```

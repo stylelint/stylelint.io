@@ -31,6 +31,9 @@ export default class LayoutContainer extends Component {
       <GoogleAnalyticsTracker params={ this.props.params }>
         <div className={ styles.root }>
           <Helmet
+            meta={ [
+              { name: "description", content: `${ pkg.description }` },
+            ] }
             link={ [
               { "rel": "stylesheet",
                 "href":
@@ -45,9 +48,8 @@ export default class LayoutContainer extends Component {
                 "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/github-gist.min.css",
               },
             ] }
-
-            meta={ [
-              { name: "description", content: `${ pkg.description }` },
+            script={ [
+              { "src": "https://cdn.polyfill.io/v2/polyfill.min.js" },
             ] }
           />
           <div className={ styles.header }>
