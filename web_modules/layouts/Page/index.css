@@ -1,7 +1,7 @@
 @custom-selector :--headings h1, h2, h3, h4, h5, h6;
 
 .root {
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 2rem;
   max-width: 48rem;
   padding: 0 1rem;
 
