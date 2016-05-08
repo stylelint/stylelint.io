@@ -12,9 +12,9 @@
 }
 
 .location {
+  color: darkgray;
   flex: none;
   font-size: 0.75em;
-  font-weight: bold;
   margin: 0 0.5em 0 0;
   min-width: 3em;
 }
@@ -45,12 +45,16 @@
   margin: 0;
 }
 
-.ruleLink {
-  color: crimson;
+.ruleName {
+  color: darkgray;
+}
 
-  &:hover,
-  &:visited {
-    color: limegreen;
+.ruleLink {
+  color: darkgray;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
   }
 }
 

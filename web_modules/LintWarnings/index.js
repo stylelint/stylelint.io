@@ -26,14 +26,16 @@ export default class LintWarnings extends Component {
               <span className={ severityClassName }> { w.severity } </span>
               <span className={ styles.message }>
                 { text }
-                { "(" }
-                  <a
-                    className={ styles.ruleLink }
-                    href={ url }
-                  >
-                    { w.rule }
-                  </a>
-                { ")" }
+                <span className={ styles.ruleName }>
+                  { "(" }
+                    <a
+                      className={ styles.ruleLink }
+                      href={ url }
+                    >
+                      { w.rule }
+                    </a>
+                  { ")" }
+                </span>
               </span>
             </li>
           )
