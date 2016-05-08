@@ -54,16 +54,6 @@ export default class DemoPage extends Component {
           <this.state.Demo.default /> :
           <p className={ styles.loadingMessage }>{ "Loading stylelint..." }</p>
         }
-        <link
-          rel={ "stylesheet" }
-          type={ "text/css" }
-          href={ "https://rawgit.com/codemirror/CodeMirror/master/lib/codemirror.css" } // eslint-disable-line max-len
-        />
-        <link
-          rel={ "stylesheet" }
-          type={ "text/css" }
-          href={ "https://rawgit.com/codemirror/CodeMirror/master/theme/eclipse.css" } // eslint-disable-line max-len
-        />
         { this.props.children }
       </div>
     )
