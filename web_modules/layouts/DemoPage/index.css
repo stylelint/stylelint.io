@@ -1,0 +1,14 @@
+.root {
+  margin: 0 auto 2rem;
+  max-width: 100vw;
+}
+
+.loadingMessage {
+  color: color(black a(87%));
+  font-family: "Alegreya Sans", sans-serif;
+  font-feature-settings: "liga" 1, "kern";
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 1em auto 0;
+  text-align: center;
+}

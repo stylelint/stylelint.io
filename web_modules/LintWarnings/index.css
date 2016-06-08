@@ -1,0 +1,65 @@
+.root {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.result {
+  align-items: baseline;
+  display: flex;
+  font-family: "Oxygen Mono", monospace;
+  margin-top: 0.2em;
+}
+
+.location {
+  color: darkgray;
+  flex: none;
+  font-size: 0.75em;
+  margin: 0 0.5em 0 0;
+  min-width: 3em;
+}
+
+.severity {
+  background: grey;
+  border-radius: 2px;
+  color: white;
+  flex: none;
+  font-size: 0.625em;
+  margin: 0 1em 0 0;
+  min-width: 5em;
+  text-align: center;
+}
+
+.errorSeverity {
+  composes: severity;
+  background: crimson;
+}
+
+.warningSeverity {
+  composes: severity;
+  background: gold;
+}
+
+.message {
+  font-size: 0.75em;
+  margin: 0;
+}
+
+.ruleName {
+  color: darkgray;
+}
+
+.ruleLink {
+  color: darkgray;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@media (width > 48em) {
+  .root {
+    font-size: 1.125rem;
+  }
+}

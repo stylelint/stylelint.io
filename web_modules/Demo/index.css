@@ -1,0 +1,21 @@
+.input {
+  max-width: 100%;
+  min-height: 300px;
+}
+
+.results {
+  background: whitesmoke;
+  border: 1px solid gainsboro;
+  border-width: 1px 0;
+  padding: 1rem 0.5rem;
+}
+
+.console {
+  background: crimson;
+  border: 1px solid gainsboro;
+  border-width: 1px 0;
+  color: white;
+  display: block;
+  font-family: "Oxygen Mono", monospace;
+  padding: 1rem 0.5rem;
+}

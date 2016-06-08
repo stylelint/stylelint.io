@@ -43,6 +43,14 @@ export default class Navigation extends Component {
               { "Developer guide" }
             </Link>
           </li>
+          <li className={ styles.item }>
+            <Link
+              className={ styles.itemInner }
+              to="/demo/"
+            >
+              { "Demo" }
+            </Link>
+          </li>
         </ul>
       </nav>
     )

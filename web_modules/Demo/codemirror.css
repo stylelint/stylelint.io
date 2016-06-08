@@ -1,0 +1,4 @@
+:global {
+  @import "~codemirror/lib/codemirror.css";
+  @import "~codemirror/theme/eclipse.css";
+}
