@@ -1,5 +1,4 @@
 content
 dist
 node_modules
-*.bundle.js
 *.log

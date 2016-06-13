@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { PropTypes } from "react"
 import Helmet from "react-helmet"
 import invariant from "invariant"
+import { BodyContainer } from "phenomic"
 
 import styles from "./index.css"
 
@@ -40,12 +41,7 @@ export default class Page extends Component {
           title={ title }
           meta={ meta }
         />
-        {
-          body &&
-          <div className={ styles.inner }
-            dangerouslySetInnerHTML={ { __html: body } }
-          />
-        }
+        <BodyContainer>{ body }</BodyContainer>
         { this.props.children }
       </div>
     )
