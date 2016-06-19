@@ -140,6 +140,10 @@
     height: auto;
     max-width: 100%;
   }
+
+  & p[data-example-warning] + pre > code {
+    background: red;
+  }
 }
 
 @media (width > 48em) {

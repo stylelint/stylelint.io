@@ -6,6 +6,13 @@ import { BodyContainer } from "phenomic"
 
 import styles from "./index.css"
 
+function enhanceCodeBlocks(contents) {
+  return contents.replace(
+    /<p>The following patterns are considered warnings:<\/p>/,
+    "<p data-example-warning>The following patterns are considered warnings:<\/p>",
+  )
+}
+
 export default class Page extends Component {
 
   static propTypes = {
@@ -41,7 +48,7 @@ export default class Page extends Component {
           title={ title }
           meta={ meta }
         />
-        <BodyContainer>{ body }</BodyContainer>
+        <BodyContainer>{ enhanceCodeBlocks(body) }</BodyContainer>
         { this.props.children }
       </div>
     )
