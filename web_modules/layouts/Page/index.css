@@ -95,6 +95,14 @@
   & pre {
     position: relative;
 
+    &:global(.valid-pattern) > code {
+      background: color(green a(20%));
+    }
+
+    &:global(.invalid-pattern) > code {
+      background: color(red a(20%));
+    }
+
     &::after,
     &::before {
       background: color(whitesmoke a(50%));
@@ -139,10 +147,6 @@
   & img {
     height: auto;
     max-width: 100%;
-  }
-
-  & p[data-example-warning] + pre > code {
-    background: red;
   }
 }
 
