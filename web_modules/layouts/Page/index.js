@@ -76,6 +76,10 @@ export default class Page extends Component {
     applyTransformsToContent(this._bodyContent)
   }
 
+  componentDidUpdate() {
+    applyTransformsToContent(this._bodyContent)
+  }
+
   render() {
 
     const {
