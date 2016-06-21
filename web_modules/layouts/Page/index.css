@@ -95,19 +95,12 @@
   & pre {
     position: relative;
 
-    &:global(.valid-pattern) > code {
-      background: color(green a(20%));
-    }
-
-    &:global(.invalid-pattern) > code {
-      background: color(red a(20%));
-    }
-
     &::after,
     &::before {
-      background: color(whitesmoke a(50%));
+      background: whitesmoke;
       bottom: 0;
       content: "";
+      opacity: 0.5;
       position: absolute;
       right: 0;
       top: 0;
@@ -115,7 +108,8 @@
     }
 
     &::before {
-      background: color(whitesmoke a(75%));
+      background: whitesmoke;
+      opacity: 0.75;
       width: 0.5em;
     }
 
@@ -124,6 +118,22 @@
       line-height: 1.5;
       overflow: auto;
       padding: 1em 1.5em 1em 1em;
+    }
+
+    &:global(.valid-pattern) {
+      & > code,
+      &::before,
+      &::after {
+        background: #eef7ee;
+      }
+    }
+
+    &:global(.invalid-pattern) {
+      & > code,
+      &::before,
+      &::after {
+        background: #fee;
+      }
     }
   }
 

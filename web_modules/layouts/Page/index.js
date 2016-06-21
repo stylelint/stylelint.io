@@ -6,6 +6,11 @@ import { BodyContainer } from "phenomic"
 
 import styles from "./index.css"
 
+const triggers = {
+  validPattern: "The following patterns are not considered warnings:",
+  invalidPattern: "The following patterns are considered warnings:",
+}
+
 function applyTransformsToContent(bodyContent) {
   let invalidPatternFlag = false
   let validPatternFlag = false
@@ -15,13 +20,13 @@ function applyTransformsToContent(bodyContent) {
       return
     }
 
-    if (nodeIsValidPatternTrigger(node)) {
+    if (nodeIsPatternTrigger(node, triggers.validPattern)) {
       invalidPatternFlag = false
       validPatternFlag = true
       node.classList.add("valid-pattern")
     }
 
-    if (nodeIsInvalidPatternTrigger(node)) {
+    if (nodeIsPatternTrigger(node, triggers.invalidPattern)) {
       invalidPatternFlag = true
       validPatternFlag = false
       node.classList.add("invalid-pattern")
@@ -36,13 +41,7 @@ function applyTransformsToContent(bodyContent) {
   })
 }
 
-function nodeIsValidPatternTrigger(node) {
-  const triggerText = "The following patterns are not considered warnings:"
-  return node.tagName === "P" && node.innerText === triggerText
-}
-
-function nodeIsInvalidPatternTrigger(node) {
-  const triggerText = "The following patterns are considered warnings:"
+function nodeIsPatternTrigger(node, triggerText) {
   return node.tagName === "P" && node.innerText === triggerText
 }
 
@@ -93,6 +92,7 @@ export default class Page extends Component {
     const title = head.title + " - " + pkg.name
     const meta = []
 
+    /* eslint-disable react/jsx-no-bind, brace-style */
     return (
       <div className={ styles.root }>
         <Helmet
@@ -108,5 +108,6 @@ export default class Page extends Component {
         { this.props.children }
       </div>
     )
+    /* eslint-enable react/jsx-no-bind, brace-style */
   }
 }
