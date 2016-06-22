@@ -48,7 +48,12 @@ function nodeIsPatternTrigger(node, triggerText) {
 function nodeIsTriggerReset(node) {
   const resetTriggers = [ "H1", "H2", "H3", "H4", "H5", "H6" ]
 
-  if (resetTriggers.indexOf(node.tagName) !== -1) {
+  if (resetTriggers.indexOf(node.tagName) !== -1
+    || (
+      node.tagName === "P"
+      && node.innerText === "Given:"
+    )
+  ) {
     return true
   }
 }
