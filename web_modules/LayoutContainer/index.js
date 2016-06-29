@@ -10,6 +10,10 @@ import GoogleAnalyticsTracker from "../GoogleAnalyticsTracker"
 
 import styles from "./index.css"
 
+import ogImage from "./opengraph.png"
+import favicon from "./favicon.ico"
+import favicon192x192 from "./favicon-192x192.png"
+
 export default class LayoutContainer extends Component {
 
   static propTypes = {
@@ -33,6 +37,14 @@ export default class LayoutContainer extends Component {
           <Helmet
             meta={ [
               { name: "description", content: `${ pkg.description }` },
+              { name: "twitter:card", content: "summary" },
+              { name: "twitter:creator", content: `@${ pkg.twitter }` },
+              { name: "twitter:site", content: `@${ pkg.twitter }` },
+              { property: "og:description", content: pkg.description },
+              { property: "og:image", content: ogImage },
+              { property: "og:site_name", content: pkg.name },
+              { property: "og:type", content: "article" },
+              { property: "og:url", content: pkg.homepage },
             ] }
             link={ [
               { "rel": "stylesheet",
@@ -46,6 +58,17 @@ export default class LayoutContainer extends Component {
               { "rel": "stylesheet",
                 "href":
                 "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/github-gist.min.css",
+              },
+              {
+                "rel": "shortcut icon",
+                "type": "image/png",
+                "href": favicon,
+              },
+              {
+                "rel": "icon",
+                "type": "image/png",
+                "href": favicon192x192,
+                "sizes": "192x192",
               },
             ] }
             script={ [
