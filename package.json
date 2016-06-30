@@ -20,7 +20,7 @@
     "prestart": "npm run docs",
     "start": "phenomic start",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -r git@github.com:stylelint/stylelint.github.io.git -b master"
+    "deploy": "gh-pages -t -d dist -r git@github.com:stylelint/stylelint.github.io.git -b master"
   },
   "phenomic": {
     "assets": false,
