@@ -4,6 +4,7 @@
   "homepage": "http://stylelint.io/",
   "description": "A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.",
   "googleAnalyticsUA": "UA-72480048-1",
+  "twitter": "stylelint",
   "scripts": {
     "lint:js": "eslint --ignore-path .gitignore --fix .",
     "lint:css": "stylelint \"web_modules/**/*.css\"",
