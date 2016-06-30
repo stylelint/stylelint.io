@@ -24,7 +24,8 @@
   },
   "phenomic": {
     "assets": false,
-    "CNAME": true
+    "CNAME": true,
+    "nojekyll": true
   },
   "babel": {
     "presets": [
