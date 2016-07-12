@@ -92,6 +92,10 @@
   .secondaryItems {
     border: 0;
     display: flex;
-    margin-left: 2rem;
+    margin-left: 1rem;
+  }
+
+  .itemSecondary {
+    margin-right: 1rem;
   }
 }
