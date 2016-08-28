@@ -63,6 +63,14 @@
       ],
       "font-family-name-quotes": "always-where-recommended",
       "function-url-quotes": "always",
+      "property-no-unknown": [
+        true,
+        {
+          "ignoreProperties": [
+            "composes"
+          ]
+        }
+      ],
       "selector-pseudo-class-no-unknown": [
         true,
         {
@@ -106,8 +114,8 @@
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.2",
     "style-loader": "^0.13.1",
-    "stylelint": "^7.1.0",
-    "stylelint-config-standard": "^12.0.0",
+    "stylelint": "^7.2.0",
+    "stylelint-config-standard": "^13.0.0",
     "webpack": "^1.13.0"
   },
   "dependencies": {
