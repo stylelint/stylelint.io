@@ -52,7 +52,14 @@
   },
   "stylelint": {
     "extends": "stylelint-config-standard",
+    "plugins": "stylelint-declaration-block-order",
     "rules": {
+      "plugin/declaration-block-order": [
+        "custom-properties",
+        "declarations",
+        "rules",
+        "at-rules"
+      ],
       "declaration-block-properties-order": [
         [
           "composes"
@@ -116,6 +123,7 @@
     "style-loader": "^0.13.1",
     "stylelint": "^7.3.1",
     "stylelint-config-standard": "^13.0.2",
+    "stylelint-declaration-block-order": "^0.1.0",
     "webpack": "^1.13.0"
   },
   "dependencies": {
