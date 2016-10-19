@@ -52,7 +52,7 @@
   },
   "stylelint": {
     "extends": "stylelint-config-standard",
-    "plugins": "stylelint-declaration-block-order",
+    "plugins": ["stylelint-declaration-block-order"],
     "rules": {
       "plugin/declaration-block-order": [
         "custom-properties",
