@@ -35,8 +35,8 @@
 }
 
 .secondaryItems {
-  composes: items;
   border-top: 1px solid grey;
+  composes: items;
 }
 
 .itemSecondary {
@@ -48,8 +48,8 @@
 }
 
 .itemInnerSecondary {
-  composes: itemInner;
   color: color(white a(70%));
+  composes: itemInner;
   padding-left: 2rem;
   padding-right: 2rem;
 }

@@ -53,25 +53,18 @@
   "stylelint": {
     "extends": "stylelint-config-standard",
     "plugins": [
-      "stylelint-declaration-block-order"
+      "stylelint-order"
     ],
     "rules": {
-      "plugin/declaration-block-order": [
+      "font-family-name-quotes": "always-where-recommended",
+      "function-url-quotes": "always",
+      "order/declaration-block-order": [
         "custom-properties",
         "declarations",
         "rules",
         "at-rules"
       ],
-      "declaration-block-properties-order": [
-        [
-          "composes"
-        ],
-        {
-          "unspecified": "bottomAlphabetical"
-        }
-      ],
-      "font-family-name-quotes": "always-where-recommended",
-      "function-url-quotes": "always",
+      "order/declaration-block-properties-alphabetical-order": true,
       "property-no-unknown": [
         true,
         {
@@ -123,9 +116,9 @@
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.2",
     "style-loader": "^0.13.1",
-    "stylelint": "^7.5.0",
-    "stylelint-config-standard": "^14.0.0",
-    "stylelint-declaration-block-order": "^0.1.0",
+    "stylelint": "^7.6.0",
+    "stylelint-config-standard": "^15.0.0",
+    "stylelint-order": "^0.2.0",
     "webpack": "^1.13.0"
   },
   "dependencies": {
