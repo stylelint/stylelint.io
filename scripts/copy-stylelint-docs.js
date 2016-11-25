@@ -2,32 +2,25 @@ import fs from "fs-extra"
 import glob from "glob"
 import path from "path"
 
-// copy docs
+// Copy /docs
 fs.copySync("node_modules/stylelint/docs", "content")
 
-// copy rules
+// Copy rule READMEs
 const rules = glob.sync("node_modules/stylelint/src/rules/**/README.md")
 rules.forEach(function(file) {
-  fs.copySync(file,
-    "content/user-guide/rules/"
-    + path.dirname(file).split("/").pop()
-    + ".md"
-  )
+  fs.copySync(file, `content/user-guide/rules/${path.dirname(file).split("/").pop()}.md`)
 })
 
-// copy root files
+// Copy root files (README, CHANGELOG etc)
 const rootFiles = glob.sync("node_modules/stylelint/*.md")
 rootFiles.forEach(function(file) {
-  fs.copySync(file,
-    "content/"
-    + path.basename(file)
-  )
+  fs.copySync(file, `content/${path.basename(file)}`)
 })
 
-// rename main readme
+// Rename main readme
 fs.renameSync("content/README.md", "content/index.md")
 
-// create demo.md
+// Create demo.md
 const demo = `---
 title: Demo
 description: Try stylelint in your browser
@@ -35,7 +28,5 @@ layout: DemoPage
 ---
 `
 const demoPath = "content/demo"
-if (!fs.existsSync(demoPath)) {
-  fs.mkdirSync(demoPath)
-}
+if (!fs.existsSync(demoPath)) { fs.mkdirSync(demoPath) }
 fs.writeFileSync(`${demoPath}/index.md`, demo)
