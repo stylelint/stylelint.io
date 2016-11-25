@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@media (width > 54em) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

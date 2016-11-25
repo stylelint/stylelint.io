@@ -1,0 +1,44 @@
+:root {
+  & #algolia-docsearch {
+    border: 1px solid grey;
+    border-radius: 1rem;
+    color: white;
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1;
+    padding: 0.4rem;
+    width: 7rem;
+
+    &:focus {
+      border-color: limegreen;
+      outline: none;
+    }
+
+    &::placeholder {
+      color: color(white a(70%));
+      opacity: 1;
+    }
+  }
+
+  & .algolia-autocomplete {
+    & .ds-dropdown-menu {
+      min-width: 320px;
+
+      @media (width > 500px) {
+        min-width: 500px;
+      }
+    }
+
+    & .algolia-docsearch-suggestion--category-header {
+      display: none !important;
+    }
+
+    & .algolia-docsearch-suggestion--subcategory-column {
+      background: black;
+    }
+
+    & .algolia-docsearch-suggestion--subcategory-column-text {
+      color: white;
+    }
+  }
+}

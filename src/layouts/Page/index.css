@@ -1,0 +1,184 @@
+@custom-selector :--headings h1, h2, h3, h4, h5, h6;
+
+.page {
+  display: block;
+}
+
+.body {
+  font-size: 0.875rem;
+  margin: 2rem auto;
+  max-width: 57.5rem;
+  padding: 0 1rem;
+  width: 100%;
+
+  & * + * {
+    margin: 1em 0;
+  }
+
+  /* stylelint-disable-next-line */
+  & :--headings {
+    color: color(black a(68%));
+    flex-direction: row-reverse;
+    font-weight: 600;
+    line-height: 1.25;
+    padding-right: 1rem;
+    position: relative;
+
+    & :global(.phenomic-HeadingAnchor) {
+      display: none;
+    }
+
+    &:hover {
+      & :global(.phenomic-HeadingAnchor) {
+        display: block;
+        font-weight: 400;
+        position: absolute;
+        right: 0;
+        text-decoration: none;
+        top: 0;
+      }
+    }
+
+    & code {
+      line-height: 1.25;
+    }
+  }
+
+  & h1 {
+    font-size: 2em;
+  }
+
+  & h2 {
+    border-bottom: 1px solid gainsboro;
+    font-size: 1.5em;
+    padding-bottom: 0.25em;
+  }
+
+  & h3 {
+    font-size: 1.25em;
+  }
+
+  & h4 {
+    font-size: 1em;
+  }
+
+  & h5 {
+    font-size: 1.125em;
+  }
+
+  & h6 {
+    font-size: 0.875em;
+  }
+
+  & p {
+    color: color(black a(87%));
+    font-size: 1em;
+    line-height: 1.5;
+  }
+
+  & blockquote {
+    border-left: 3px solid gainsboro;
+    padding-left: 10px;
+  }
+
+  & a {
+    color: crimson;
+    text-decoration: none;
+
+    &:hover {
+      color: limegreen;
+    }
+  }
+
+  & code {
+    background: whitesmoke;
+    border-radius: 0.25em;
+    display: inline-block;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 0.875em;
+    margin: 0;
+    max-width: 100%;
+    padding: 0 0.25em;
+    vertical-align: middle;
+  }
+
+  & pre {
+    position: relative;
+
+    & code {
+      display: block;
+      line-height: 1.5;
+      overflow: auto;
+      padding: 1em 1.5em 1em 1em;
+
+      &::after,
+      &::before {
+        background: whitesmoke;
+        bottom: 0;
+        content: "";
+        opacity: 0.5;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 1em;
+      }
+
+      &::before {
+        background: whitesmoke;
+        opacity: 0.75;
+        width: 0.5em;
+      }
+
+      &:global(.valid-pattern) {
+        &,
+        &::before,
+        &::after {
+          background: #eef7ee;
+        }
+      }
+
+      &:global(.invalid-pattern) {
+        &,
+        &::before,
+        &::after {
+          background: #fee;
+        }
+      }
+    }
+  }
+
+  & ul,
+  & ol {
+    padding-left: 1.25em;
+  }
+
+  & li {
+    color: color(black a(87%));
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+
+    & p,
+    & ul {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+  }
+
+  & img {
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+@media (width > 54em) {
+  .body {
+    font-size: 1rem;
+    padding: 0 2rem;
+
+    & ul,
+    & ol {
+      padding-left: 2em;
+    }
+  }
+}

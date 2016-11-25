@@ -1,5 +1,5 @@
-content
-dist
-node_modules
+/content/
+/dist/
+/node_modules/
 *.log
 .DS_Store
