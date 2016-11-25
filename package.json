@@ -16,7 +16,7 @@
     "copy": "babel-node ./scripts/copy-stylelint-docs",
     "prestart" : "npm run copy",
     "start": "phenomic start",
-    "prebuild": "npm run docs",
+    "prebuild": "npm run copy",
     "build": "phenomic build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -t -d dist -r git@github.com:stylelint/stylelint.github.io.git -b master"
