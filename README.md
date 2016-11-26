@@ -1,6 +1,6 @@
 # stylelint.io
 
-The source of stylelint website. Uses the same tech stack as the [postcss.org repo](https://github.com/postcss/postcss.org).
+The source of stylelint website.
 
 To get started:
 
