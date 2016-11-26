@@ -2,9 +2,10 @@ import React, { Component } from "react"
 import Helmet from "react-helmet"
 import { browserHistory } from "phenomic/lib/client"
 
+import magnifier from "./magnifier.svg"
+
 import "./index.global.css"
 import styles from "./index.css"
-import magnifier from "./magnifier.svg"
 
 export default class DocSearch extends Component {
   componentDidMount() {
