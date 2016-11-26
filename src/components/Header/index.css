@@ -1,6 +1,5 @@
 .header {
   background: black;
-  margin: 0;
   padding-left: 1rem;
 }
 
@@ -8,8 +7,6 @@
   align-items: center;
   display: flex;
   height: 3.5rem;
-  margin: 0;
-  padding: 0;
 }
 
 .item {
