@@ -1,12 +1,12 @@
-import fs from "fs-extra"
-import glob from "glob"
-import path from "path"
+const fs = require("fs-extra")
+const glob = require("glob")
+const path = require("path")
 
 // Copy /docs
 fs.copySync("node_modules/stylelint/docs", "content")
 
 // Copy rule READMEs
-const rules = glob.sync("node_modules/stylelint/src/rules/**/README.md")
+const rules = glob.sync("node_modules/stylelint/lib/rules/**/README.md")
 rules.forEach(function(file) {
   fs.copySync(file, `content/user-guide/rules/${path.dirname(file).split("/").pop()}.md`)
 })
