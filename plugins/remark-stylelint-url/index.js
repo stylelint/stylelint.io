@@ -14,7 +14,10 @@ export default function attacher () {
     if (!node.url.startsWith("http") && !node.url.startsWith("#")) {
 
       // If the URL isn't an inter-rule one
-      if (!node.url.endsWith("/README.md")) {
+      if (
+        !node.url.endsWith("/README.md")
+        && node.url.indexOf("docs/") === -1
+      ) {
         // Add an addition "up-one-level" as each markdown file is converted
         // to an index.html _within its own directory_.
         node.url = `../${node.url}`
