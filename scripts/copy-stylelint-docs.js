@@ -17,6 +17,11 @@ rootFiles.forEach(function(file) {
   fs.copySync(file, `content/${path.basename(file)}`)
 })
 
+// Temporary fix for mixed-content issues. Until stylelint >7.7.1 released
+let readme = fs.readFileSync("content/README.md", "utf-8")
+readme = readme.replace("http://img.shields.io/npm/v/stylelint.svg", "https://img.shields.io/npm/v/stylelint.svg")
+fs.writeFileSync("content/README.md", readme, "utf-8")
+
 // Rename main readme
 fs.renameSync("content/README.md", "content/index.md")
 
