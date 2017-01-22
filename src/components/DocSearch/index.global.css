@@ -21,6 +21,10 @@
   }
 
   & .algolia-autocomplete {
+    & > pre {
+      right: 0; /* fixes out of viewport positioning */
+    }
+
     & .ds-dropdown-menu {
       min-width: 320px;
 
