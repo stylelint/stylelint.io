@@ -5,7 +5,7 @@ import styles from "./index.css"
 const Demo = () => (
   <iframe
     className={ styles.demo }
-    src="http://stylelint-demo.herokuapp.com"
+    src="https://stylelint-demo.herokuapp.com"
     frameBorder="0"
   ></iframe>
 )
