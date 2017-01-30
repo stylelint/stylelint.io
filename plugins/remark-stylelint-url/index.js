@@ -15,7 +15,7 @@ export default function attacher () {
 
       // If the URL isn't an inter-rule one
       if (
-        !node.url.endsWith("/README.md")
+        node.url.indexOf("/README.md") === -1
         && node.url.indexOf("docs/") === -1
       ) {
         // Add an addition "up-one-level" as each markdown file is converted
