@@ -5,8 +5,14 @@
 import visit from "unist-util-visit"
 import toString from "mdast-util-to-string"
 
-const validTrigger = "The following patterns are not considered warnings:"
-const invalidTrigger = "The following patterns are considered warnings:"
+const validTriggers = [
+  "The following patterns are not considered warnings:",
+  "The following pattern is not considered a warning:",
+]
+const invalidTriggers = [
+  "The following patterns are considered warnings:",
+  "The following pattern is considered a warning:",
+]
 const resetTrigger = "Given:"
 
 const validClass = "valid-pattern"
@@ -20,19 +26,16 @@ export default function attacher () {
   function visitor (node) {
     // Paragraphs with certain content act as triggers
     if (node.type === "paragraph") {
-      switch(toString(node)) {
-        case validTrigger:
-          invalidPatternFlag = false
-          validPatternFlag = true
-          break;
-        case invalidTrigger:
-          invalidPatternFlag = true
-          validPatternFlag = false
-          break;
-        case resetTrigger:
-          invalidPatternFlag = false
-          validPatternFlag = false
-          break;
+      const nodeAsString = toString(node)
+      if (validTriggers.includes(nodeAsString)) {
+        invalidPatternFlag = false
+        validPatternFlag = true
+      } else if (invalidTriggers.includes(nodeAsString)) {
+        invalidPatternFlag = true
+        validPatternFlag = false
+      } else if (resetTrigger === nodeAsString) {
+        invalidPatternFlag = false
+        validPatternFlag = false
       }
     }
 
