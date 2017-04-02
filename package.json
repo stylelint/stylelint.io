@@ -172,7 +172,7 @@
     "redux": "^3.6.0",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
-    "stylelint": "^7.10.0",
+    "stylelint": "^7.10.1",
     "stylelint-config-standard": "^16.0.0",
     "stylelint-order": "^0.2.0",
     "unist-util-visit": "^1.1.1",
