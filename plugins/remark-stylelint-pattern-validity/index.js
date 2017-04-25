@@ -6,12 +6,12 @@ import visit from "unist-util-visit"
 import toString from "mdast-util-to-string"
 
 const validTriggers = [
-  "The following patterns are not considered warnings:",
-  "The following pattern is not considered a warning:",
+  "The following patterns are not considered violations:",
+  "The following pattern is not considered a violation:",
 ]
 const invalidTriggers = [
-  "The following patterns are considered warnings:",
-  "The following pattern is considered a warning:",
+  "The following patterns are considered violations:",
+  "The following pattern is considered a violation:",
 ]
 const resetTrigger = "Given:"
 
