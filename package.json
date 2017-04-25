@@ -57,12 +57,7 @@
       },
       "webpack-development": {
         "presets": [
-          [
-            "babel-preset-env",
-            {
-              "modules": false
-            }
-          ],
+          "babel-preset-env",
           "babel-preset-stage-2",
           "babel-preset-react"
         ],
@@ -75,12 +70,7 @@
       "webpack-production": {
         "presets": [
           "babel-preset-react-optimize",
-          [
-            "babel-preset-env",
-            {
-              "modules": false
-            }
-          ],
+          "babel-preset-env",
           "babel-preset-stage-2",
           "babel-preset-react"
         ]
