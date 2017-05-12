@@ -8,6 +8,10 @@ export default () => {
   let tmp = [];
   let i = 0;
 
+  if (typeof window === "undefined") {
+    return [];
+  }
+
   let sortedRules = window.__COLLECTION__.filter(item => {
     if (item.__dataUrl.match(/\/user-guide\/rules\/.+/) !== null) {
 

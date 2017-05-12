@@ -18,7 +18,9 @@ class Content extends Component {
     this.navKeyUpHandler = this.navKeyUpHandler.bind(this);
     this.updateRulesLink = this.updateRulesLink.bind(this);
 
-    document.addEventListener('keyup', this.navKeyUpHandler);
+    if (typeof document !== "undefined") {
+      document.addEventListener('keyup', this.navKeyUpHandler);
+    }
   }
 
   updateRulesLink() {
