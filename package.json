@@ -2,8 +2,8 @@
   "private": true,
   "name": "stylelint-io",
   "description": "A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.",
-  "homepage": "http://stylelint.io",
-  "repository": "https://github.com/stylelint/stylelint.io.git",
+  "homepage": "https://artemkaef.github.io/stylelint.io",
+  "repository": "https://github.com/artemkaef/stylelint.io.git",
   "twitter": "stylelint",
   "googleAnalyticsUA": "UA-72480048-1",
   "scripts": {
@@ -19,7 +19,7 @@
     "prebuild": "npm run copy",
     "build": "phenomic build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -t -d dist -r git@github.com:stylelint/stylelint.github.io.git -b master"
+    "deploy": "gh-pages -t -d dist -r git@github.com:artemkaef/stylelint.github.io.git -b master"
   },
   "phenomic": {
     "assets": false,
