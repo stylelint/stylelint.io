@@ -6,12 +6,14 @@ import AppContainer from "./AppContainer"
 import Page from "./layouts/Page"
 import PageError from "./layouts/PageError"
 import DemoPage from "./layouts/DemoPage"
+import RulePage from "./layouts/RulePage"
 
 const PageContainer = (props) => (
   <PhenomicPageContainer
     { ...props }
     layouts={{
       DemoPage,
+      RulePage,
       Page,
       PageError,
     }}
