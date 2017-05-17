@@ -8,26 +8,44 @@ fs.copySync("node_modules/stylelint/docs", "content")
 // Copy rule READMEs
 const rules = glob.sync("node_modules/stylelint/lib/rules/**/README.md")
 
-rules.forEach(function(file, index) {
+// Create array of rules in a right order
+const listOfRulesPath = 'content/user-guide/rules.md';
+const ruleRegex = /(- *\[`.*?])/g;
+let rulesInOrder = [];
 
-  const rulePath = `content/user-guide/rules/${path.dirname(file).split("/").pop()}.md`;
-  let nextRulePath = null;
-  let prevRulePath = null;
+fs.readFile(listOfRulesPath, 'utf8', function(err, data){
+  if (err) throw err
 
-  if ( rules[index+1] ) {
-    nextRulePath = `/user-guide/rules/${path.dirname(rules[index+1]).split("/").pop()}/`;
-  }
+  rulesInOrder = data.match(ruleRegex);
 
-  if ( rules[index-1] ) {
-    prevRulePath = `/user-guide/rules/${path.dirname(rules[index-1]).split("/").pop()}/`;
-  }
+  rulesInOrder = rulesInOrder.map(function(item) {
+    return item.substring(item.indexOf("`") + 1, item.lastIndexOf("`"));
+  });
 
-  fs.copySync(file, rulePath);
+  rules.forEach(function(file) {
+    const fileName = path.dirname(file).split("/").pop();
+    const rulePath = `content/user-guide/rules/${fileName}.md`;
+    const ruleIndex = rulesInOrder.indexOf(fileName);
+    const nextRuleName = rulesInOrder[ruleIndex+1];
+    const prevRuleName = rulesInOrder[ruleIndex-1];
+    let nextRulePath = null;
+    let prevRulePath = null;
 
-  fs.readFile(rulePath, 'utf8', function(err, data){
-    if (err) throw err
+    if ( nextRuleName ) {
+      nextRulePath = `/user-guide/rules/${nextRuleName}/`;
+    }
 
-    fs.writeFile(rulePath, `---\nlayout: RulePage\nnext: ${nextRulePath}\nprev: ${prevRulePath}\n---` + data)
+    if ( prevRuleName ) {
+      prevRulePath = `/user-guide/rules/${prevRuleName}/`;
+    }
+
+    fs.copySync(file, rulePath);
+
+    fs.readFile(rulePath, 'utf8', function(err, data){
+      if (err) throw err
+
+      fs.writeFile(rulePath, `---\nlayout: RulePage\nnext: ${nextRulePath}\nprev: ${prevRulePath}\n---` + data)
+    })
   })
 })
 
