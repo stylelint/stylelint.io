@@ -5,29 +5,29 @@ import Page from "../Page"
 import styles from "./index.css"
 
 const RulePage = (props) => {
-  let nextRuleLink;
-  let prevRuleLink;
-
-  if (props.head.next !== null) {
-    nextRuleLink = <li className={ styles.ruleLinkItem }>
-      <Link className={styles.ruleLink} to={props.head.next}>{'Next'}</Link>
-    </li>;
-  }
-
-  if (props.head.prev !== null) {
-    prevRuleLink = <li className={ styles.ruleLinkItem }>
-      <Link className={styles.ruleLink} to={props.head.prev}>{'Prev'}</Link>
-    </li>;
-  }
-
+  const {
+    head: {
+      next,
+      prev
+    }
+  } = props
   return (
     <div>
-      <nav className={styles.rulesNavigation}>
-        <ol>
-          {[prevRuleLink, nextRuleLink]}
-        </ol>
-      </nav>
       <Page { ...props } />
+      <nav className={styles.navigation}>
+        { prev &&
+          <Link
+            className={styles.link}
+            to={prev}>{'← Prev'}
+          </Link>
+        }
+        { next &&
+          <Link
+            className={styles.link}
+            to={next}>{'Next →'}
+          </Link>
+        }
+      </nav>
     </div>
   )
 }
@@ -37,7 +37,10 @@ RulePage.propTypes = {
   isLoading: PropTypes.bool,
   __filename: PropTypes.string,
   __url: PropTypes.string,
-  head: PropTypes.object.isRequired,
+  head: PropTypes.shape({
+    prev: PropTypes.string,
+    next: PropTypes.string
+  }).isRequired,
   body: PropTypes.string,
   header: PropTypes.element,
   footer: PropTypes.element,
