@@ -1,0 +1,21 @@
+.rulesNavigation {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.ruleLinkItem {
+  display: inline-block;
+  padding: 0 0.5rem;
+}
+
+.ruleLink {
+  color: #ed143d;
+  font-size: 1em;
+  line-height: 1.5;
+  text-decoration: none;
+
+  &:hover {
+    color: #32cd32;
+  }
+}
