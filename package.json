@@ -156,7 +156,7 @@
     "redux": "^3.6.0",
     "rimraf": "^2.5.4",
     "style-loader": "^0.16.1",
-    "stylelint": "^7.11.0",
+    "stylelint": "^7.11.1",
     "stylelint-config-standard": "^16.0.0",
     "stylelint-order": "^0.4.3",
     "unist-util-visit": "^1.1.1",
