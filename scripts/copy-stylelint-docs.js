@@ -49,7 +49,7 @@ fs.readFile(listOfRulesPath, 'utf8', function(err, data){
   })
 })
 
-// Copy root files (README, CHANGELOG etc)
+// Copy root files (README, CHANGELOG, VISION etc)
 const rootFiles = glob.sync("node_modules/stylelint/*.md")
 rootFiles.forEach(function(file) {
   fs.copySync(file, `content/${path.basename(file)}`)

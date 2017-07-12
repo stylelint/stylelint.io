@@ -31,7 +31,7 @@ export default function attacher () {
         .replace("/README", "")
         // Urls from within root markdown files (e.g. changelog and README) can
         // include path to "docs" directory, which is removed for the website
-        .replace("docs/", "")
+        .replace("docs/", "../")
         // all .md extensions as now index.html files
         .replace(".md", "/")
     }
