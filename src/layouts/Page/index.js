@@ -22,6 +22,13 @@ const Page = (
     metadata: { pkg },
   }
 ) => {
+  if(!head){
+    return (
+      <div className={ styles.page }>
+        { children }
+      </div>
+    )
+  }
   warning(
     typeof head.title === "string",
     `Your page '${ __filename }' needs a title`
