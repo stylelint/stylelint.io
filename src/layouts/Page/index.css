@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @custom-selector :--headings h1, h2, h3, h4, h5, h6;
 
 .page {
@@ -47,6 +48,51 @@
     vertical-align: middle;
   }
 
+  & pre {
+    position: relative;
+
+    & code {
+      display: block;
+      line-height: 1.5;
+      overflow: auto;
+      padding: 1em 1.5em 1em 1em;
+
+      &::after,
+      &::before {
+        background: whitesmoke;
+        bottom: 0;
+        content: "";
+        opacity: 0.5;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 1em;
+      }
+
+      &::before {
+        background: whitesmoke;
+        opacity: 0.75;
+        width: 0.5em;
+      }
+
+      &:global(.valid-pattern) {
+        &,
+        &::before,
+        &::after {
+          background: #eef7ee;
+        }
+      }
+
+      &:global(.invalid-pattern) {
+        &,
+        &::before,
+        &::after {
+          background: #fee;
+        }
+      }
+    }
+  }
+
   /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   & :--headings {
     color: color(black a(68%));
@@ -60,7 +106,6 @@
       display: none;
     }
 
-    /* stylelint-disable-next-line no-descending-specificity */
     &:hover {
       & :global(.phenomic-HeadingAnchor) {
         display: block;
