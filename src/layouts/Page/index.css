@@ -15,6 +15,38 @@
     margin: 1em 0;
   }
 
+  & p {
+    color: color(black a(87%));
+    font-size: 1em;
+    line-height: 1.5;
+  }
+
+  & blockquote {
+    border-left: 3px solid gainsboro;
+    padding-left: 10px;
+  }
+
+  & a {
+    color: crimson;
+    text-decoration: none;
+
+    &:hover {
+      color: limegreen;
+    }
+  }
+
+  & code {
+    background: whitesmoke;
+    border-radius: 0.25em;
+    display: inline-block;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 0.875em;
+    margin: 0;
+    max-width: 100%;
+    padding: 0 0.25em;
+    vertical-align: middle;
+  }
+
   /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   & :--headings {
     color: color(black a(68%));
@@ -28,6 +60,7 @@
       display: none;
     }
 
+    /* stylelint-disable-next-line no-descending-specificity */
     &:hover {
       & :global(.phenomic-HeadingAnchor) {
         display: block;
@@ -64,83 +97,6 @@
 
   & h5 {
     font-size: 0.875em;
-  }
-
-  & p {
-    color: color(black a(87%));
-    font-size: 1em;
-    line-height: 1.5;
-  }
-
-  & blockquote {
-    border-left: 3px solid gainsboro;
-    padding-left: 10px;
-  }
-
-  & a {
-    color: crimson;
-    text-decoration: none;
-
-    &:hover {
-      color: limegreen;
-    }
-  }
-
-  & code {
-    background: whitesmoke;
-    border-radius: 0.25em;
-    display: inline-block;
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 0.875em;
-    margin: 0;
-    max-width: 100%;
-    padding: 0 0.25em;
-    vertical-align: middle;
-  }
-
-  & pre {
-    position: relative;
-
-    & code {
-      display: block;
-      line-height: 1.5;
-      overflow: auto;
-      padding: 1em 1.5em 1em 1em;
-
-      &::after,
-      &::before {
-        background: whitesmoke;
-        bottom: 0;
-        content: "";
-        opacity: 0.5;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 1em;
-      }
-
-      &::before {
-        background: whitesmoke;
-        opacity: 0.75;
-        width: 0.5em;
-      }
-
-      &:global(.valid-pattern) {
-        &,
-        &::before,
-        &::after {
-          background: #eef7ee;
-        }
-      }
-
-      &:global(.invalid-pattern) {
-        &,
-        &::before,
-        &::after {
-          background: #fee;
-        }
-      }
-    }
   }
 
   & ul,

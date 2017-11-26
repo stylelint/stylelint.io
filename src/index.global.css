@@ -5,7 +5,10 @@
  *
  * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
  */
-html { box-sizing: border-box; }
+html {
+  box-sizing: border-box;
+  min-height: 100%;
+}
 
 *,
 *::before,
@@ -13,10 +16,6 @@ html { box-sizing: border-box; }
   box-sizing: inherit;
   margin: 0;
   padding: 0;
-}
-
-html {
-  min-height: 100%;
 }
 
 body {
