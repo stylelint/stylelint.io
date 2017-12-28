@@ -8,16 +8,6 @@ import PhenomicLoaderSitemapWebpackPlugin from "phenomic/lib/loader-sitemap-webp
 import pkg from "./package.json";
 
 export default (config = {}) => {
-  // hot loading for postcss config
-  // until this is officially supported
-  // https://github.com/postcss/postcss-loader/issues/66
-  const postcssPluginFile = require.resolve("./postcss.config.js");
-  const postcssPlugins = webpackInstance => {
-    webpackInstance.addDependency(postcssPluginFile);
-    delete require.cache[postcssPluginFile];
-    return require(postcssPluginFile)(config);
-  };
-
   return {
     ...(config.dev && {
       devtool: "#cheap-module-eval-source-map"
@@ -81,10 +71,6 @@ export default (config = {}) => {
               },
               {
                 loader: "postcss-loader"
-                // query for postcss can't be used right now
-                // https://github.com/postcss/postcss-loader/issues/99
-                // meanwhile, see webpack.LoaderOptionsPlugin in plugins list
-                // query: { plugins: postcssPlugins },
               }
             ]
           })
@@ -99,10 +85,6 @@ export default (config = {}) => {
               "css-loader",
               {
                 loader: "postcss-loader"
-                // query for postcss can't be used right now
-                // https://github.com/postcss/postcss-loader/issues/99
-                // meanwhile, see webpack.LoaderOptionsPlugin in plugins list
-                // query: { plugins: postcssPlugins },
               }
             ]
           })
@@ -161,22 +143,6 @@ export default (config = {}) => {
     },
 
     plugins: [
-      // You should be able to remove the block below when the following
-      // issue has been correctly handled (and postcss-loader supports
-      // "plugins" option directly in query, see postcss-loader usage above)
-      // https://github.com/postcss/postcss-loader/issues/99
-      new webpack.LoaderOptionsPlugin({
-        test: /\.css$/,
-        options: {
-          postcss: postcssPlugins,
-          // required to avoid issue css-loader?modules
-          // this is normally the default value, but when we use
-          // LoaderOptionsPlugin, we must specify it again, otherwise,
-          // context is missing (and css modules names can be broken)!
-          context: __dirname
-        }
-      }),
-
       new PhenomicLoaderSitemapWebpackPlugin({
         site_url: pkg.homepage
       }),

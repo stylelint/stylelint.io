@@ -1,8 +1,10 @@
-module.exports = config => [
-  require("stylelint")(),
-  require("postcss-cssnext")({
-    browsers: "last 2 versions"
-  }),
-  require("postcss-reporter")(),
-  ...(!config.production ? [require("postcss-browser-reporter")()] : [])
-];
+module.exports = ({ env }) => ({
+  plugins: {
+    stylelint: {},
+    "postcss-cssnext": {
+      browsers: "last 2 versions"
+    },
+    "postcss-reporter": {},
+    ...(env !== "production" && { "postcss-browser-reporter": {} })
+  }
+});
