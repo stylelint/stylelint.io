@@ -1,51 +1,48 @@
-import React, { Component, PropTypes } from "react"
-import ga from "react-google-analytics"
+import React, { Component, PropTypes } from "react";
+import ga from "react-google-analytics";
 
-const GoogleAnalyticsInitiailizer = ga.Initializer
+const GoogleAnalyticsInitiailizer = ga.Initializer;
 
-const isProduction = process.env.NODE_ENV === "production"
-const isClient = typeof window !== "undefined"
+const isProduction = process.env.NODE_ENV === "production";
+const isClient = typeof window !== "undefined";
 
 export default class GoogleAnalyticsTracker extends Component {
-
   static propTypes = {
     children: PropTypes.node,
-    params: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired
   };
 
   static contextTypes = {
-    metadata: PropTypes.object.isRequired,
+    metadata: PropTypes.object.isRequired
   };
 
   componentWillMount() {
     if (isClient) {
-      const { pkg } = this.context.metadata
+      const { pkg } = this.context.metadata;
       if (isProduction) {
-        ga("create", pkg.googleAnalyticsUA, "auto")
-      }
-      else {
+        ga("create", pkg.googleAnalyticsUA, "auto");
+      } else {
         // eslint-disable-next-line no-console
-        console.info("ga.create", pkg.googleAnalyticsUA)
+        console.info("ga.create", pkg.googleAnalyticsUA);
       }
-      this.logPageview()
+      this.logPageview();
     }
   }
 
   componentWillReceiveProps(props) {
     if (props.params.splat !== this.props.params.splat) {
-      this.logPageview()
+      this.logPageview();
     }
   }
 
   logPageview() {
     if (isClient) {
       if (isProduction) {
-        ga("set", "page", window.location.pathname)
-        ga("send", "pageview")
-      }
-      else {
+        ga("set", "page", window.location.pathname);
+        ga("send", "pageview");
+      } else {
         // eslint-disable-next-line no-console
-        console.info("New pageview", window.location.href)
+        console.info("New pageview", window.location.href);
       }
     }
   }
@@ -53,9 +50,9 @@ export default class GoogleAnalyticsTracker extends Component {
   render() {
     return (
       <div>
-        { this.props.children }
+        {this.props.children}
         <GoogleAnalyticsInitiailizer />
       </div>
-    )
+    );
   }
 }

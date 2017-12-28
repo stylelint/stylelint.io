@@ -1,63 +1,51 @@
-import React from "react"
-import { Link } from "phenomic"
+import React from "react";
+import { Link } from "phenomic";
 
-import styles from "./index.css"
+import styles from "./index.css";
 
 const Navigation = () => (
-  <nav className={ styles.navigation } id="navigation" role="navigation">
-    <ul className={ styles.items }>
-      <li className={ styles.item }>
-        <Link
-          className={ styles.itemInner }
-          to="/user-guide/"
-        >
-          { "User guide" }
+  <nav className={styles.navigation} id="navigation" role="navigation">
+    <ul className={styles.items}>
+      <li className={styles.item}>
+        <Link className={styles.itemInner} to="/user-guide/">
+          {"User guide"}
         </Link>
-        <ul className={ styles.secondaryItems }>
-          <li className={ styles.itemSecondary }>
-            <Link
-              className={ styles.itemInnerSecondary }
-              to="/user-guide/rules/"
-            >
-              { "Rules" }
+        <ul className={styles.secondaryItems}>
+          <li className={styles.itemSecondary}>
+            <Link className={styles.itemInnerSecondary} to="/user-guide/rules/">
+              {"Rules"}
             </Link>
           </li>
-          <li className={ styles.itemSecondary }>
+          <li className={styles.itemSecondary}>
             <Link
-              className={ styles.itemInnerSecondary }
+              className={styles.itemInnerSecondary}
               to="/user-guide/plugins/"
             >
-              { "Plugins" }
+              {"Plugins"}
             </Link>
           </li>
-          <li className={ styles.itemSecondary }>
+          <li className={styles.itemSecondary}>
             <Link
-              className={ styles.itemInnerSecondary }
+              className={styles.itemInnerSecondary}
               to="/user-guide/processors/"
             >
-              { "Processors" }
+              {"Processors"}
             </Link>
           </li>
         </ul>
       </li>
-      <li className={ styles.item }>
-        <Link
-          className={ styles.itemInner }
-          to="/developer-guide/"
-        >
-          { "Developer guide" }
+      <li className={styles.item}>
+        <Link className={styles.itemInner} to="/developer-guide/">
+          {"Developer guide"}
         </Link>
       </li>
-      <li className={ styles.item }>
-        <Link
-          className={ styles.itemInner }
-          to="/demo/"
-        >
-          { "Demo" }
+      <li className={styles.item}>
+        <Link className={styles.itemInner} to="/demo/">
+          {"Demo"}
         </Link>
       </li>
     </ul>
   </nav>
-)
+);
 
-export default Navigation
+export default Navigation;

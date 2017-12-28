@@ -1,36 +1,29 @@
-import React, { PropTypes } from "react"
-import { Link } from "phenomic"
+import React, { PropTypes } from "react";
+import { Link } from "phenomic";
 
-import Page from "../Page"
-import styles from "./index.css"
+import Page from "../Page";
+import styles from "./index.css";
 
-const RulePage = (props) => {
-  const {
-    head: {
-      next,
-      prev
-    }
-  } = props
+const RulePage = props => {
+  const { head: { next, prev } } = props;
   return (
     <div>
-      <Page { ...props } />
+      <Page {...props} />
       <nav className={styles.navigation}>
-        { prev &&
-          <Link
-            className={styles.link}
-            to={prev}>{'← Prev'}
+        {prev && (
+          <Link className={styles.link} to={prev}>
+            {"← Prev"}
           </Link>
-        }
-        { next &&
-          <Link
-            className={styles.link}
-            to={next}>{'Next →'}
+        )}
+        {next && (
+          <Link className={styles.link} to={next}>
+            {"Next →"}
           </Link>
-        }
+        )}
       </nav>
     </div>
-  )
-}
+  );
+};
 
 RulePage.propTypes = {
   children: PropTypes.node,
@@ -43,11 +36,11 @@ RulePage.propTypes = {
   }).isRequired,
   body: PropTypes.string,
   header: PropTypes.element,
-  footer: PropTypes.element,
-}
+  footer: PropTypes.element
+};
 
 RulePage.contextTypes = {
-  metadata: PropTypes.object.isRequired,
-}
+  metadata: PropTypes.object.isRequired
+};
 
-export default RulePage
+export default RulePage;
