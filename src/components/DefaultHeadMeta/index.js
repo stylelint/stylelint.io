@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import PropTypes from "prop-types";
+import React from "react";
 import Helmet from "react-helmet";
 
 import favicon from "./favicon.ico";
@@ -54,8 +55,8 @@ const DefaultHeadMeta = (props, { metadata: { pkg } }) => (
 );
 
 DefaultHeadMeta.propTypes = {
-  meta: React.PropTypes.arrayOf(React.PropTypes.object),
-  scripts: React.PropTypes.arrayOf(React.PropTypes.object)
+  meta: PropTypes.arrayOf(PropTypes.object),
+  scripts: PropTypes.arrayOf(PropTypes.object)
 };
 
 DefaultHeadMeta.contextTypes = {
