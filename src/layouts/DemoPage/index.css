@@ -1,3 +1,4 @@
 .demoPage {
   height: 100vh;
+  height: calc(100vh - 64px - 80px); /* Remove header and footer height */
 }
