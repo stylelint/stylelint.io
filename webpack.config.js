@@ -1,29 +1,27 @@
-import path from "path"
+import path from "path";
 
-import webpack from "webpack"
-import ExtractTextPlugin from "extract-text-webpack-plugin"
-import { phenomicLoader } from "phenomic"
-import PhenomicLoaderSitemapWebpackPlugin
-  from "phenomic/lib/loader-sitemap-webpack-plugin"
+import webpack from "webpack";
+import ExtractTextPlugin from "extract-text-webpack-plugin";
+import { phenomicLoader } from "phenomic";
+import PhenomicLoaderSitemapWebpackPlugin from "phenomic/lib/loader-sitemap-webpack-plugin";
 
-import pkg from "./package.json"
+import pkg from "./package.json";
 
 export default (config = {}) => {
-
   // hot loading for postcss config
   // until this is officially supported
   // https://github.com/postcss/postcss-loader/issues/66
-  const postcssPluginFile = require.resolve("./postcss.config.js")
-  const postcssPlugins = (webpackInstance) => {
-    webpackInstance.addDependency(postcssPluginFile)
-    delete require.cache[postcssPluginFile]
-    return require(postcssPluginFile)(config)
-  }
+  const postcssPluginFile = require.resolve("./postcss.config.js");
+  const postcssPlugins = webpackInstance => {
+    webpackInstance.addDependency(postcssPluginFile);
+    delete require.cache[postcssPluginFile];
+    return require(postcssPluginFile)(config);
+  };
 
   return {
-    ...config.dev && {
-      devtool: "#cheap-module-eval-source-map",
-    },
+    ...(config.dev && {
+      devtool: "#cheap-module-eval-source-map"
+    }),
     module: {
       noParse: /\.min\.js/,
       rules: [
@@ -37,11 +35,14 @@ export default (config = {}) => {
             context: path.join(__dirname, config.source),
             plugins: [
               ...require("phenomic/lib/loader-preset-default").default,
-              require("phenomic/lib/loader-plugin-markdown-init-head.description-property-from-content").default,
-              require("./plugins/loader-plugin-markdown-init-head.title-property-from-content").default,
-              require("./plugins/loader-plugin-markdown-transform-body-property-to-html").default,
-            ],
-          },
+              require("phenomic/lib/loader-plugin-markdown-init-head.description-property-from-content")
+                .default,
+              require("./plugins/loader-plugin-markdown-init-head.title-property-from-content")
+                .default,
+              require("./plugins/loader-plugin-markdown-transform-body-property-to-html")
+                .default
+            ]
+          }
         },
 
         // *.js => babel + eslint
@@ -49,12 +50,12 @@ export default (config = {}) => {
           test: /\.js$/,
           include: [
             path.resolve(__dirname, "scripts"),
-            path.resolve(__dirname, "src"),
+            path.resolve(__dirname, "src")
           ],
           loaders: [
             "babel-loader?cacheDirectory",
-            "eslint-loader" + (config.dev ? "?emitWarning" : ""),
-          ],
+            "eslint-loader" + (config.dev ? "?emitWarning" : "")
+          ]
         },
 
         // ! \\
@@ -73,22 +74,20 @@ export default (config = {}) => {
                 loader: "css-loader",
                 query: {
                   modules: true,
-                  localIdentName: (
-                    config.production
+                  localIdentName: config.production
                     ? "[hash:base64:5]"
                     : "[path][name]--[local]--[hash:base64:5]"
-                  ),
-                },
+                }
               },
               {
-                loader: "postcss-loader",
+                loader: "postcss-loader"
                 // query for postcss can't be used right now
                 // https://github.com/postcss/postcss-loader/issues/99
                 // meanwhile, see webpack.LoaderOptionsPlugin in plugins list
                 // query: { plugins: postcssPlugins },
-              },
-            ],
-          }),
+              }
+            ]
+          })
         },
         // *.global.css => global (normal) css
         {
@@ -99,14 +98,14 @@ export default (config = {}) => {
             use: [
               "css-loader",
               {
-                loader: "postcss-loader",
+                loader: "postcss-loader"
                 // query for postcss can't be used right now
                 // https://github.com/postcss/postcss-loader/issues/99
                 // meanwhile, see webpack.LoaderOptionsPlugin in plugins list
                 // query: { plugins: postcssPlugins },
-              },
-            ],
-          }),
+              }
+            ]
+          })
         },
         // ! \\
         // If you want global CSS only, just remove the 2 sections above
@@ -149,17 +148,16 @@ export default (config = {}) => {
           loader: "file-loader",
           query: {
             name: "[path][name].[hash].[ext]",
-            context: path.join(__dirname, config.source),
-          },
+            context: path.join(__dirname, config.source)
+          }
         },
 
         // svg as raw string to be inlined
         {
           test: /\.svg$/,
-          loader: "raw-loader",
-
-        },
-      ],
+          loader: "raw-loader"
+        }
+      ]
     },
 
     plugins: [
@@ -175,32 +173,30 @@ export default (config = {}) => {
           // this is normally the default value, but when we use
           // LoaderOptionsPlugin, we must specify it again, otherwise,
           // context is missing (and css modules names can be broken)!
-          context: __dirname,
-        },
+          context: __dirname
+        }
       }),
 
       new PhenomicLoaderSitemapWebpackPlugin({
-        site_url: pkg.homepage,
+        site_url: pkg.homepage
       }),
 
       new ExtractTextPlugin({
         filename: "[name].[hash].css",
-        disable: config.dev,
+        disable: config.dev
       }),
 
-      ...config.production && [
-        new webpack.optimize.UglifyJsPlugin(
-          { compress: { warnings: false } }
-        ),
-      ],
+      ...(config.production && [
+        new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+      ])
     ],
 
     output: {
       path: path.join(__dirname, config.destination),
       publicPath: config.baseUrl.pathname,
-      filename: "[name].[hash].js",
+      filename: "[name].[hash].js"
     },
 
-    resolve: { extensions: [ ".js", ".json" ] },
-  }
-}
+    resolve: { extensions: [".js", ".json"] }
+  };
+};

@@ -1,13 +1,13 @@
-import React from "react"
+import React from "react";
 
-import Demo from "../../components/Demo"
+import Demo from "../../components/Demo";
 
-import styles from "./index.css"
+import styles from "./index.css";
 
 const DemoPage = () => (
-  <div className={ styles.demoPage }>
+  <div className={styles.demoPage}>
     <Demo />
   </div>
-)
+);
 
-export default DemoPage
+export default DemoPage;
