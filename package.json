@@ -8,9 +8,12 @@
   "twitter": "stylelint",
   "googleAnalyticsUA": "UA-72480048-1",
   "scripts": {
+    "precommit": "lint-staged",
     "lint:js": "eslint . --ignore-path .gitignore",
     "lint:css": "stylelint \"src/**/*.css\"",
     "lint": "npm-run-all --parallel lint:*",
+    "prettier:check": "prettier '**/*.js' --list-different",
+    "prettier:fix": "prettier '**/*.js' --write",
     "pretest": "npm run lint",
     "test": "npm run build",
     "precopy": "rimraf content dist",
@@ -116,6 +119,12 @@
       "string-quotes": "double"
     }
   },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
@@ -137,6 +146,8 @@
     "fs-extra": "^2.1.2",
     "gh-pages": "^0.12.0",
     "history": "^2.0.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
     "mdast-util-to-string": "^1.0.2",
     "npm-run-all": "^4.0.2",
     "phenomic": "^0.21.0",
@@ -144,6 +155,7 @@
     "postcss-cssnext": "^2.8.0",
     "postcss-loader": "^1.1.1",
     "postcss-reporter": "^3.0.0",
+    "prettier": "~1.9.2",
     "raw-loader": "^0.5.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
