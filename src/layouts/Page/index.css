@@ -95,7 +95,7 @@
 
   /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   & :--headings {
-    color: color(black a(68%));
+    color: #333;
     flex-direction: row-reverse;
     font-weight: 600;
     line-height: 1.25;
