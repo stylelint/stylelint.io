@@ -1,7 +1,7 @@
 /**
  * Adaption of phenomic's default markdown plugin.
  *
- * Calls two custom remark plugins
+ * Calls three custom remark plugins
  */
 
 import remark from "remark";
@@ -10,14 +10,16 @@ import autoLinkHeadings from "remark-autolink-headings";
 import highlight from "remark-highlight.js";
 import html from "remark-html";
 import stylelintPatternValidity from "../remark-stylelint-pattern-validity";
+import stylelintToc from "../remark-stylelint-toc";
 import stylelintUrl from "../remark-stylelint-url";
 
-function mdify(text) {
+function mdify(text, layout) {
   return (
     remark()
-      // Two custom stylelint remark plugins
+      // Three custom stylelint remark plugins
       .use(stylelintUrl)
       .use(stylelintPatternValidity)
+      .use(stylelintToc, { layout })
 
       // https://github.com/wooorm/remark-slug
       .use(slug)
@@ -50,6 +52,6 @@ function mdify(text) {
 export default ({ result }) => {
   return {
     ...result,
-    body: mdify(result.body)
+    body: mdify(result.body, result.head.layout)
   };
 };

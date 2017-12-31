@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`don't generate TOC 1`] = `
+"bbb
+
+## Options
+
+### \`\\"always\\"\`
+
+ccc
+
+### \`\\"never\\"\`
+
+ddd
+
+## Optional secondary options
+
+### \`except: [\\"after-comment\\", \\"after-declaration\\", \\"first-nested\\"]\`
+
+#### \`\\"after-comment\\"\`
+
+eee
+
+#### \`\\"after-declaration\\"\`
+
+fff
+"
+`;
+
+exports[`generate on a any page if comment exist 1`] = `
+"# aaa
+
+-   [ab](#ab)
+
+-   [Options](#options)
+
+    -   [\\"always\\"](#always)
+    -   [\\"never\\"](#never)
+
+-   [Optional secondary options](#optional-secondary-options)
+
+    -   [except: \\\\[\\"after-comment\\", \\"after-declaration\\", \\"first-nested\\"\\\\]](#except-after-comment-after-declaration-first-nested)
+
+        -   [\\"after-comment\\"](#after-comment)
+        -   [\\"after-declaration\\"](#after-declaration)
+
+## ab
+
+bbb
+
+## Options
+
+### \`\\"always\\"\`
+
+ccc
+
+### \`\\"never\\"\`
+
+ddd
+
+## Optional secondary options
+
+### \`except: [\\"after-comment\\", \\"after-declaration\\", \\"first-nested\\"]\`
+
+#### \`\\"after-comment\\"\`
+
+eee
+
+#### \`\\"after-declaration\\"\`
+
+fff
+"
+`;
+
+exports[`generate on a rule page before Options 1`] = `
+"bbb
+
+-   [Options](#options)
+
+    -   [\\"always\\"](#always)
+    -   [\\"never\\"](#never)
+
+-   [Optional secondary options](#optional-secondary-options)
+
+    -   [except: \\\\[\\"after-comment\\", \\"after-declaration\\", \\"first-nested\\"\\\\]](#except-after-comment-after-declaration-first-nested)
+
+        -   [\\"after-comment\\"](#after-comment)
+        -   [\\"after-declaration\\"](#after-declaration)
+
+## Options
+
+### \`\\"always\\"\`
+
+ccc
+
+### \`\\"never\\"\`
+
+ddd
+
+## Optional secondary options
+
+### \`except: [\\"after-comment\\", \\"after-declaration\\", \\"first-nested\\"]\`
+
+#### \`\\"after-comment\\"\`
+
+eee
+
+#### \`\\"after-declaration\\"\`
+
+fff
+"
+`;
+
+exports[`generate on a rule page if comment exist 1`] = `
+"# aaa
+
+-   [ab](#ab)
+
+-   [Options](#options)
+
+    -   [\\"always\\"](#always)
+    -   [\\"never\\"](#never)
+
+-   [Optional secondary options](#optional-secondary-options)
+
+    -   [except: \\\\[\\"after-comment\\", \\"after-declaration\\", \\"first-nested\\"\\\\]](#except-after-comment-after-declaration-first-nested)
+
+        -   [\\"after-comment\\"](#after-comment)
+        -   [\\"after-declaration\\"](#after-declaration)
+
+## ab
+
+bbb
+
+## Options
+
+### \`\\"always\\"\`
+
+ccc
+
+### \`\\"never\\"\`
+
+ddd
+
+## Optional secondary options
+
+### \`except: [\\"after-comment\\", \\"after-declaration\\", \\"first-nested\\"]\`
+
+#### \`\\"after-comment\\"\`
+
+eee
+
+#### \`\\"after-declaration\\"\`
+
+fff
+"
+`;
