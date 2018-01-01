@@ -10,6 +10,7 @@ export default function stylelintToc(processor, { layout }) {
     processor
       .use(addTocHeading, { heading, layout })
       .use(tocPlugin, { heading })
+      .use(removeRuleSmallToc, { heading, layout })
       .use(removeTocHeading, { heading });
   };
 }
@@ -79,6 +80,72 @@ function removeTocHeading(processor, options) {
           ...parent.children.slice(0, index),
           ...parent.children.slice(index + 1)
         ];
+      }
+    });
+  };
+}
+
+// Remark plugin for removing TOC for rules if it's to small (one item)
+function removeRuleSmallToc(processor, options) {
+  return function(tree) {
+    if (options.layout !== "RulePage") {
+      return;
+    }
+
+    visit(tree, "heading", (node, index, parent) => {
+      // Look for TOC heading
+      if (searchHeading(node, options.heading)) {
+        // then check list after this heading
+        const list = parent.children[index + 1];
+
+        // Reference structure:
+        // {
+        //   type: 'list',
+        //   children: [
+        //     {
+        //       type: 'listItem',
+        //       children: [
+        //         { type: 'paragraph', children: [...] },
+        //         {
+        //           type: 'list',
+        //           children: [{ type: 'listItem', children: [...] }]
+        //         }
+        //       ]
+        //     }
+        //   ]
+        // }
+
+        // print(list);
+
+        if (list && list.type === "list" && list.children.length === 1) {
+          const firstListItemChildren = list.children[0].children;
+          let listCount = 0;
+          let removeToc = false;
+
+          firstListItemChildren.forEach(list2 => {
+            if (list2.type !== "list") {
+              return;
+            }
+
+            listCount += 1;
+
+            if (listCount > 1) {
+              return;
+            }
+
+            if (list2.children.length === 1) {
+              removeToc = true;
+            }
+          });
+
+          // if it's has one option, remove it
+          if (removeToc) {
+            parent.children = [
+              ...parent.children.slice(0, index + 1),
+              ...parent.children.slice(index + 2)
+            ];
+          }
+        }
       }
     });
   };

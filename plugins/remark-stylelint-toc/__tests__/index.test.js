@@ -25,6 +25,15 @@ eee
 
 fff`;
 
+const contentShort = `bbb
+
+## Options
+
+### \`"always"\`
+
+ccc
+`;
+
 test(`don't generate TOC`, () => {
   expect(run(content)).toMatchSnapshot();
 });
@@ -39,8 +48,18 @@ test(`generate on a rule page if comment exist`, () => {
   ).toMatchSnapshot();
 });
 
-test(`generate on a any page if comment exist`, () => {
+test(`generate on any page if comment exist`, () => {
   expect(run(`# aaa\n\n<!-- TOC -->\n\n## ab\n\n${content}`)).toMatchSnapshot();
+});
+
+test(`don't generate if TOC is only one level deep in a rule page`, () => {
+  expect(run(contentShort, "RulePage")).toMatchSnapshot();
+});
+
+test(`generate on a rule page if Options has more than one section`, () => {
+  expect(
+    run(`${contentShort}\n### \`"never"\`\n\nddd`, "RulePage")
+  ).toMatchSnapshot();
 });
 
 function run(content, layout) {
