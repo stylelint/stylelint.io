@@ -15,7 +15,7 @@
     "prettier:check": "prettier '**/*.js' --list-different",
     "prettier:fix": "prettier '**/*.js' --write",
     "pretest": "npm run lint",
-    "test": "npm run build",
+    "test": "jest && npm run build",
     "precopy": "rimraf content dist",
     "copy": "node ./scripts/copy-stylelint-docs",
     "prestart": "npm run copy",
@@ -23,7 +23,8 @@
     "prebuild": "npm run copy",
     "build": "phenomic build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -t -d dist -r git@github.com:stylelint/stylelint.github.io.git -b master"
+    "deploy": "gh-pages -t -d dist -r git@github.com:stylelint/stylelint.github.io.git -b master",
+    "watch": "jest --watch"
   },
   "phenomic": {
     "assets": false,
@@ -83,7 +84,11 @@
   },
   "eslintConfig": {
     "root": true,
-    "extends": "./node_modules/phenomic/lib/eslint-config-recommended/index.js"
+    "extends": "./node_modules/phenomic/lib/eslint-config-recommended/index.js",
+    "env": {
+      "node": true,
+      "jest": true
+    }
   },
   "stylelint": {
     "extends": "stylelint-config-standard",
@@ -125,6 +130,9 @@
       "git add"
     ]
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
@@ -147,6 +155,7 @@
     "gh-pages": "^1.1.0",
     "history": "^2.0.0",
     "husky": "^0.14.3",
+    "jest": "^22.0.4",
     "lint-staged": "^6.0.0",
     "mdast-util-to-string": "^1.0.2",
     "npm-run-all": "^4.0.2",
@@ -168,6 +177,7 @@
     "react-svg-inline": "^2.0.1",
     "react-topbar-progress-indicator": "^2.0.0",
     "redux": "^3.6.0",
+    "remark-toc": "^3.1.0",
     "rimraf": "^2.5.4",
     "style-loader": "^0.19.1",
     "stylelint": "^8.4.0",
