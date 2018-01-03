@@ -49,7 +49,10 @@ function addTocHeading(processor, options) {
         if (node.value === tocComment) {
           parent.children = [
             ...parent.children.slice(0, index),
-            tocHeading,
+            {
+              ...tocHeading,
+              depth: parent.children[index + 1].depth
+            },
             ...parent.children.slice(index + 1)
           ];
         }
