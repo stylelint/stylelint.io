@@ -38,6 +38,32 @@ ccc
 "
 `;
 
+exports[`generate if TOC comment before h2 heading 1`] = `
+"bbb
+
+-   [ccc](#ccc)
+
+## ccc
+
+ddd
+    
+"
+`;
+
+exports[`generate if TOC comment before h3 heading 1`] = `
+"bbb
+
+## ccc
+
+-   [ddd](#ddd)
+
+### ddd
+
+eee
+    
+"
+`;
+
 exports[`generate on a rule page before Options 1`] = `
 "bbb
 

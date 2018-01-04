@@ -62,6 +62,36 @@ test(`generate on a rule page if Options has more than one section`, () => {
   ).toMatchSnapshot();
 });
 
+test(`generate if TOC comment before h2 heading`, () => {
+  expect(
+    run(`
+bbb
+
+<!-- TOC -->
+
+## ccc
+
+ddd
+    `)
+  ).toMatchSnapshot();
+});
+
+test(`generate if TOC comment before h3 heading`, () => {
+  expect(
+    run(`
+bbb
+
+## ccc
+
+<!-- TOC -->
+
+### ddd
+
+eee
+    `)
+  ).toMatchSnapshot();
+});
+
 function run(content, layout) {
   return remark()
     .use(stylelintToc, { layout })
