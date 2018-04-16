@@ -15,7 +15,7 @@
     "prettier:check": "prettier '**/*.js' --list-different",
     "prettier:fix": "prettier '**/*.js' --write",
     "pretest": "npm run lint",
-    "test": "jest && npm run build",
+    "test": "jest",
     "precopy": "rimraf content dist",
     "copy": "node ./scripts/copy-stylelint-docs",
     "prestart": "npm run copy",
