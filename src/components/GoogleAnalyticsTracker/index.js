@@ -17,7 +17,7 @@ export default class GoogleAnalyticsTracker extends Component {
     metadata: PropTypes.object.isRequired
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (isClient) {
       const { pkg } = this.context.metadata;
       if (isProduction) {
@@ -30,7 +30,7 @@ export default class GoogleAnalyticsTracker extends Component {
     }
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     if (props.params.splat !== this.props.params.splat) {
       this.logPageview();
     }
