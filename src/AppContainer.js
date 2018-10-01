@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import isChrome from "./utils/isChrome";
+import isSafari from "./utils/isSafari";
 
 import Container from "./components/Container";
 import Content from "./components/Content";
@@ -21,9 +22,9 @@ class AppContainer extends React.Component {
   }
 
   componentDidMount() {
-    // Fix scroll to element from url fragment on initial load in Chrome
+    // Fix scroll to element from url fragment on initial load in Chrome and Safari
     // https://bugs.chromium.org/p/chromium/issues/detail?id=718468
-    if (isChrome() && window.location.hash) {
+    if ((isChrome() || isSafari()) && window.location.hash) {
       setTimeout(function() {
         const elementId = window.location.hash.replace("#", "");
         const scrollToElement = document.getElementById(elementId);
