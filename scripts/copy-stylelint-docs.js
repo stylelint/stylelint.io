@@ -49,7 +49,7 @@ fs.readFile(listOfRulesPath, "utf8", function(err, data) {
 
       fs.writeFile(
         rulePath,
-        `---\nlayout: RulePage\nnext: ${nextRulePath}\nprev: ${prevRulePath}\n---` +
+        `---\nlayout: RulePage\nnext: ${nextRulePath}\nprev: ${prevRulePath}\n---\n\n` +
           data
       );
     });
