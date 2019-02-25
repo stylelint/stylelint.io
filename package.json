@@ -2,7 +2,7 @@
   "private": true,
   "name": "stylelint-io",
   "description": "A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.",
-  "homepage": "http://stylelint.io",
+  "homepage": "https://stylelint.io",
   "license": "MIT",
   "repository": "https://github.com/stylelint/stylelint.io.git",
   "twitter": "stylelint",
