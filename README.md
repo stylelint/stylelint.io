@@ -1,5 +1,8 @@
 # stylelint.io
 
+
+[![Build Status](https://travis-ci.com/stylelint/stylelint.io.svg?branch=master)](https://travis-ci.com/stylelint/stylelint.io)
+
 The source of stylelint website.
 
 To get started:
