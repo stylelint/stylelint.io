@@ -16,6 +16,7 @@ const siteConfig = {
     { doc: "user-guide/plugins", label: "Plugins" },
     { doc: "user-guide/processors", label: "Processors" },
     { doc: "developer-guide", label: "Developer guide" },
+    { page: "demo", label: "Demo" },
     {
       href: "https://github.com/stylelint/stylelint",
       label: "GitHub"
