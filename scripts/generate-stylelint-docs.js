@@ -95,7 +95,6 @@ function main(outputDir) {
     const output = processMarkdown(file, {
       rewriter: url =>
         url
-          .replace("../indentation/README.md", "indentation.md")
           .replace(/\.\.\/([a-z-]+)\/README.md/, "$1.md")
           .replace(
             /\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-]+)\.md/,
