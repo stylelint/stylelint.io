@@ -15,6 +15,10 @@
 @media only screen and (min-width: 1500px) {
 }
 
+html {
+  overflow-y: auto; /* To always have scrollbar visible and avoid header jump, when page is loading */
+}
+
 a {
   color: crimson;
 }
