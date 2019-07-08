@@ -14,7 +14,6 @@ const siteConfig = {
     { doc: "user-guide", label: "User guide" },
     { doc: "user-guide/rules", label: "Rules" },
     { doc: "user-guide/plugins", label: "Plugins" },
-    { doc: "user-guide/processors", label: "Processors" },
     { doc: "developer-guide", label: "Developer guide" },
     { page: "demo", label: "Demo" },
     {
