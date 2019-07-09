@@ -16,7 +16,7 @@
 }
 
 html {
-  overflow-y: auto; /* To always have scrollbar visible and avoid header jump, when page is loading */
+  overflow-y: scroll; /* To always have scrollbar visible and avoid header jump, when page is loading */
 }
 
 a {
