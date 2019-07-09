@@ -53,7 +53,9 @@ const siteConfig = {
   algolia: {
     apiKey: "29d680ce97507c5cd2836c6c74783c05",
     indexName: "stylelint"
-  }
+  },
+
+  gaTrackingId: "UA-72480048-1"
 };
 
 module.exports = siteConfig;
