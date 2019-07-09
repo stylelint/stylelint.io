@@ -48,7 +48,7 @@ const siteConfig = {
 
   onPageNav: "separate",
 
-  scripts: ["/js/pattern-validity.js"],
+  scripts: ["/js/pattern-validity.js", "/js/change-css-in-demo-page.js"],
 
   algolia: {
     apiKey: "29d680ce97507c5cd2836c6c74783c05",
