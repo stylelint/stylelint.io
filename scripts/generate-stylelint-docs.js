@@ -5,7 +5,7 @@ const glob = require("glob");
 const remark = require("remark");
 const visit = require("unist-util-visit");
 
-// NOTE: Since Node 10.12.0, `mkdirSync(dir, { recursive: true })` has been supported.
+// NOTE: Since Node 10.12.0, `fs.mkdirSync(dir, { recursive: true })` has been supported.
 //
 // If using the version or newer, this utility function can be replaced.
 // See https://github.com/nodejs/node/blob/v10.12.0/doc/changelogs/CHANGELOG_V10.md
@@ -40,6 +40,8 @@ function processMarkdown(file, { rewriter }) {
   const content = processor
     .processSync(fs.readFileSync(file, "utf8"))
     .toString();
+
+  // Add Docusaurus-specific fields. See https://docusaurus.io/docs/en/doc-markdown
   const title = extractTitleFromH1(content);
   const sidebarLabel = titleToSidebarLabel[title] || title;
   return `---
@@ -49,6 +51,22 @@ hide_title: true
 ---
 
 ${content}`;
+}
+
+// For Docusaurus. See https://docusaurus.io/docs/en/navigation
+function generateSidebarsJson(outputDir, rulesDir) {
+  const json = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "sidebars-template.json"), "utf8")
+  );
+  json.docs.Rules = fs
+    .readdirSync(path.join(outputDir, rulesDir))
+    .map(filename => `${rulesDir}/${path.basename(filename, ".md")}`)
+    .sort();
+
+  const outputFile = path.join("website", "sidebars.json");
+  fs.writeFileSync(outputFile, JSON.stringify(json, null, 2), "utf8");
+
+  return outputFile;
 }
 
 function main(outputDir) {
@@ -111,6 +129,9 @@ function main(outputDir) {
     fs.writeFileSync(outputFile, output, "utf8");
     console.log(outputFile);
   });
+
+  const sidebarsJson = generateSidebarsJson(outputDir, "user-guide/rules");
+  console.log(`Generated: ${sidebarsJson}`);
 }
 
 main(process.argv[2]);

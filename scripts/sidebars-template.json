@@ -1,0 +1,35 @@
+{
+  "docs": {
+    "Overview": ["index", "VISION", "CHANGELOG", "CONTRIBUTING"],
+    "For users": [
+      "user-guide",
+      "user-guide/faq",
+      "user-guide/about-rules",
+      "user-guide/semantic-versioning-policy",
+      "user-guide/configuration",
+      "user-guide/rules",
+      "user-guide/plugins",
+      "user-guide/processors",
+      "user-guide/example-config",
+      "user-guide/css-processors",
+      "user-guide/cli",
+      "user-guide/node-api",
+      "user-guide/postcss-plugin",
+      "user-guide/complementary-tools",
+      "user-guide/articles"
+    ],
+    "Rules": [],
+    "For developers": [
+      "developer-guide",
+      "developer-guide/prerequisites",
+      "developer-guide/rules",
+      "developer-guide/plugins",
+      "developer-guide/processors",
+      "developer-guide/formatters",
+      "developer-guide/rule-testers",
+      "developer-guide/releases",
+      "developer-guide/pull-requests",
+      "developer-guide/issues"
+    ]
+  }
+}
