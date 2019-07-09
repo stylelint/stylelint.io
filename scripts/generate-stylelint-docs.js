@@ -19,30 +19,27 @@ function mkdir_p(dir) {
   }, "");
 }
 
-function rewriteLink({ rewriter }) {
-  function visitor(node) {
-    node.url = rewriter(node.url);
-  }
-  function transform(tree) {
-    visit(tree, ["link"], visitor);
-  }
-  return transform;
-}
-
-const extractTitleFromH1 = content => content.match(/\n?# ([^\n]+)\n/)[1];
-
-const titleToSidebarLabel = {
-  stylelint: "Home"
-};
-
 function processMarkdown(file, { rewriter }) {
-  let processor = remark().use(rewriteLink, { rewriter });
-  const content = processor
+  function rewriteLink({ rewriter }) {
+    function visitor(node) {
+      node.url = rewriter(node.url);
+    }
+    function transform(tree) {
+      visit(tree, ["link"], visitor);
+    }
+    return transform;
+  }
+
+  const content = remark()
+    .use(rewriteLink, { rewriter })
     .processSync(fs.readFileSync(file, "utf8"))
     .toString();
 
   // Add Docusaurus-specific fields. See https://docusaurus.io/docs/en/doc-markdown
-  const title = extractTitleFromH1(content);
+  const title = content.match(/\n?# ([^\n]+)\n/)[1];
+  const titleToSidebarLabel = {
+    stylelint: "Home"
+  };
   const sidebarLabel = titleToSidebarLabel[title] || title;
   return `---
 title: ${title}
