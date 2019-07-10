@@ -10,5 +10,11 @@
   },
   "devDependencies": {
     "docusaurus": "^1.11.1"
-  }
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 1 major versions",
+    "Firefox ESR",
+    "not dead"
+  ]
 }
