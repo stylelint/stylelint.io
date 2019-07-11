@@ -1,6 +1,14 @@
 /content/
 /dist/
-/node_modules/
+/docs/
+node_modules/
 *.log
 .DS_Store
 package-lock.json
+
+# Docusaurus
+/website/build/
+/website/i18n/*
+/website/sidebars.json
+/website/translated_docs
+/website/yarn.lock
