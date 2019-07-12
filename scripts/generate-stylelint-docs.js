@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const glob = require("glob");
 const remark = require("remark");
+const inlineLinks = require("remark-inline-links");
 const visit = require("unist-util-visit");
 
 // NOTE: Since Node 10.12.0, `fs.mkdirSync(dir, { recursive: true })` has been supported.
@@ -32,6 +33,7 @@ function processMarkdown(file, { rewriter }) {
 
   const content = remark()
     .use(rewriteLink, { rewriter })
+    .use(inlineLinks)
     .processSync(fs.readFileSync(file, "utf8"))
     .toString();
 
