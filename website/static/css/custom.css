@@ -1,18 +1,23 @@
 /* your custom css */
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+  /* insert here if you need */
 }
 
 @media only screen and (min-width: 1024px) {
+  /* insert here if you need */
 }
 
 @media only screen and (max-width: 1023px) {
+  /* insert here if you need */
 }
 
 @media only screen and (min-width: 1400px) {
+  /* insert here if you need */
 }
 
 @media only screen and (min-width: 1500px) {
+  /* insert here if you need */
 }
 
 html {
