@@ -9,22 +9,19 @@ To get started:
 
 ```shell
 npm install
-cd website && npm install
 ```
 
 Then to making visual edits:
 
 ```shell
-npm run gendoc
-cd website && npm start
+npm start
 ```
 
 Or to update the website to the latest version of stylelint:
 
 ```shell
 npm install --save-dev stylelint@latest
-npm run gendoc
-cd website && npm run build
+npm run build
 ```
 
 ... then commit and push your dependency change.
