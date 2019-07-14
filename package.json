@@ -19,7 +19,7 @@
     "test": "npm run build",
     "pregendoc": "rimraf docs",
     "gendoc": "node ./scripts/generate-stylelint-docs docs",
-    "build": "npm run gendoc && cd website && npm run build",
+    "build": "npm run gendoc && cd website && NODE_ENV=production npm run build",
     "start": "npm run gendoc && cd website && npm start"
   },
   "eslintConfig": {
