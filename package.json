@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": "https://github.com/stylelint/stylelint.io.git",
   "engines": {
-    "node": ">=12"
+    "node": ">=10"
   },
   "scripts": {
     "lint:js": "eslint . --ignore-path .gitignore",
