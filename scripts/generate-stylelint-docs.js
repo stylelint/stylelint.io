@@ -68,14 +68,30 @@ function generateSidebarsJson(outputDir, rulesDir) {
   return outputFile;
 }
 
+function addHostingInfo(content) {
+  return `${content}
+
+## Hosting
+
+<a href="https://www.netlify.com">
+  <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+</a>
+`;
+}
+
 function main(outputDir) {
   fs.mkdirSync(outputDir);
 
   glob.sync("node_modules/stylelint/*.md").forEach(async file => {
-    const output = processMarkdown(file, {
+    let output = processMarkdown(file, {
       rewriter: url =>
         url.replace(/^\/?docs\//, "").replace("README.md", "index.md")
     });
+
+    if (file.includes("README.md")) {
+      output = addHostingInfo(output);
+    }
+
     const outputFile = path.join(
       outputDir,
       file
