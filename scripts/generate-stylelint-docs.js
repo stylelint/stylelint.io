@@ -80,7 +80,7 @@ function addHostingInfo(content) {
 function main(outputDir) {
   fs.mkdirSync(outputDir);
 
-  glob.sync("node_modules/stylelint/*.md").forEach(async file => {
+  glob.sync("node_modules/stylelint/*.md").forEach(file => {
     let output = processMarkdown(file, {
       rewriter: url =>
         url.replace(/^\/?docs\//, "").replace("README.md", "index.md")
