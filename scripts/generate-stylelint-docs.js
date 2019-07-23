@@ -20,7 +20,7 @@ function mkdir_p(dir) {
 }
 
 function processMarkdown(file, { rewriter }) {
-  function rewriteLink({ rewriter }) {
+  function rewriteLink() {
     function visitor(node) {
       node.url = rewriter(node.url);
     }
@@ -30,8 +30,33 @@ function processMarkdown(file, { rewriter }) {
     return transform;
   }
 
+  // NOTE: The tricky solution is due to Docusaurus v1. Ideally, the code should be unneeded.
+  //       In the future version of Docusaurus, the issue might be resolved.
+  //       For details, see https://github.com/stylelint/stylelint.io/issues/69
+  function fixChangelogHeadings() {
+    if (!file.includes("CHANGELOG")) {
+      return () => {}; // noop
+    }
+    function visitor(node, index, parent) {
+      const linkRef = node.children[0];
+      if (linkRef.type === "linkReference") {
+        node.children[0] = { type: "text", value: linkRef.label };
+
+        // Insert a diff link next a heading
+        linkRef.children[0].value = "Full diff";
+        linkRef.referenceType = "full";
+        parent.children.splice(index + 1, 0, linkRef);
+      }
+    }
+    function transform(tree) {
+      visit(tree, { type: "heading", depth: 2 }, visitor);
+    }
+    return transform;
+  }
+
   const content = remark()
-    .use(rewriteLink, { rewriter })
+    .use(rewriteLink)
+    .use(fixChangelogHeadings)
     .processSync(fs.readFileSync(file, "utf8"))
     .toString();
 
