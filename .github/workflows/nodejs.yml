@@ -1,0 +1,25 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Test
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10
+
+    - name: Install latest npm
+      run: npm install --global npm@latest
+
+    - name: npm ci, and test
+      run: |
+        npm ci
+        npm test
