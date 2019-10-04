@@ -38,16 +38,16 @@ function processMarkdown(file, { rewriter }) {
 
   // Add Docusaurus-specific fields. See https://docusaurus.io/docs/en/doc-markdown
   let title = content.match(/\n?# ([^\n]+)\n/)[1];
+  const titleToSidebarLabel = {
+    stylelint: "Home"
+  };
+  const sidebarLabel = titleToSidebarLabel[title] || title;
 
   if (title === "stylelint") {
     // Check for homepage
     title = siteConfig.tagline;
   }
 
-  const titleToSidebarLabel = {
-    stylelint: "Home"
-  };
-  const sidebarLabel = titleToSidebarLabel[title] || title;
   return `---
 title: ${title}
 sidebar_label: ${sidebarLabel}
