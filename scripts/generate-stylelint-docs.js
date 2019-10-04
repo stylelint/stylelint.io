@@ -4,6 +4,7 @@ const path = require("path");
 const glob = require("glob");
 const remark = require("remark");
 const visit = require("unist-util-visit");
+const siteConfig = require("../website/siteConfig");
 
 // NOTE: Since Node 10.12.0, `fs.mkdirSync(dir, { recursive: true })` has been supported.
 //
@@ -36,11 +37,18 @@ function processMarkdown(file, { rewriter }) {
     .toString();
 
   // Add Docusaurus-specific fields. See https://docusaurus.io/docs/en/doc-markdown
-  const title = content.match(/\n?# ([^\n]+)\n/)[1];
+  let title = content.match(/\n?# ([^\n]+)\n/)[1];
+
+  if (title === "stylelint") {
+    // Check for homepage
+    title = siteConfig.tagline;
+  }
+
   const titleToSidebarLabel = {
     stylelint: "Home"
   };
   const sidebarLabel = titleToSidebarLabel[title] || title;
+
   return `---
 title: ${title}
 sidebar_label: ${sidebarLabel}
