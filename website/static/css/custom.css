@@ -68,14 +68,12 @@ article h1 {
 }
 
 /* Active links in site header: https://docusaurus.io/docs/en/navigation#active-links-in-site-navigation-bar */
-.navigationSlider .slidingNav ul li.siteNavGroupActive a {
+.navigationSlider .slidingNav ul li.siteNavGroupActive > a {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.navigationSlider .slidingNav ul li.siteNavItemActive a {
-  color: white;
-}
-
-.navigationSlider .slidingNav ul li.siteNavGroupActive a:hover {
+.navigationSlider .slidingNav ul li > a:focus,
+.navigationSlider .slidingNav ul li > a:hover,
+.navigationSlider .slidingNav ul li.siteNavItemActive > a {
   color: white;
 }
