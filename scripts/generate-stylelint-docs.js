@@ -48,7 +48,6 @@ function processMarkdown(file, { rewriter }) {
     stylelint: "Home"
   };
   const sidebarLabel = titleToSidebarLabel[title] || title;
-
   return `---
 title: ${title}
 sidebar_label: ${sidebarLabel}
