@@ -4,12 +4,16 @@
   /* insert here if you need */
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (max-width: 1023px) {
   /* insert here if you need */
 }
 
-@media only screen and (max-width: 1023px) {
-  /* insert here if you need */
+@media only screen and (min-width: 1024px) {
+  /* Site header width in custom pages */
+  body .wrapper,
+  body .headerWrapper.wrapper {
+    max-width: 1400px;
+  }
 }
 
 @media only screen and (min-width: 1400px) {
@@ -61,4 +65,17 @@ article h1 {
 
 .invalid-pattern {
   background: #fee;
+}
+
+/* Active links in site header: https://docusaurus.io/docs/en/navigation#active-links-in-site-navigation-bar */
+.navigationSlider .slidingNav ul li.siteNavGroupActive a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.navigationSlider .slidingNav ul li.siteNavItemActive a {
+  color: white;
+}
+
+.navigationSlider .slidingNav ul li.siteNavGroupActive a:hover {
+  color: white;
 }
