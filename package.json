@@ -9,7 +9,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "postinstall": "cd website && npm install",
+    "postinstall": "cd website && npm ci",
     "lint:js": "eslint . --ignore-path .gitignore",
     "lint:css": "stylelint --ignore-path .gitignore \"**/*.css\"",
     "lint": "npm-run-all --parallel lint:*",

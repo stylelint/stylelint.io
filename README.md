@@ -8,7 +8,7 @@ The source of stylelint website.
 To get started:
 
 ```shell
-npm install
+npm ci
 ```
 
 Then to making visual edits:
