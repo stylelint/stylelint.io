@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": "https://github.com/stylelint/stylelint.io.git",
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "scripts": {
     "postinstall": "cd website && npm install",
