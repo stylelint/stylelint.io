@@ -37,10 +37,16 @@ function processMarkdown(file, { rewriter }) {
     title = siteConfig.tagline;
   }
 
+  const editPath = file
+    .replace(path.join("node_modules", "stylelint"), "")
+    .replace(/\\/g, "/")
+    .substring(1);
+
   return `---
 title: ${title}
 sidebar_label: ${sidebarLabel}
 hide_title: true
+custom_edit_url: https://github.com/stylelint/stylelint/edit/master/${editPath}
 ---
 
 ${content}`;
