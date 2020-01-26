@@ -58,8 +58,11 @@ function generateSidebarsJson(outputDir, rulesDir) {
     fs.readFileSync(path.join(__dirname, "sidebars-template.json"), "utf8")
   );
 
+  const filter = ["about.md", "combine.md", "regex.md", "list.md"];
+
   json.docs.Rules = fs
     .readdirSync(path.join(outputDir, rulesDir))
+    .filter(filename => !filter.includes(filename))
     .map(filename => `${rulesDir}/${path.basename(filename, ".md")}`)
     .sort();
 
