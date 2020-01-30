@@ -107,7 +107,7 @@ function main(outputDir) {
     fs.writeFileSync(outputFile, output, "utf8");
   });
 
-  glob.sync("node_modules/stylelint/docs/**/*.md").forEach(file => {
+  glob.sync("node_modules/stylelint/docs/**/!(toc).md").forEach(file => {
     const output = processMarkdown(file, {
       rewriter: url =>
         url
