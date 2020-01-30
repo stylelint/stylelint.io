@@ -137,7 +137,7 @@ function main(outputDir) {
         url
           .replace(/\.\.\/([a-z-]+)\/README.md/, "$1.md")
           .replace(
-            /\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-]+)\.md/,
+            /\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-/]+)\.md/,
             "../$1.md"
           )
     });
