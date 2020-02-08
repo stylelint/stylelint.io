@@ -72,8 +72,24 @@ article h1 {
   color: rgba(255, 255, 255, 0.8);
 }
 
+.navigationSlider .slidingNav ul li a[href^="http"] {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .navigationSlider .slidingNav ul li > a:focus,
 .navigationSlider .slidingNav ul li > a:hover,
 .navigationSlider .slidingNav ul li.siteNavItemActive > a {
   color: white;
+}
+
+.docsSliderActive .toc .toggleNav ul {
+  padding-left: 8px;
+}
+
+.navGroup:last-child {
+  display: none;
+}
+
+.mainContainer .wrapper .post .postHeader {
+  margin-bottom: 0;
 }

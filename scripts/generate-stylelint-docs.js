@@ -58,8 +58,11 @@ function generateSidebarsJson(outputDir, rulesDir) {
     fs.readFileSync(path.join(__dirname, "sidebars-template.json"), "utf8")
   );
 
+  const filter = ["about.md", "combine.md", "regex.md", "list.md"];
+
   json.docs.Rules = fs
     .readdirSync(path.join(outputDir, rulesDir))
+    .filter(filename => !filter.includes(filename))
     .map(filename => `${rulesDir}/${path.basename(filename, ".md")}`)
     .sort();
 
@@ -104,7 +107,7 @@ function main(outputDir) {
     fs.writeFileSync(outputFile, output, "utf8");
   });
 
-  glob.sync("node_modules/stylelint/docs/**/*.md").forEach(file => {
+  glob.sync("node_modules/stylelint/docs/**/!(toc).md").forEach(file => {
     const output = processMarkdown(file, {
       rewriter: url =>
         url
@@ -134,7 +137,7 @@ function main(outputDir) {
         url
           .replace(/\.\.\/([a-z-]+)\/README.md/, "$1.md")
           .replace(
-            /\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-]+)\.md/,
+            /\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-/]+)\.md/,
             "../$1.md"
           )
     });
