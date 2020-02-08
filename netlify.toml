@@ -1,0 +1,27 @@
+[[redirects]]
+  from = "/user-guide/configuration"
+  to = "/user-guide/configure"
+
+[[redirects]]
+  from = "/user-guide/rules"
+  to = "/user-guide/rules/list"
+
+[[redirects]]
+  from = "/user-guide/about-rules"
+  to = "/user-guide/rules/about"
+
+[[redirects]]
+  from = "/user-guide/cli"
+  to = "/user-guide/usage/cli"
+
+[[redirects]]
+  from = "/user-guide/node-api"
+  to = "/user-guide/usage/node-api"
+
+[[redirects]]
+  from = "/user-guide/postcss-plugin"
+  to = "/user-guide/usage/postcss-plugin"
+
+[[redirects]]
+  from = "/user-guide/semantic-versioning-policy"
+  to = "/about/semantic-versioning"

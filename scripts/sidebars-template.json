@@ -1,35 +1,61 @@
 {
   "docs": {
-    "Overview": ["index", "VISION", "CHANGELOG", "CONTRIBUTING"],
-    "For users": [
-      "user-guide",
-      "user-guide/faq",
-      "user-guide/about-rules",
-      "user-guide/semantic-versioning-policy",
-      "user-guide/configuration",
-      "user-guide/rules",
-      "user-guide/plugins",
-      "user-guide/processors",
-      "user-guide/example-config",
-      "user-guide/css-processors",
-      "user-guide/cli",
-      "user-guide/node-api",
-      "user-guide/postcss-plugin",
-      "user-guide/complementary-tools",
-      "user-guide/articles"
+    "Intro": ["index"],
+    "User guide": [
+      "user-guide/get-started",
+      "user-guide/configure",
+      {
+        "type": "subcategory",
+        "label": "Rules",
+        "ids": [
+          "user-guide/rules/about",
+          "user-guide/rules/combine",
+          "user-guide/rules/regex",
+          "user-guide/rules/list"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Usage",
+        "ids": [
+          "user-guide/usage/cli",
+          "user-guide/usage/node-api",
+          "user-guide/usage/postcss-plugin",
+          "user-guide/usage/options"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Integrations",
+        "ids": [
+          "user-guide/integrations/editor",
+          "user-guide/integrations/task-runner",
+          "user-guide/integrations/other"
+        ]
+      },
+      "user-guide/ignore-code",
+      "user-guide/errors"
     ],
-    "Rules": [],
-    "For developers": [
-      "developer-guide",
-      "developer-guide/prerequisites",
+    "Developer guide": [
       "developer-guide/rules",
       "developer-guide/plugins",
-      "developer-guide/processors",
       "developer-guide/formatters",
-      "developer-guide/rule-testers",
-      "developer-guide/releases",
-      "developer-guide/pull-requests",
-      "developer-guide/issues"
-    ]
+      "developer-guide/system-tests",
+      "developer-guide/processors"
+    ],
+    "Maintainer guide": [
+      "maintainer-guide/issues",
+      "maintainer-guide/pull-requests",
+      "maintainer-guide/releases"
+    ],
+    "About": [
+      "about/linting",
+      "about/syntaxes",
+      "about/semantic-versioning",
+      "about/vision",
+      "CONTRIBUTING",
+      "CHANGELOG"
+    ],
+    "Rules": []
   }
 }

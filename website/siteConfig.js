@@ -8,14 +8,10 @@ const siteConfig = {
   projectName: "stylelint",
   organizationName: "stylelint",
 
-  copyright: `Copyright © ${new Date().getFullYear()} stylelint`,
-
   headerLinks: [
-    { doc: "user-guide", label: "User guide" },
-    { doc: "user-guide/rules", label: "Rules" },
-    { doc: "user-guide/plugins", label: "Plugins" },
-    { doc: "developer-guide", label: "Developer guide" },
+    { doc: "index", label: "Docs" },
     { page: "demo", label: "Demo" },
+    { search: true },
     {
       href: "https://github.com/stylelint/stylelint",
       label: "GitHub"
