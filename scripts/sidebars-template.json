@@ -38,6 +38,7 @@
     ],
     "Developer guide": [
       "developer-guide/rules",
+      "developer-guide/syntaxes",
       "developer-guide/plugins",
       "developer-guide/formatters",
       "developer-guide/system-tests",
