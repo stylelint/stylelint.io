@@ -119,6 +119,7 @@ function main(outputDir) {
           .replace("../../VISION.md", "../VISION.md")
           .replace("../../lib/rules/", "rules/")
           .replace("/README.md", ".md")
+          .replace("CONTRIBUTING.md", "CONTRIBUTING")
     });
 
     const outputFile = path.join(
