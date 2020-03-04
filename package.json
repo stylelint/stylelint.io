@@ -102,6 +102,6 @@
     "stylelint": "^13.2.0",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
-    "unist-util-visit": "^2.0.1"
+    "unist-util-visit": "^2.0.2"
   }
 }
