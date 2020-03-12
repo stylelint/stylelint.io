@@ -1,4 +1,11 @@
 /* your custom css */
+.navigationSlider .slidingNav ul li {
+  flex: none;
+}
+
+.navigationSlider .slidingNav ul li:nth-child(4) {
+  margin-left: auto;
+}
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
   /* insert here if you need */
@@ -13,6 +20,11 @@
   body .wrapper,
   body .headerWrapper.wrapper {
     max-width: 1400px;
+  }
+
+  .navigationSlider {
+    margin-left: 168px;
+    width: 100%;
   }
 }
 
