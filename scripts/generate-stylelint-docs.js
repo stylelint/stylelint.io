@@ -27,7 +27,7 @@ function processMarkdown(file, { rewriter }) {
   let title = content.match(/\n?# ([^\n]+)\n/)[1];
 
   const titleToSidebarLabel = {
-    stylelint: "Home"
+    stylelint: "Home",
   };
 
   const sidebarLabel = titleToSidebarLabel[title] || title;
@@ -62,8 +62,8 @@ function generateSidebarsJson(outputDir, rulesDir) {
 
   json.docs.Rules = fs
     .readdirSync(path.join(outputDir, rulesDir))
-    .filter(filename => !filter.includes(filename))
-    .map(filename => `${rulesDir}/${path.basename(filename, ".md")}`)
+    .filter((filename) => !filter.includes(filename))
+    .map((filename) => `${rulesDir}/${path.basename(filename, ".md")}`)
     .sort();
 
   const outputFile = path.join("website", "sidebars.json");
@@ -85,10 +85,10 @@ function addHostingInfo(content) {
 function main(outputDir) {
   fs.mkdirSync(outputDir);
 
-  glob.sync("node_modules/stylelint/*.md").forEach(file => {
+  glob.sync("node_modules/stylelint/*.md").forEach((file) => {
     let output = processMarkdown(file, {
-      rewriter: url =>
-        url.replace(/^\/?docs\//, "").replace("README.md", "index.md")
+      rewriter: (url) =>
+        url.replace(/^\/?docs\//, "").replace("README.md", "index.md"),
     });
 
     if (file.includes("README.md")) {
@@ -107,9 +107,9 @@ function main(outputDir) {
     fs.writeFileSync(outputFile, output, "utf8");
   });
 
-  glob.sync("node_modules/stylelint/docs/**/!(toc).md").forEach(file => {
+  glob.sync("node_modules/stylelint/docs/**/!(toc).md").forEach((file) => {
     const output = processMarkdown(file, {
-      rewriter: url =>
+      rewriter: (url) =>
         url
           .replace(
             "../../lib/rules/index.js",
@@ -119,7 +119,7 @@ function main(outputDir) {
           .replace("../../VISION.md", "../VISION.md")
           .replace("../../lib/rules/", "rules/")
           .replace("/README.md", ".md")
-          .replace("CONTRIBUTING.md", "CONTRIBUTING")
+          .replace("CONTRIBUTING.md", "CONTRIBUTING"),
     });
 
     const outputFile = path.join(
@@ -132,15 +132,15 @@ function main(outputDir) {
     fs.writeFileSync(outputFile, output, "utf8");
   });
 
-  glob.sync("node_modules/stylelint/lib/rules/**/*.md").forEach(file => {
+  glob.sync("node_modules/stylelint/lib/rules/**/*.md").forEach((file) => {
     const output = processMarkdown(file, {
-      rewriter: url =>
+      rewriter: (url) =>
         url
           .replace(/\.\.\/([a-z-]+)\/README.md/, "$1.md")
           .replace(
             /\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-/]+)\.md/,
             "../$1.md"
-          )
+          ),
     });
 
     const outputFile = path.join(

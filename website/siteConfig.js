@@ -14,12 +14,12 @@ const siteConfig = {
     { search: true },
     {
       href: "https://github.com/stylelint/stylelint",
-      label: "GitHub"
+      label: "GitHub",
     },
     {
       href: "https://twitter.com/stylelint",
-      label: "Twitter"
-    }
+      label: "Twitter",
+    },
   ],
 
   headerIcon: "img/logo.svg",
@@ -27,11 +27,11 @@ const siteConfig = {
 
   colors: {
     primaryColor: "#263238",
-    secondaryColor: "#546e7a"
+    secondaryColor: "#546e7a",
   },
 
   highlight: {
-    theme: "atelier-forest-light"
+    theme: "atelier-forest-light",
   },
 
   docsUrl: "",
@@ -48,8 +48,8 @@ const siteConfig = {
 
   algolia: {
     apiKey: "29d680ce97507c5cd2836c6c74783c05",
-    indexName: "stylelint"
-  }
+    indexName: "stylelint",
+  },
 };
 
 module.exports = siteConfig;
