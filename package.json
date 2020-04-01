@@ -13,7 +13,7 @@
     "lint:js": "eslint . --ignore-path .gitignore",
     "lint:css": "stylelint --ignore-path .gitignore \"**/*.css\"",
     "lint": "npm-run-all --parallel lint:*",
-    "prettier:check": "prettier '**/*.js' --list-different",
+    "prettier:check": "prettier '**/*.js' --check",
     "prettier:fix": "prettier '**/*.js' --write",
     "pretest": "npm run lint",
     "test": "npm run build",
