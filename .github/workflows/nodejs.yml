@@ -9,17 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Install Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 10
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
 
-    - name: Install latest npm
-      run: npm install --global npm@latest
+      - name: Install latest npm
+        run: npm install --global npm@latest
 
-    - name: npm ci, and test
-      run: |
-        npm ci
-        npm test
+      - name: npm ci, and test
+        run: |
+          npm ci
+          npm test
