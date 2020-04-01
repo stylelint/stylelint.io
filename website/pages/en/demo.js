@@ -22,7 +22,7 @@ function Demo() {
     <script
       key="script-demo"
       dangerouslySetInnerHTML={{ __html: inlineScript }}
-    />
+    />,
   ];
 }
 
