@@ -13,8 +13,8 @@
     "lint:js": "eslint . --ignore-path .gitignore",
     "lint:css": "stylelint --ignore-path .gitignore \"**/*.css\"",
     "lint": "npm-run-all --parallel lint:*",
-    "prettier:check": "prettier '**/*.js' --check",
-    "prettier:fix": "prettier '**/*.js' --write",
+    "prettier:check": "prettier . --check --ignore-path .gitignore",
+    "prettier:fix": "prettier . --write --ignore-path .gitignore",
     "pretest": "npm run lint",
     "test": "npm run build",
     "pregendoc": "rimraf docs",
@@ -85,9 +85,9 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --write"
-    ]
+    "*.js": "eslint --cache --fix",
+    "*.css": "stylelint --cache --fix",
+    "*.{js,json,css,md,yml}": "prettier --write"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

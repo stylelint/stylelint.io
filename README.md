@@ -1,6 +1,5 @@
 # stylelint.io
 
-
 [![Build Status](https://github.com/stylelint/stylelint.io/workflows/CI/badge.svg)](https://github.com/stylelint/stylelint.io)
 
 The source of stylelint website.
