@@ -1,20 +1,20 @@
 {
   "scripts": {
-    "examples": "docusaurus-examples",
-    "start": "docusaurus-start",
     "build": "docusaurus-build",
+    "examples": "docusaurus-examples",
     "publish-gh-pages": "docusaurus-publish",
-    "write-translations": "docusaurus-write-translations",
+    "rename-version": "docusaurus-rename-version",
+    "start": "docusaurus-start",
     "version": "docusaurus-version",
-    "rename-version": "docusaurus-rename-version"
-  },
-  "devDependencies": {
-    "docusaurus": "^1.14.4"
+    "write-translations": "docusaurus-write-translations"
   },
   "browserslist": [
     "> 0.5%",
     "last 1 major versions",
     "Firefox ESR",
     "not dead"
-  ]
+  ],
+  "devDependencies": {
+    "docusaurus": "^1.14.4"
+  }
 }

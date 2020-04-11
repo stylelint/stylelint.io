@@ -1,43 +1,50 @@
 {
-  "private": true,
   "name": "stylelint-io",
+  "private": true,
   "description": "A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.",
   "homepage": "https://stylelint.io",
-  "license": "MIT",
   "repository": "https://github.com/stylelint/stylelint.io.git",
-  "engines": {
-    "node": ">=10.12.0"
-  },
+  "license": "MIT",
   "scripts": {
-    "postinstall": "cd website && npm install",
-    "lint:js": "eslint . --ignore-path .gitignore",
-    "lint:css": "stylelint --ignore-path .gitignore \"**/*.css\"",
-    "lint": "npm-run-all --parallel lint:*",
-    "prettier:check": "prettier . --check --ignore-path .gitignore",
-    "prettier:fix": "prettier . --write --ignore-path .gitignore",
-    "pretest": "npm run lint",
-    "test": "npm run build",
-    "pregendoc": "rimraf docs",
-    "gendoc": "node ./scripts/generate-stylelint-docs docs",
     "build": "npm run gendoc && cd website && NODE_ENV=production npm run build",
     "build:ci": "npm run gendoc && cd website && npm ci && NODE_ENV=production npm run build",
-    "start": "npm run gendoc && cd website && npm start"
+    "pregendoc": "rimraf docs",
+    "gendoc": "node ./scripts/generate-stylelint-docs docs",
+    "postinstall": "cd website && npm install",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:css": "stylelint --ignore-path .gitignore \"**/*.css\"",
+    "lint:js": "eslint . --ignore-path .gitignore",
+    "prettier:check": "prettier . --check --ignore-path .gitignore",
+    "prettier:fix": "prettier . --write --ignore-path .gitignore",
+    "start": "npm run gendoc && cd website && npm start",
+    "pretest": "npm run lint",
+    "test": "npm run build"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.css": "stylelint --cache --fix",
+    "*.js": "eslint --cache --fix",
+    "*.{js,json,css,md,yml}": "prettier --write"
+  },
+  "prettier": "@stylelint/prettier-config",
   "eslintConfig": {
-    "root": true,
-    "extends": [
-      "stylelint",
-      "plugin:react/recommended"
-    ],
+    "env": {
+      "browser": true,
+      "node": true
+    },
     "settings": {
       "react": {
         "version": "16.12"
       }
     },
-    "env": {
-      "browser": true,
-      "node": true
-    },
+    "extends": [
+      "stylelint",
+      "plugin:react/recommended"
+    ],
     "rules": {
       "require-await": "error",
       "node/no-unpublished-require": [
@@ -50,7 +57,8 @@
           ]
         }
       ]
-    }
+    },
+    "root": true
   },
   "stylelint": {
     "extends": "stylelint-config-standard",
@@ -86,17 +94,8 @@
       "string-quotes": "double"
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.css": "stylelint --cache --fix",
-    "*.{js,json,css,md,yml}": "prettier --write"
-  },
   "devDependencies": {
+    "@stylelint/prettier-config": "^2.0.0",
     "eslint": "^6.8.0",
     "eslint-config-stylelint": "^12.0.0",
     "eslint-plugin-react": "^7.19.0",
@@ -111,5 +110,8 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
     "unist-util-visit": "^2.0.2"
+  },
+  "engines": {
+    "node": ">=10.12.0"
   }
 }
