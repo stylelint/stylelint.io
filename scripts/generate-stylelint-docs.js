@@ -1,9 +1,11 @@
+"use strict";
+
 const fs = require("fs");
-const path = require("path");
 const glob = require("glob");
+const path = require("path");
 const remark = require("remark");
-const visit = require("unist-util-visit");
 const siteConfig = require("../website/siteConfig");
+const visit = require("unist-util-visit");
 
 function processMarkdown(file, { rewriter }) {
   function rewriteLink({ rewriter }) {
@@ -157,7 +159,7 @@ function main(outputDir) {
 
   generateSidebarsJson(outputDir, "user-guide/rules");
 
-  console.log("Documents have been generated.");
+  console.log("Documents have been generated."); // eslint-disable-line no-console
 }
 
 main(process.argv[2]);

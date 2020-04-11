@@ -1,3 +1,5 @@
+"use strict";
+
 const siteConfig = {
   title: "stylelint",
   tagline: "A mighty, modern style linter",

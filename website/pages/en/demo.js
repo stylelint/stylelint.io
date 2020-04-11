@@ -1,4 +1,6 @@
-const React = require("react");
+"use strict";
+
+const React = require("react"); // eslint-disable-line node/no-extraneous-require
 
 const FRAME_ORIGIN = "https://stylelint-demo.herokuapp.com";
 const inlineScript = `

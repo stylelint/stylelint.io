@@ -4,6 +4,7 @@
 node_modules/
 *.log
 .DS_Store
+.eslintcache
 
 # Docusaurus
 /website/build/

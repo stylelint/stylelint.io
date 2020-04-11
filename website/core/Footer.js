@@ -1,3 +1,5 @@
+"use strict";
+
 function Footer() {
   return null;
 }
