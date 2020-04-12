@@ -8,14 +8,14 @@
   "scripts": {
     "build": "npm run gendoc && cd website && NODE_ENV=production npm run build",
     "build:ci": "npm run gendoc && cd website && npm ci && NODE_ENV=production npm run build",
+    "format": "prettier . --write",
     "pregendoc": "rimraf docs",
     "gendoc": "node ./scripts/generate-stylelint-docs docs",
     "postinstall": "cd website && npm install",
     "lint": "npm-run-all --parallel lint:*",
-    "lint:css": "stylelint --ignore-path .gitignore \"**/*.css\"",
+    "lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore ",
+    "lint:formatting": "prettier . --check",
     "lint:js": "eslint . --ignore-path .gitignore",
-    "prettier:check": "prettier . --check --ignore-path .gitignore",
-    "prettier:fix": "prettier . --write --ignore-path .gitignore",
     "start": "npm run gendoc && cd website && npm start",
     "pretest": "npm run lint",
     "test": "npm run build"
@@ -28,7 +28,7 @@
   "lint-staged": {
     "*.css": "stylelint --cache --fix",
     "*.js": "eslint --cache --fix",
-    "*.{js,json,css,md,yml}": "prettier --write"
+    "*.{js,json,md,yml}": "prettier --write"
   },
   "prettier": "@stylelint/prettier-config",
   "eslintConfig": {
