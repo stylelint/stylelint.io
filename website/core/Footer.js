@@ -1,5 +1,7 @@
+'use strict';
+
 function Footer() {
-  return null;
+	return null;
 }
 
 module.exports = Footer;

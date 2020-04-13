@@ -1,15 +1,9 @@
+**/*.css
 /content/
 /dist/
 /docs/
 node_modules/
-*.log
-.DS_Store
-.eslintcache
-.stylelintcache
-
-# Docusaurus
 /website/build/
 /website/i18n/*
 /website/sidebars.json
 /website/translated_docs
-/website/yarn.lock

@@ -1,6 +1,8 @@
-const React = require("react");
+'use strict';
 
-const FRAME_ORIGIN = "https://stylelint-demo.herokuapp.com";
+const React = require('react'); // eslint-disable-line node/no-extraneous-require
+
+const FRAME_ORIGIN = 'https://stylelint-demo.herokuapp.com';
 const inlineScript = `
   var frame = document.getElementById("demo");
 
@@ -17,15 +19,12 @@ const inlineScript = `
 `;
 
 function Demo() {
-  return [
-    <iframe key="iframe-demo" id="demo" frameBorder="0" />,
-    <script
-      key="script-demo"
-      dangerouslySetInnerHTML={{ __html: inlineScript }}
-    />,
-  ];
+	return [
+		<iframe key="iframe-demo" id="demo" frameBorder="0" />,
+		<script key="script-demo" dangerouslySetInnerHTML={{ __html: inlineScript }} />,
+	];
 }
 
-Demo.title = "Demo";
+Demo.title = 'Demo';
 
 module.exports = Demo;

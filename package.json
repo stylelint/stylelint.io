@@ -1,49 +1,80 @@
 {
-  "private": true,
   "name": "stylelint-io",
+  "version": "0.0.0",
+  "private": true,
   "description": "A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.",
+  "keywords": [
+    "stylelint"
+  ],
   "homepage": "https://stylelint.io",
-  "license": "MIT",
   "repository": "https://github.com/stylelint/stylelint.io.git",
-  "engines": {
-    "node": ">=10.12.0"
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/stylelint"
   },
+  "license": "MIT",
+  "author": "stylelint",
   "scripts": {
-    "postinstall": "cd website && npm install",
-    "lint:js": "eslint . --ignore-path .gitignore",
-    "lint:css": "stylelint --ignore-path .gitignore \"**/*.css\"",
-    "lint": "npm-run-all --parallel lint:*",
-    "prettier:check": "prettier . --check --ignore-path .gitignore",
-    "prettier:fix": "prettier . --write --ignore-path .gitignore",
-    "pretest": "npm run lint",
-    "test": "npm run build",
-    "pregendoc": "rimraf docs",
-    "gendoc": "node ./scripts/generate-stylelint-docs docs",
     "build": "npm run gendoc && cd website && NODE_ENV=production npm run build",
     "build:ci": "npm run gendoc && cd website && npm ci && NODE_ENV=production npm run build",
-    "start": "npm run gendoc && cd website && npm start"
+    "format": "prettier . --write",
+    "pregendoc": "rimraf docs",
+    "gendoc": "node ./scripts/generate-stylelint-docs docs",
+    "postinstall": "cd website && npm install",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore ",
+    "lint:formatting": "prettier . --check",
+    "lint:js": "eslint . --ignore-path .gitignore",
+    "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+    "lint:packagejson": "npmPkgJsonLint .",
+    "start": "npm run gendoc && cd website && npm start",
+    "pretest": "npm run lint",
+    "test": "npm run build"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.css": "stylelint --cache --fix",
+    "*.js": "eslint --cache --fix",
+    "*.{js,json,md,yml}": "prettier --write"
+  },
+  "prettier": "@stylelint/prettier-config",
   "eslintConfig": {
-    "root": true,
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended"
-    ],
-    "settings": {
-      "react": {
-        "version": "16.8"
-      }
-    },
-    "parserOptions": {
-      "ecmaVersion": "2019"
-    },
     "env": {
       "browser": true,
       "node": true
     },
+    "settings": {
+      "react": {
+        "version": "16.12"
+      }
+    },
+    "extends": [
+      "stylelint",
+      "plugin:react/recommended"
+    ],
     "rules": {
-      "require-await": "error"
-    }
+      "require-await": "error",
+      "node/no-unpublished-require": [
+        "error",
+        {
+          "allowModules": [
+            "glob",
+            "remark",
+            "unist-util-visit"
+          ]
+        }
+      ]
+    },
+    "root": true
+  },
+  "remarkConfig": {
+    "plugins": [
+      "@stylelint/remark-preset"
+    ]
   },
   "stylelint": {
     "extends": "stylelint-config-standard",
@@ -79,18 +110,12 @@
       "string-quotes": "double"
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.css": "stylelint --cache --fix",
-    "*.{js,json,css,md,yml}": "prettier --write"
-  },
   "devDependencies": {
+    "@stylelint/npm-package-json-lint-config": "^2.0.0",
+    "@stylelint/prettier-config": "^2.0.0",
+    "@stylelint/remark-preset": "^1.0.0",
     "eslint": "^6.8.0",
+    "eslint-config-stylelint": "^12.0.0",
     "eslint-plugin-react": "^7.19.0",
     "glob": "^7.1.6",
     "husky": "^4.2.5",
@@ -98,10 +123,22 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "remark": "^12.0.0",
+    "remark-cli": "^8.0.0",
     "rimraf": "^3.0.2",
     "stylelint": "^13.3.2",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
     "unist-util-visit": "^2.0.2"
+  },
+  "engines": {
+    "node": ">=10.12.0"
+  },
+  "npmpackagejsonlint": {
+    "extends": [
+      "@stylelint/npm-package-json-lint-config"
+    ],
+    "rules": {
+      "require-main": "off"
+    }
   }
 }
