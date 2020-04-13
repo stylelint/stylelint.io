@@ -1,10 +1,19 @@
 {
   "name": "stylelint-io",
+  "version": "0.0.0",
   "private": true,
   "description": "A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.",
+  "keywords": [
+    "stylelint"
+  ],
   "homepage": "https://stylelint.io",
   "repository": "https://github.com/stylelint/stylelint.io.git",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/stylelint"
+  },
   "license": "MIT",
+  "author": "stylelint",
   "scripts": {
     "build": "npm run gendoc && cd website && NODE_ENV=production npm run build",
     "build:ci": "npm run gendoc && cd website && npm ci && NODE_ENV=production npm run build",
@@ -17,6 +26,7 @@
     "lint:formatting": "prettier . --check",
     "lint:js": "eslint . --ignore-path .gitignore",
     "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+    "lint:packagejson": "npmPkgJsonLint .",
     "start": "npm run gendoc && cd website && npm start",
     "pretest": "npm run lint",
     "test": "npm run build"
@@ -101,6 +111,7 @@
     }
   },
   "devDependencies": {
+    "@stylelint/npm-package-json-lint-config": "^2.0.0",
     "@stylelint/prettier-config": "^2.0.0",
     "@stylelint/remark-preset": "^1.0.0",
     "eslint": "^6.8.0",
@@ -121,5 +132,13 @@
   },
   "engines": {
     "node": ">=10.12.0"
+  },
+  "npmpackagejsonlint": {
+    "extends": [
+      "@stylelint/npm-package-json-lint-config"
+    ],
+    "rules": {
+      "require-main": "off"
+    }
   }
 }
