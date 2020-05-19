@@ -81,11 +81,11 @@ article h1 {
 
 /* Active links in site header: https://docusaurus.io/docs/en/navigation#active-links-in-site-navigation-bar */
 .navigationSlider .slidingNav ul li.siteNavGroupActive > a {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgb(255 255 255 / 80%);
 }
 
 .navigationSlider .slidingNav ul li a[href^="http"] {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgb(255 255 255 / 50%);
 }
 
 .navigationSlider .slidingNav ul li > a:focus,
