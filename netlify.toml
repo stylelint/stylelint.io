@@ -25,3 +25,111 @@
 [[redirects]]
   from = "/user-guide/semantic-versioning-policy"
   to = "/about/semantic-versioning"
+
+[[redirects]]
+  from = "/user-guide/rules/at-rule-blacklist"
+  to = "/user-guide/rules/at-rule-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/at-rule-property-requirelist"
+  to = "/user-guide/rules/at-rule-property-required-list"
+
+[[redirects]]
+  from = "/user-guide/rules/at-rule-whitelist"
+  to = "/user-guide/rules/at-rule-allowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/comment-word-blacklist"
+  to = "/user-guide/rules/comment-word-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/declaration-property-unit-blacklist"
+  to = "/user-guide/rules/declaration-property-unit-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/declaration-property-unit-whitelist"
+  to = "/user-guide/rules/declaration-property-unit-allowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/declaration-property-value-blacklist"
+  to = "/user-guide/rules/declaration-property-value-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/declaration-property-value-whitelist"
+  to = "/user-guide/rules/declaration-property-value-allowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/function-blacklist"
+  to = "/user-guide/rules/function-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/function-url-scheme-blacklist"
+  to = "/user-guide/rules/function-url-scheme-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/function-url-scheme-whitelist"
+  to = "/user-guide/rules/function-url-scheme-allowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/function-whitelist"
+  to = "/user-guide/rules/function-allowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/media-feature-name-blacklist"
+  to = "/user-guide/rules/media-feature-name-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/media-feature-name-value-whitelist"
+  to = "/user-guide/rules/media-feature-name-value-allowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/media-feature-name-whitelist"
+  to = "/user-guide/rules/media-feature-name-allowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/property-blacklist"
+  to = "/user-guide/rules/property-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/property-whitelist"
+  to = "/user-guide/rules/property-allowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/selector-attribute-operator-blacklist"
+  to = "/user-guide/rules/selector-attribute-operator-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/selector-attribute-operator-whitelist"
+  to = "/user-guide/rules/selector-attribute-operator-allowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/selector-combinator-blacklist"
+  to = "/user-guide/rules/selector-combinator-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/selector-combinator-whitelist"
+  to = "/user-guide/rules/selector-combinator-allowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/selector-pseudo-class-blacklist"
+  to = "/user-guide/rules/selector-pseudo-class-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/selector-pseudo-class-whitelist"
+  to = "/user-guide/rules/selector-pseudo-class-allowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/selector-pseudo-element-blacklist"
+  to = "/user-guide/rules/selector-pseudo-element-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/selector-pseudo-element-whitelist"
+  to = "/user-guide/rules/selector-pseudo-element-allowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/unit-blacklist"
+  to = "/user-guide/rules/unit-disallowed-list"
+
+[[redirects]]
+  from = "/user-guide/rules/unit-whitelist"
+  to = "/user-guide/rules/unit-allowed-list"
