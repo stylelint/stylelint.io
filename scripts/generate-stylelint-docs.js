@@ -8,6 +8,7 @@ const siteConfig = require('../website/siteConfig');
 const visit = require('unist-util-visit');
 
 function processMarkdown(file, { rewriter }) {
+	/* eslint-disable-next-line no-shadow */
 	function rewriteLink({ rewriter }) {
 		function visitor(node) {
 			node.url = rewriter(node.url);
