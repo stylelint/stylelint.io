@@ -1,5 +1,9 @@
+/* eslint-disable node/no-unsupported-features/es-syntax */
+
 import React, { useEffect, useRef } from 'react';
+// eslint-disable-next-line node/no-missing-import
 import Layout from '@theme/Layout';
+// eslint-disable-next-line node/no-missing-import
 import { useHistory, useLocation } from '@docusaurus/router';
 
 function Demo() {
@@ -13,7 +17,7 @@ function Demo() {
 		if (iframeEl.current) {
 			window.addEventListener(
 				'message',
-				function (e) {
+				(e) => {
 					if (e.origin === FRAME_ORIGIN) {
 						history.replace(`${location.pathname}#${e.data}`);
 					}
@@ -42,3 +46,5 @@ function Demo() {
 Demo.title = 'Demo';
 
 export default Demo;
+
+/* eslint-enable */

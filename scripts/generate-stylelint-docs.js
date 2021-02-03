@@ -27,8 +27,8 @@ function processMarkdown(file, { rewriter }) {
 		.toString();
 
 	// Add Docusaurus-specific fields. See https://docusaurus.io/docs/en/doc-markdown
-  let title = content.match(/\n?# ([^\n]+)\n/)[1];
-  let slug;
+	let title = content.match(/\n?# ([^\n]+)\n/)[1];
+	let slug;
 
 	const titleToSidebarLabel = {
 		stylelint: 'Home',
@@ -38,8 +38,8 @@ function processMarkdown(file, { rewriter }) {
 
 	if (title === 'stylelint') {
 		// Check for homepage
-    title = siteConfig.tagline;
-    slug = '/';
+		title = siteConfig.tagline;
+		slug = '/';
 	}
 
 	const editPath = file
@@ -47,7 +47,7 @@ function processMarkdown(file, { rewriter }) {
 		.replace(/\\/g, '/')
 		.substring(1);
 
-  const meta = [
+	const meta = [
 		['title', title],
 		['sidebar_label', sidebarLabel],
 		['hide_title', true],
@@ -57,12 +57,14 @@ function processMarkdown(file, { rewriter }) {
 	if (slug) meta.push(['slug', slug]);
 
 	let frontMatter = '---\n';
+
 	for (const item of meta) {
 		frontMatter += `${item[0]}: ${item[1]}\n`;
 	}
+
 	frontMatter += '---';
 
-  return `${frontMatter}\n\n${content}`;
+	return `${frontMatter}\n\n${content}`;
 }
 
 // For Docusaurus. See https://docusaurus.io/docs/en/navigation
@@ -88,7 +90,7 @@ function addHostingInfo(content) {
 ## Hosting
 
 <a href="https://www.netlify.com">
-  <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+  <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" />
 </a>
 `;
 }

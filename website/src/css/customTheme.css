@@ -78,8 +78,8 @@ a:hover {
 }
 
 .demoWrapper {
+  align-items: stretch;
   display: flex;
   flex-flow: column;
-  align-items: stretch;
   height: 100%;
 }

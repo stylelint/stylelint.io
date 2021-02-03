@@ -1,8 +1,9 @@
 **/*.css
 /content/
 /dist/
-/docs/
 node_modules/
+/website/docs/
+/website/.docusaurus/
 /website/build/
 /website/i18n/*
 /website/sidebars.json

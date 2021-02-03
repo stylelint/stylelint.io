@@ -40,21 +40,20 @@
 		},
 		{
 			"Developer guide": [
-					"developer-guide/rules",
-					"developer-guide/syntaxes",
-					"developer-guide/plugins",
-					"developer-guide/formatters",
-					"developer-guide/system-tests",
-					"developer-guide/processors"
-				]
-
+				"developer-guide/rules",
+				"developer-guide/syntaxes",
+				"developer-guide/plugins",
+				"developer-guide/formatters",
+				"developer-guide/system-tests",
+				"developer-guide/processors"
+			]
 		},
 		{
 			"Maintainer guide": [
-					"maintainer-guide/issues",
-					"maintainer-guide/pull-requests",
-					"maintainer-guide/releases"
-				]
+				"maintainer-guide/issues",
+				"maintainer-guide/pull-requests",
+				"maintainer-guide/releases"
+			]
 		},
 		{
 			"About": [
@@ -66,6 +65,6 @@
 				"CHANGELOG"
 			]
 		},
-		{"Rules": []}
-  ]
+		{ "Rules": [] }
+	]
 }
