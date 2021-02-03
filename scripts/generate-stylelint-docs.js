@@ -4,7 +4,7 @@ const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
 const remark = require('remark');
-const siteConfig = require('../website/siteConfig');
+const siteConfig = require('../website/docusaurus.config.js');
 const visit = require('unist-util-visit');
 
 function processMarkdown(file, { rewriter }) {
@@ -27,7 +27,8 @@ function processMarkdown(file, { rewriter }) {
 		.toString();
 
 	// Add Docusaurus-specific fields. See https://docusaurus.io/docs/en/doc-markdown
-	let title = content.match(/\n?# ([^\n]+)\n/)[1];
+  let title = content.match(/\n?# ([^\n]+)\n/)[1];
+  let slug;
 
 	const titleToSidebarLabel = {
 		stylelint: 'Home',
@@ -37,7 +38,8 @@ function processMarkdown(file, { rewriter }) {
 
 	if (title === 'stylelint') {
 		// Check for homepage
-		title = siteConfig.tagline;
+    title = siteConfig.tagline;
+    slug = '/';
 	}
 
 	const editPath = file
@@ -45,14 +47,22 @@ function processMarkdown(file, { rewriter }) {
 		.replace(/\\/g, '/')
 		.substring(1);
 
-	return `---
-title: ${title}
-sidebar_label: ${sidebarLabel}
-hide_title: true
-custom_edit_url: https://github.com/stylelint/stylelint/edit/master/${editPath}
----
+  const meta = [
+		['title', title],
+		['sidebar_label', sidebarLabel],
+		['hide_title', true],
+		['custom_edit_url', `https://github.com/stylelint/stylelint/edit/master/${editPath}`],
+	];
 
-${content}`;
+	if (slug) meta.push(['slug', slug]);
+
+	let frontMatter = '---\n';
+	for (const item of meta) {
+		frontMatter += `${item[0]}: ${item[1]}\n`;
+	}
+	frontMatter += '---';
+
+  return `${frontMatter}\n\n${content}`;
 }
 
 // For Docusaurus. See https://docusaurus.io/docs/en/navigation
@@ -88,7 +98,7 @@ function main(outputDir) {
 
 	glob.sync('node_modules/stylelint/*.md').forEach((file) => {
 		let output = processMarkdown(file, {
-			rewriter: (url) => url.replace(/^\/?docs\//, '').replace('README.md', 'index.md'),
+			rewriter: (url) => url.replace(/^\/?docs\//, '/').replace('README.md', 'index.md'),
 		});
 
 		if (file.includes('README.md')) {
