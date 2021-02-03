@@ -1,6 +1,5 @@
 /content/
 /dist/
-/docs/
 node_modules/
 *.log
 .DS_Store
@@ -8,6 +7,7 @@ node_modules/
 .stylelintcache
 
 # Docusaurus
+/website/docs/
 /website/build/
 /website/i18n/*
 /website/sidebars.json
