@@ -20,7 +20,7 @@ module.exports={
       "@docusaurus/preset-classic",
       {
         "docs": {
-          "homePageId": "index",
+          "routeBasePath": '/',
           "showLastUpdateAuthor": true,
           "showLastUpdateTime": true,
           "path": "docs",
@@ -36,9 +36,10 @@ module.exports={
   "plugins": [],
   "themeConfig": {
     "navbar": {
-      "title": "stylelint",
+      // "title": "stylelint",
       "logo": {
-        "src": "img/logo.svg"
+        "src": "img/logo_dark.svg",
+        srcDark: 'img/logo_bright.svg'
       },
       "items": [
         {
@@ -54,12 +55,12 @@ module.exports={
         {
           "href": "https://github.com/stylelint/stylelint",
           "label": "GitHub",
-          "position": "left"
+          "position": "right"
         },
         {
           "href": "https://twitter.com/stylelint",
           "label": "Twitter",
-          "position": "left"
+          "position": "right"
         }
       ]
     },
