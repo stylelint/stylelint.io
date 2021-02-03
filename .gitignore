@@ -13,6 +13,4 @@ node_modules/
 /website/sidebars.json
 /website/translated_docs
 /website/yarn.lock
-
-# Docusaurus v2 migration
-/website-v1/
+/website/.docusaurus/
