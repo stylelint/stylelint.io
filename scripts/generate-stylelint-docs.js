@@ -152,4 +152,4 @@ function main(outputDir) {
 	console.log('Documents have been generated.'); // eslint-disable-line no-console
 }
 
-main(process.argv[2]);
+main(path.join('website', process.argv[2]));

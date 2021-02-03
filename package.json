@@ -18,7 +18,7 @@
     "build": "npm run gendoc && cd website && NODE_ENV=production npm run build",
     "build:ci": "npm run gendoc && cd website && npm ci && NODE_ENV=production npm run build",
     "format": "prettier . --write",
-    "pregendoc": "rimraf docs",
+    "pregendoc": "rimraf website/docs",
     "gendoc": "node ./scripts/generate-stylelint-docs docs",
     "postinstall": "cd website && npm install",
     "lint": "npm-run-all --parallel lint:*",

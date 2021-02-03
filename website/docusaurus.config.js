@@ -23,8 +23,8 @@ module.exports={
           "homePageId": "index",
           "showLastUpdateAuthor": true,
           "showLastUpdateTime": true,
-          "path": "../docs",
-          "sidebarPath": "../website-v1/sidebars.json"
+          "path": "docs",
+          "sidebarPath": "../website/sidebars.json"
         },
         "blog": {},
         "theme": {
@@ -42,7 +42,7 @@ module.exports={
       },
       "items": [
         {
-          "to": "docs/",
+          "to": "/",
           "label": "Docs",
           "position": "left"
         },
