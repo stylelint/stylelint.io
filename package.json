@@ -117,7 +117,7 @@
     "@stylelint/npm-package-json-lint-config": "^2.0.0",
     "@stylelint/prettier-config": "^2.0.0",
     "@stylelint/remark-preset": "^1.0.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.21.0",
     "eslint-config-stylelint": "^13.1.0",
     "eslint-plugin-react": "^7.21.5",
     "glob": "^7.1.6",
