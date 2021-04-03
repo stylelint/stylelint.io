@@ -26,14 +26,10 @@
     "lint:formatting": "prettier . --check",
     "lint:js": "eslint . --ignore-path .gitignore",
     "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+    "prepare": "husky install",
     "start": "npm run gendoc && cd website && npm start",
     "pretest": "npm run lint",
     "test": "npm run build"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.css": "stylelint --cache --fix",
