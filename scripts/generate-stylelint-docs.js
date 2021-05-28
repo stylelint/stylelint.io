@@ -1,17 +1,17 @@
-'use strict';
+/* eslint-disable node/no-unsupported-features/es-syntax, node/no-unpublished-import -- Maybe false positives; this script works correctly */
+import * as fs from 'fs';
+import { default as glob } from 'glob';
+import * as path from 'path';
+import { default as remark } from 'remark';
+import { visit } from 'unist-util-visit';
 
-const fs = require('fs');
-const glob = require('glob');
-const path = require('path');
-const remark = require('remark');
-const siteConfig = require('../website/siteConfig');
-const visit = require('unist-util-visit');
+import { default as siteConfig } from '../website/siteConfig.js';
+/* eslint-enable node/no-unsupported-features/es-syntax, node/no-unpublished-import */
 
 function processMarkdown(file, { rewriter }) {
-	/* eslint-disable-next-line no-shadow */
-	function rewriteLink({ rewriter }) {
+	function rewriteLink(options) {
 		function visitor(node) {
-			node.url = rewriter(node.url);
+			node.url = options.rewriter(node.url);
 		}
 
 		function transform(tree) {
@@ -57,7 +57,9 @@ ${content}`;
 
 // For Docusaurus. See https://docusaurus.io/docs/en/navigation
 function generateSidebarsJson(outputDir, rulesDir) {
-	const json = JSON.parse(fs.readFileSync(path.join(__dirname, 'sidebars-template.json'), 'utf8'));
+	const json = JSON.parse(
+		fs.readFileSync(new URL('./sidebars-template.json', import.meta.url), 'utf8'),
+	);
 
 	const filter = ['about.md', 'combine.md', 'regex.md', 'list.md'];
 

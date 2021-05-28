@@ -1,6 +1,5 @@
-'use strict';
-
-const React = require('react'); // eslint-disable-line node/no-extraneous-require
+// eslint-disable-next-line no-undef -- TODO: Wait for the ESM support
+const React = require('react');
 
 const FRAME_ORIGIN = 'https://stylelint-demo.herokuapp.com';
 const inlineScript = `
@@ -27,4 +26,5 @@ function Demo() {
 
 Demo.title = 'Demo';
 
+// eslint-disable-next-line no-undef -- TODO: Wait for the ESM support
 module.exports = Demo;

@@ -1,5 +1,3 @@
-'use strict';
-
 document.addEventListener('DOMContentLoaded', () => {
 	const validTriggers = [
 		'The following patterns are not considered violations:',
