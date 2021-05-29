@@ -30,7 +30,7 @@ function Demo() {
 	}, []);
 
 	return (
-		<Layout title="Demo" wrapperClassName="demoWrapper">
+		<Layout title="Demo" wrapperClassName="demo">
 			<iframe
 				ref={iframeEl}
 				id="demo"
