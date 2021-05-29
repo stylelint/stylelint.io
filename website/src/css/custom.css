@@ -1,0 +1,14 @@
+.demo {
+  align-items: stretch;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.valid-pattern {
+  background: #eef7ee;
+}
+
+.invalid-pattern {
+  background: #fee;
+}

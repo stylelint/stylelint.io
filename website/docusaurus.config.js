@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	title: 'stylelint',
+	title: 'Stylelint',
 	tagline: 'A mighty, modern style linter',
 	url: 'https://stylelint.io',
 	baseUrl: '/',
@@ -9,10 +9,6 @@ module.exports = {
 	projectName: 'stylelint',
 	scripts: ['/js/pattern-validity.js'],
 	favicon: 'img/favicon.ico',
-	customFields: {
-		docsUrl: '',
-		disableHeaderTitle: true,
-	},
 	onBrokenLinks: 'log',
 	onBrokenMarkdownLinks: 'log',
 	presets: [
@@ -21,14 +17,11 @@ module.exports = {
 			{
 				docs: {
 					routeBasePath: '/',
-					showLastUpdateAuthor: true,
-					showLastUpdateTime: true,
 					path: 'docs',
 					sidebarPath: '../website/sidebars.json',
 				},
-				blog: {},
 				theme: {
-					customCss: '../src/css/customTheme.css',
+					customCss: '../src/css/custom.css',
 				},
 			},
 		],
@@ -36,10 +29,10 @@ module.exports = {
 	plugins: [],
 	themeConfig: {
 		navbar: {
-			// "title": "stylelint",
 			logo: {
-				src: 'img/logo_dark.svg',
-				srcDark: 'img/logo_bright.svg',
+				alt: 'Stylelint',
+				src: 'img/light.svg',
+				srcDark: 'img/dark.svg',
 			},
 			items: [
 				{
@@ -63,10 +56,6 @@ module.exports = {
 					position: 'right',
 				},
 			],
-		},
-		footer: {
-			links: [],
-			logo: {},
 		},
 		algolia: {
 			apiKey: '29d680ce97507c5cd2836c6c74783c05',
