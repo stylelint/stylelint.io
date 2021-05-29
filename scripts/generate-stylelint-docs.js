@@ -50,7 +50,7 @@ function processMarkdown(file, { rewriter }) {
 	const meta = [
 		['title', title],
 		['sidebar_label', sidebarLabel],
-		['hide_title', true],
+		['hide_title', false],
 		['custom_edit_url', `https://github.com/stylelint/stylelint/edit/master/${editPath}`],
 	];
 
