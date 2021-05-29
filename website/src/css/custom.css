@@ -6,9 +6,9 @@
 }
 
 .valid-pattern {
-  background: #eef7ee;
+  box-shadow: 0 -2px 0 0 green;
 }
 
 .invalid-pattern {
-  background: #fee;
+  box-shadow: 0 -2px 0 0 crimson;
 }
