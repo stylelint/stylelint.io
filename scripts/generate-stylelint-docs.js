@@ -67,34 +67,6 @@ function processMarkdown(file, { rewriter }) {
 	return `${frontMatter}\n\n${content}`;
 }
 
-// For Docusaurus. See https://docusaurus.io/docs/en/navigation
-function generateSidebarsJson(outputDir, rulesDir) {
-	const json = JSON.parse(fs.readFileSync(path.join(__dirname, 'sidebars-template.json'), 'utf8'));
-
-	const filter = ['about.md', 'combine.md', 'regex.md', 'list.md'];
-
-	json.docs.Rules = fs
-		.readdirSync(path.join(outputDir, rulesDir))
-		.filter((filename) => !filter.includes(filename))
-		.map((filename) => `${rulesDir}/${path.basename(filename, '.md')}`)
-		.sort();
-
-	const outputFile = path.join('website', 'sidebars.json');
-
-	fs.writeFileSync(outputFile, JSON.stringify(json, null, 2), 'utf8');
-}
-
-function addHostingInfo(content) {
-	return `${content}
-
-## Hosting
-
-<a href="https://www.netlify.com">
-  <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" />
-</a>
-`;
-}
-
 function main(outputDir) {
 	fs.mkdirSync(outputDir);
 
@@ -102,10 +74,6 @@ function main(outputDir) {
 		let output = processMarkdown(file, {
 			rewriter: (url) => url.replace(/^\/?docs\//, '/').replace('README.md', 'index.md'),
 		});
-
-		if (file.includes('README.md')) {
-			output = addHostingInfo(output);
-		}
 
 		const outputFile = path.join(
 			outputDir,
@@ -127,7 +95,7 @@ function main(outputDir) {
 					)
 					.replace('../../CHANGELOG.md', '../CHANGELOG.md')
 					.replace('../../VISION.md', '../VISION.md')
-					.replace('../../lib/rules/', 'rules/')
+					.replace('../../lib/rules/', 'rules/list/')
 					.replace('/README.md', '.md')
 					.replace('CONTRIBUTING.md', 'CONTRIBUTING'),
 		});
@@ -144,13 +112,13 @@ function main(outputDir) {
 			rewriter: (url) =>
 				url
 					.replace(/\.\.\/([a-z-]+)\/README.md/, '$1.md')
-					.replace(/\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-/]+)\.md/, '../$1.md'),
+					.replace(/\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-/]+)\.md/, '../../$1.md'),
 		});
 
 		const outputFile = path.join(
 			outputDir,
 			file
-				.replace('node_modules/stylelint/lib/rules', 'user-guide/rules')
+				.replace('node_modules/stylelint/lib/rules', 'user-guide/rules/list')
 				.replace('/README.md', '.md'),
 		);
 
@@ -158,8 +126,6 @@ function main(outputDir) {
 
 		fs.writeFileSync(outputFile, output, 'utf8');
 	});
-
-	generateSidebarsJson(outputDir, 'user-guide/rules');
 
 	console.log('Documents have been generated.'); // eslint-disable-line no-console
 }

@@ -10,7 +10,6 @@ node_modules/
 /website/docs/
 /website/build/
 /website/i18n/*
-/website/sidebars.json
 /website/translated_docs
 /website/yarn.lock
 /website/.docusaurus/
