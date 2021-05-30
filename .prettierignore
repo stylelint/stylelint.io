@@ -1,10 +1,5 @@
 **/*.css
-/content/
-/dist/
 node_modules/
-/website/docs/
-/website/.docusaurus/
-/website/build/
-/website/i18n/*
-/website/sidebars.json
-/website/translated_docs
+.docusaurus/
+build/
+docs/

@@ -1,5 +1,5 @@
 [build]
-  publish = "website/build/"
+  publish = "build/"
 
 [[redirects]]
   from = "/user-guide/configuration"

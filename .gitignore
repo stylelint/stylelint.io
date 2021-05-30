@@ -1,15 +1,8 @@
-/content/
-/dist/
+.docusaurus/
+docs/
+build/
 node_modules/
 *.log
 .DS_Store
 .eslintcache
 .stylelintcache
-
-# Docusaurus
-/website/docs/
-/website/build/
-/website/i18n/*
-/website/translated_docs
-/website/yarn.lock
-/website/.docusaurus/

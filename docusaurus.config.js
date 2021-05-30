@@ -18,7 +18,7 @@ module.exports = {
 				docs: {
 					routeBasePath: '/',
 					path: 'docs',
-					sidebarPath: '../website/sidebars.json',
+					sidebarPath: './sidebars.json',
 				},
 				theme: {
 					customCss: '../src/css/custom.css',

@@ -4,7 +4,7 @@ const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
 const remark = require('remark');
-const siteConfig = require('../website/docusaurus.config.js');
+const siteConfig = require('../docusaurus.config.js');
 const visit = require('unist-util-visit');
 
 function processMarkdown(file, { rewriter }) {
@@ -130,4 +130,4 @@ function main(outputDir) {
 	console.log('Documents have been generated.'); // eslint-disable-line no-console
 }
 
-main(path.join('website', process.argv[2]));
+main(process.argv[2]);
