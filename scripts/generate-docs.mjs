@@ -1,12 +1,8 @@
-/* eslint-disable node/no-unsupported-features/es-syntax, node/no-unpublished-import -- Maybe false positives; this script works correctly */
 import * as fs from 'fs';
 import { default as glob } from 'glob';
 import * as path from 'path';
 import { default as remark } from 'remark';
 import { visit } from 'unist-util-visit';
-
-import { default as siteConfig } from '../website/siteConfig.js';
-/* eslint-enable node/no-unsupported-features/es-syntax, node/no-unpublished-import */
 
 function processMarkdown(file, { rewriter }) {
 	function rewriteLink(options) {
@@ -28,6 +24,7 @@ function processMarkdown(file, { rewriter }) {
 
 	// Add Docusaurus-specific fields. See https://docusaurus.io/docs/en/doc-markdown
 	let title = content.match(/\n?# ([^\n]+)\n/)[1];
+	let slug;
 
 	const titleToSidebarLabel = {
 		stylelint: 'Home',
@@ -35,54 +32,28 @@ function processMarkdown(file, { rewriter }) {
 
 	const sidebarLabel = titleToSidebarLabel[title] || title;
 
+	// Check for homepage
 	if (title === 'stylelint') {
-		// Check for homepage
-		title = siteConfig.tagline;
+		title = sidebarLabel;
+		slug = '/';
 	}
 
-	const editPath = file
-		.replace(path.join('node_modules', 'stylelint'), '')
-		.replace(/\\/g, '/')
-		.substring(1);
+	const meta = [
+		['title', title],
+		['sidebar_label', sidebarLabel],
+	];
 
-	return `---
-title: ${title}
-sidebar_label: ${sidebarLabel}
-hide_title: true
-custom_edit_url: https://github.com/stylelint/stylelint/edit/master/${editPath}
----
+	if (slug) meta.push(['slug', slug]);
 
-${content}`;
-}
+	let frontMatter = '---\n';
 
-// For Docusaurus. See https://docusaurus.io/docs/en/navigation
-function generateSidebarsJson(outputDir, rulesDir) {
-	const json = JSON.parse(
-		fs.readFileSync(new URL('./sidebars-template.json', import.meta.url), 'utf8'),
-	);
+	for (const item of meta) {
+		frontMatter += `${item[0]}: ${item[1]}\n`;
+	}
 
-	const filter = ['about.md', 'combine.md', 'regex.md', 'list.md'];
+	frontMatter += '---';
 
-	json.docs.Rules = fs
-		.readdirSync(path.join(outputDir, rulesDir))
-		.filter((filename) => !filter.includes(filename))
-		.map((filename) => `${rulesDir}/${path.basename(filename, '.md')}`)
-		.sort();
-
-	const outputFile = path.join('website', 'sidebars.json');
-
-	fs.writeFileSync(outputFile, JSON.stringify(json, null, 2), 'utf8');
-}
-
-function addHostingInfo(content) {
-	return `${content}
-
-## Hosting
-
-<a href="https://www.netlify.com">
-  <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
-</a>
-`;
+	return `${frontMatter}\n\n${content}`;
 }
 
 function main(outputDir) {
@@ -90,12 +61,8 @@ function main(outputDir) {
 
 	glob.sync('node_modules/stylelint/*.md').forEach((file) => {
 		let output = processMarkdown(file, {
-			rewriter: (url) => url.replace(/^\/?docs\//, '').replace('README.md', 'index.md'),
+			rewriter: (url) => url.replace(/^\/?docs\//, '/').replace('README.md', 'index.md'),
 		});
-
-		if (file.includes('README.md')) {
-			output = addHostingInfo(output);
-		}
 
 		const outputFile = path.join(
 			outputDir,
@@ -117,7 +84,7 @@ function main(outputDir) {
 					)
 					.replace('../../CHANGELOG.md', '../CHANGELOG.md')
 					.replace('../../VISION.md', '../VISION.md')
-					.replace('../../lib/rules/', 'rules/')
+					.replace('../../lib/rules/', 'rules/list/')
 					.replace('/README.md', '.md')
 					.replace('CONTRIBUTING.md', 'CONTRIBUTING'),
 		});
@@ -134,13 +101,13 @@ function main(outputDir) {
 			rewriter: (url) =>
 				url
 					.replace(/\.\.\/([a-z-]+)\/README.md/, '$1.md')
-					.replace(/\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-/]+)\.md/, '../$1.md'),
+					.replace(/\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-/]+)\.md/, '../../$1.md'),
 		});
 
 		const outputFile = path.join(
 			outputDir,
 			file
-				.replace('node_modules/stylelint/lib/rules', 'user-guide/rules')
+				.replace('node_modules/stylelint/lib/rules', 'user-guide/rules/list')
 				.replace('/README.md', '.md'),
 		);
 
@@ -148,8 +115,6 @@ function main(outputDir) {
 
 		fs.writeFileSync(outputFile, output, 'utf8');
 	});
-
-	generateSidebarsJson(outputDir, 'user-guide/rules');
 
 	console.log('Documents have been generated.'); // eslint-disable-line no-console
 }

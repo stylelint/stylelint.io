@@ -1,0 +1,14 @@
+.demo {
+  align-items: stretch;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.valid-pattern {
+  box-shadow: 0 -2px 0 0 green;
+}
+
+.invalid-pattern {
+  box-shadow: 0 -2px 0 0 crimson;
+}

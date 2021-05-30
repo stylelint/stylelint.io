@@ -1,3 +1,7 @@
+[build]
+  command = "npm run build"
+  publish = "build/"
+
 [[redirects]]
   from = "/user-guide/configuration"
   to = "/user-guide/configure"
@@ -25,3 +29,851 @@
 [[redirects]]
   from = "/user-guide/semantic-versioning-policy"
   to = "/about/semantic-versioning"
+
+[[redirects]]
+	from = "/user-guide/rules/alpha-value-notation"
+	to = "/user-guide/rules/list/alpha-value-notation"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-allowed-list"
+	to = "/user-guide/rules/list/at-rule-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-blacklist"
+	to = "/user-guide/rules/list/at-rule-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-disallowed-list"
+	to = "/user-guide/rules/list/at-rule-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-empty-line-before"
+	to = "/user-guide/rules/list/at-rule-empty-line-before"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-name-case"
+	to = "/user-guide/rules/list/at-rule-name-case"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-name-newline-after"
+	to = "/user-guide/rules/list/at-rule-name-newline-after"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-name-space-after"
+	to = "/user-guide/rules/list/at-rule-name-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-no-unknown"
+	to = "/user-guide/rules/list/at-rule-no-unknown"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-no-vendor-prefix"
+	to = "/user-guide/rules/list/at-rule-no-vendor-prefix"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-property-required-list"
+	to = "/user-guide/rules/list/at-rule-property-required-list"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-property-requirelist"
+	to = "/user-guide/rules/list/at-rule-property-requirelist"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-semicolon-newline-after"
+	to = "/user-guide/rules/list/at-rule-semicolon-newline-after"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-semicolon-space-before"
+	to = "/user-guide/rules/list/at-rule-semicolon-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/at-rule-whitelist"
+	to = "/user-guide/rules/list/at-rule-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/block-closing-brace-empty-line-before"
+	to = "/user-guide/rules/list/block-closing-brace-empty-line-before"
+
+[[redirects]]
+	from = "/user-guide/rules/block-closing-brace-newline-after"
+	to = "/user-guide/rules/list/block-closing-brace-newline-after"
+
+[[redirects]]
+	from = "/user-guide/rules/block-closing-brace-newline-before"
+	to = "/user-guide/rules/list/block-closing-brace-newline-before"
+
+[[redirects]]
+	from = "/user-guide/rules/block-closing-brace-space-after"
+	to = "/user-guide/rules/list/block-closing-brace-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/block-closing-brace-space-before"
+	to = "/user-guide/rules/list/block-closing-brace-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/block-no-empty"
+	to = "/user-guide/rules/list/block-no-empty"
+
+[[redirects]]
+	from = "/user-guide/rules/block-opening-brace-newline-after"
+	to = "/user-guide/rules/list/block-opening-brace-newline-after"
+
+[[redirects]]
+	from = "/user-guide/rules/block-opening-brace-newline-before"
+	to = "/user-guide/rules/list/block-opening-brace-newline-before"
+
+[[redirects]]
+	from = "/user-guide/rules/block-opening-brace-space-after"
+	to = "/user-guide/rules/list/block-opening-brace-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/block-opening-brace-space-before"
+	to = "/user-guide/rules/list/block-opening-brace-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/color-function-notation"
+	to = "/user-guide/rules/list/color-function-notation"
+
+[[redirects]]
+	from = "/user-guide/rules/color-hex-case"
+	to = "/user-guide/rules/list/color-hex-case"
+
+[[redirects]]
+	from = "/user-guide/rules/color-hex-length"
+	to = "/user-guide/rules/list/color-hex-length"
+
+[[redirects]]
+	from = "/user-guide/rules/color-named"
+	to = "/user-guide/rules/list/color-named"
+
+[[redirects]]
+	from = "/user-guide/rules/color-no-hex"
+	to = "/user-guide/rules/list/color-no-hex"
+
+[[redirects]]
+	from = "/user-guide/rules/color-no-invalid-hex"
+	to = "/user-guide/rules/list/color-no-invalid-hex"
+
+[[redirects]]
+	from = "/user-guide/rules/comment-empty-line-before"
+	to = "/user-guide/rules/list/comment-empty-line-before"
+
+[[redirects]]
+	from = "/user-guide/rules/comment-no-empty"
+	to = "/user-guide/rules/list/comment-no-empty"
+
+[[redirects]]
+	from = "/user-guide/rules/comment-pattern"
+	to = "/user-guide/rules/list/comment-pattern"
+
+[[redirects]]
+	from = "/user-guide/rules/comment-whitespace-inside"
+	to = "/user-guide/rules/list/comment-whitespace-inside"
+
+[[redirects]]
+	from = "/user-guide/rules/comment-word-blacklist"
+	to = "/user-guide/rules/list/comment-word-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/comment-word-disallowed-list"
+	to = "/user-guide/rules/list/comment-word-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/custom-media-pattern"
+	to = "/user-guide/rules/list/custom-media-pattern"
+
+[[redirects]]
+	from = "/user-guide/rules/custom-property-empty-line-before"
+	to = "/user-guide/rules/list/custom-property-empty-line-before"
+
+[[redirects]]
+	from = "/user-guide/rules/custom-property-pattern"
+	to = "/user-guide/rules/list/custom-property-pattern"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-bang-space-after"
+	to = "/user-guide/rules/list/declaration-bang-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-bang-space-before"
+	to = "/user-guide/rules/list/declaration-bang-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-block-no-duplicate-custom-properties"
+	to = "/user-guide/rules/list/declaration-block-no-duplicate-custom-properties"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-block-no-duplicate-properties"
+	to = "/user-guide/rules/list/declaration-block-no-duplicate-properties"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-block-no-redundant-longhand-properties"
+	to = "/user-guide/rules/list/declaration-block-no-redundant-longhand-properties"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-block-no-shorthand-property-overrides"
+	to = "/user-guide/rules/list/declaration-block-no-shorthand-property-overrides"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-block-semicolon-newline-after"
+	to = "/user-guide/rules/list/declaration-block-semicolon-newline-after"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-block-semicolon-newline-before"
+	to = "/user-guide/rules/list/declaration-block-semicolon-newline-before"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-block-semicolon-space-after"
+	to = "/user-guide/rules/list/declaration-block-semicolon-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-block-semicolon-space-before"
+	to = "/user-guide/rules/list/declaration-block-semicolon-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-block-single-line-max-declarations"
+	to = "/user-guide/rules/list/declaration-block-single-line-max-declarations"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-block-trailing-semicolon"
+	to = "/user-guide/rules/list/declaration-block-trailing-semicolon"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-colon-newline-after"
+	to = "/user-guide/rules/list/declaration-colon-newline-after"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-colon-space-after"
+	to = "/user-guide/rules/list/declaration-colon-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-colon-space-before"
+	to = "/user-guide/rules/list/declaration-colon-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-empty-line-before"
+	to = "/user-guide/rules/list/declaration-empty-line-before"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-no-important"
+	to = "/user-guide/rules/list/declaration-no-important"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-property-unit-allowed-list"
+	to = "/user-guide/rules/list/declaration-property-unit-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-property-unit-blacklist"
+	to = "/user-guide/rules/list/declaration-property-unit-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-property-unit-disallowed-list"
+	to = "/user-guide/rules/list/declaration-property-unit-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-property-unit-whitelist"
+	to = "/user-guide/rules/list/declaration-property-unit-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-property-value-allowed-list"
+	to = "/user-guide/rules/list/declaration-property-value-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-property-value-blacklist"
+	to = "/user-guide/rules/list/declaration-property-value-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-property-value-disallowed-list"
+	to = "/user-guide/rules/list/declaration-property-value-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/declaration-property-value-whitelist"
+	to = "/user-guide/rules/list/declaration-property-value-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/font-family-name-quotes"
+	to = "/user-guide/rules/list/font-family-name-quotes"
+
+[[redirects]]
+	from = "/user-guide/rules/font-family-no-duplicate-names"
+	to = "/user-guide/rules/list/font-family-no-duplicate-names"
+
+[[redirects]]
+	from = "/user-guide/rules/font-family-no-missing-generic-family-keyword"
+	to = "/user-guide/rules/list/font-family-no-missing-generic-family-keyword"
+
+[[redirects]]
+	from = "/user-guide/rules/font-weight-notation"
+	to = "/user-guide/rules/list/font-weight-notation"
+
+[[redirects]]
+	from = "/user-guide/rules/function-allowed-list"
+	to = "/user-guide/rules/list/function-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/function-blacklist"
+	to = "/user-guide/rules/list/function-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/function-calc-no-invalid"
+	to = "/user-guide/rules/list/function-calc-no-invalid"
+
+[[redirects]]
+	from = "/user-guide/rules/function-calc-no-unspaced-operator"
+	to = "/user-guide/rules/list/function-calc-no-unspaced-operator"
+
+[[redirects]]
+	from = "/user-guide/rules/function-comma-newline-after"
+	to = "/user-guide/rules/list/function-comma-newline-after"
+
+[[redirects]]
+	from = "/user-guide/rules/function-comma-newline-before"
+	to = "/user-guide/rules/list/function-comma-newline-before"
+
+[[redirects]]
+	from = "/user-guide/rules/function-comma-space-after"
+	to = "/user-guide/rules/list/function-comma-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/function-comma-space-before"
+	to = "/user-guide/rules/list/function-comma-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/function-disallowed-list"
+	to = "/user-guide/rules/list/function-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/function-linear-gradient-no-nonstandard-direction"
+	to = "/user-guide/rules/list/function-linear-gradient-no-nonstandard-direction"
+
+[[redirects]]
+	from = "/user-guide/rules/function-max-empty-lines"
+	to = "/user-guide/rules/list/function-max-empty-lines"
+
+[[redirects]]
+	from = "/user-guide/rules/function-name-case"
+	to = "/user-guide/rules/list/function-name-case"
+
+[[redirects]]
+	from = "/user-guide/rules/function-parentheses-newline-inside"
+	to = "/user-guide/rules/list/function-parentheses-newline-inside"
+
+[[redirects]]
+	from = "/user-guide/rules/function-parentheses-space-inside"
+	to = "/user-guide/rules/list/function-parentheses-space-inside"
+
+[[redirects]]
+	from = "/user-guide/rules/function-url-no-scheme-relative"
+	to = "/user-guide/rules/list/function-url-no-scheme-relative"
+
+[[redirects]]
+	from = "/user-guide/rules/function-url-quotes"
+	to = "/user-guide/rules/list/function-url-quotes"
+
+[[redirects]]
+	from = "/user-guide/rules/function-url-scheme-allowed-list"
+	to = "/user-guide/rules/list/function-url-scheme-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/function-url-scheme-blacklist"
+	to = "/user-guide/rules/list/function-url-scheme-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/function-url-scheme-disallowed-list"
+	to = "/user-guide/rules/list/function-url-scheme-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/function-url-scheme-whitelist"
+	to = "/user-guide/rules/list/function-url-scheme-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/function-whitelist"
+	to = "/user-guide/rules/list/function-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/function-whitespace-after"
+	to = "/user-guide/rules/list/function-whitespace-after"
+
+[[redirects]]
+	from = "/user-guide/rules/hue-degree-notation"
+	to = "/user-guide/rules/list/hue-degree-notation"
+
+[[redirects]]
+	from = "/user-guide/rules/indentation"
+	to = "/user-guide/rules/list/indentation"
+
+[[redirects]]
+	from = "/user-guide/rules/keyframe-declaration-no-important"
+	to = "/user-guide/rules/list/keyframe-declaration-no-important"
+
+[[redirects]]
+	from = "/user-guide/rules/keyframes-name-pattern"
+	to = "/user-guide/rules/list/keyframes-name-pattern"
+
+[[redirects]]
+	from = "/user-guide/rules/length-zero-no-unit"
+	to = "/user-guide/rules/list/length-zero-no-unit"
+
+[[redirects]]
+	from = "/user-guide/rules/linebreaks"
+	to = "/user-guide/rules/list/linebreaks"
+
+[[redirects]]
+	from = "/user-guide/rules/max-empty-lines"
+	to = "/user-guide/rules/list/max-empty-lines"
+
+[[redirects]]
+	from = "/user-guide/rules/max-line-length"
+	to = "/user-guide/rules/list/max-line-length"
+
+[[redirects]]
+	from = "/user-guide/rules/max-nesting-depth"
+	to = "/user-guide/rules/list/max-nesting-depth"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-colon-space-after"
+	to = "/user-guide/rules/list/media-feature-colon-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-colon-space-before"
+	to = "/user-guide/rules/list/media-feature-colon-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-name-allowed-list"
+	to = "/user-guide/rules/list/media-feature-name-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-name-blacklist"
+	to = "/user-guide/rules/list/media-feature-name-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-name-case"
+	to = "/user-guide/rules/list/media-feature-name-case"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-name-disallowed-list"
+	to = "/user-guide/rules/list/media-feature-name-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-name-no-unknown"
+	to = "/user-guide/rules/list/media-feature-name-no-unknown"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-name-no-vendor-prefix"
+	to = "/user-guide/rules/list/media-feature-name-no-vendor-prefix"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-name-value-allowed-list"
+	to = "/user-guide/rules/list/media-feature-name-value-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-name-value-whitelist"
+	to = "/user-guide/rules/list/media-feature-name-value-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-name-whitelist"
+	to = "/user-guide/rules/list/media-feature-name-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-parentheses-space-inside"
+	to = "/user-guide/rules/list/media-feature-parentheses-space-inside"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-range-operator-space-after"
+	to = "/user-guide/rules/list/media-feature-range-operator-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/media-feature-range-operator-space-before"
+	to = "/user-guide/rules/list/media-feature-range-operator-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/media-query-list-comma-newline-after"
+	to = "/user-guide/rules/list/media-query-list-comma-newline-after"
+
+[[redirects]]
+	from = "/user-guide/rules/media-query-list-comma-newline-before"
+	to = "/user-guide/rules/list/media-query-list-comma-newline-before"
+
+[[redirects]]
+	from = "/user-guide/rules/media-query-list-comma-space-after"
+	to = "/user-guide/rules/list/media-query-list-comma-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/media-query-list-comma-space-before"
+	to = "/user-guide/rules/list/media-query-list-comma-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/named-grid-areas-no-invalid"
+	to = "/user-guide/rules/list/named-grid-areas-no-invalid"
+
+[[redirects]]
+	from = "/user-guide/rules/no-descending-specificity"
+	to = "/user-guide/rules/list/no-descending-specificity"
+
+[[redirects]]
+	from = "/user-guide/rules/no-duplicate-at-import-rules"
+	to = "/user-guide/rules/list/no-duplicate-at-import-rules"
+
+[[redirects]]
+	from = "/user-guide/rules/no-duplicate-selectors"
+	to = "/user-guide/rules/list/no-duplicate-selectors"
+
+[[redirects]]
+	from = "/user-guide/rules/no-empty-first-line"
+	to = "/user-guide/rules/list/no-empty-first-line"
+
+[[redirects]]
+	from = "/user-guide/rules/no-empty-source"
+	to = "/user-guide/rules/list/no-empty-source"
+
+[[redirects]]
+	from = "/user-guide/rules/no-eol-whitespace"
+	to = "/user-guide/rules/list/no-eol-whitespace"
+
+[[redirects]]
+	from = "/user-guide/rules/no-extra-semicolons"
+	to = "/user-guide/rules/list/no-extra-semicolons"
+
+[[redirects]]
+	from = "/user-guide/rules/no-invalid-double-slash-comments"
+	to = "/user-guide/rules/list/no-invalid-double-slash-comments"
+
+[[redirects]]
+	from = "/user-guide/rules/no-invalid-position-at-import-rule"
+	to = "/user-guide/rules/list/no-invalid-position-at-import-rule"
+
+[[redirects]]
+	from = "/user-guide/rules/no-irregular-whitespace"
+	to = "/user-guide/rules/list/no-irregular-whitespace"
+
+[[redirects]]
+	from = "/user-guide/rules/no-missing-end-of-source-newline"
+	to = "/user-guide/rules/list/no-missing-end-of-source-newline"
+
+[[redirects]]
+	from = "/user-guide/rules/no-unknown-animations"
+	to = "/user-guide/rules/list/no-unknown-animations"
+
+[[redirects]]
+	from = "/user-guide/rules/number-leading-zero"
+	to = "/user-guide/rules/list/number-leading-zero"
+
+[[redirects]]
+	from = "/user-guide/rules/number-max-precision"
+	to = "/user-guide/rules/list/number-max-precision"
+
+[[redirects]]
+	from = "/user-guide/rules/number-no-trailing-zeros"
+	to = "/user-guide/rules/list/number-no-trailing-zeros"
+
+[[redirects]]
+	from = "/user-guide/rules/property-allowed-list"
+	to = "/user-guide/rules/list/property-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/property-blacklist"
+	to = "/user-guide/rules/list/property-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/property-case"
+	to = "/user-guide/rules/list/property-case"
+
+[[redirects]]
+	from = "/user-guide/rules/property-disallowed-list"
+	to = "/user-guide/rules/list/property-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/property-no-unknown"
+	to = "/user-guide/rules/list/property-no-unknown"
+
+[[redirects]]
+	from = "/user-guide/rules/property-no-vendor-prefix"
+	to = "/user-guide/rules/list/property-no-vendor-prefix"
+
+[[redirects]]
+	from = "/user-guide/rules/property-whitelist"
+	to = "/user-guide/rules/list/property-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/rule-empty-line-before"
+	to = "/user-guide/rules/list/rule-empty-line-before"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-attribute-brackets-space-inside"
+	to = "/user-guide/rules/list/selector-attribute-brackets-space-inside"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-attribute-name-disallowed-list"
+	to = "/user-guide/rules/list/selector-attribute-name-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-attribute-operator-allowed-list"
+	to = "/user-guide/rules/list/selector-attribute-operator-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-attribute-operator-blacklist"
+	to = "/user-guide/rules/list/selector-attribute-operator-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-attribute-operator-disallowed-list"
+	to = "/user-guide/rules/list/selector-attribute-operator-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-attribute-operator-space-after"
+	to = "/user-guide/rules/list/selector-attribute-operator-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-attribute-operator-space-before"
+	to = "/user-guide/rules/list/selector-attribute-operator-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-attribute-operator-whitelist"
+	to = "/user-guide/rules/list/selector-attribute-operator-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-attribute-quotes"
+	to = "/user-guide/rules/list/selector-attribute-quotes"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-class-pattern"
+	to = "/user-guide/rules/list/selector-class-pattern"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-combinator-allowed-list"
+	to = "/user-guide/rules/list/selector-combinator-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-combinator-blacklist"
+	to = "/user-guide/rules/list/selector-combinator-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-combinator-disallowed-list"
+	to = "/user-guide/rules/list/selector-combinator-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-combinator-space-after"
+	to = "/user-guide/rules/list/selector-combinator-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-combinator-space-before"
+	to = "/user-guide/rules/list/selector-combinator-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-combinator-whitelist"
+	to = "/user-guide/rules/list/selector-combinator-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-descendant-combinator-no-non-space"
+	to = "/user-guide/rules/list/selector-descendant-combinator-no-non-space"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-disallowed-list"
+	to = "/user-guide/rules/list/selector-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-id-pattern"
+	to = "/user-guide/rules/list/selector-id-pattern"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-list-comma-newline-after"
+	to = "/user-guide/rules/list/selector-list-comma-newline-after"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-list-comma-newline-before"
+	to = "/user-guide/rules/list/selector-list-comma-newline-before"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-list-comma-space-after"
+	to = "/user-guide/rules/list/selector-list-comma-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-list-comma-space-before"
+	to = "/user-guide/rules/list/selector-list-comma-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-max-attribute"
+	to = "/user-guide/rules/list/selector-max-attribute"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-max-class"
+	to = "/user-guide/rules/list/selector-max-class"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-max-combinators"
+	to = "/user-guide/rules/list/selector-max-combinators"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-max-compound-selectors"
+	to = "/user-guide/rules/list/selector-max-compound-selectors"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-max-empty-lines"
+	to = "/user-guide/rules/list/selector-max-empty-lines"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-max-id"
+	to = "/user-guide/rules/list/selector-max-id"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-max-pseudo-class"
+	to = "/user-guide/rules/list/selector-max-pseudo-class"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-max-specificity"
+	to = "/user-guide/rules/list/selector-max-specificity"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-max-type"
+	to = "/user-guide/rules/list/selector-max-type"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-max-universal"
+	to = "/user-guide/rules/list/selector-max-universal"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-nested-pattern"
+	to = "/user-guide/rules/list/selector-nested-pattern"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-no-qualifying-type"
+	to = "/user-guide/rules/list/selector-no-qualifying-type"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-no-vendor-prefix"
+	to = "/user-guide/rules/list/selector-no-vendor-prefix"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-class-allowed-list"
+	to = "/user-guide/rules/list/selector-pseudo-class-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-class-blacklist"
+	to = "/user-guide/rules/list/selector-pseudo-class-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-class-case"
+	to = "/user-guide/rules/list/selector-pseudo-class-case"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-class-disallowed-list"
+	to = "/user-guide/rules/list/selector-pseudo-class-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-class-no-unknown"
+	to = "/user-guide/rules/list/selector-pseudo-class-no-unknown"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-class-parentheses-space-inside"
+	to = "/user-guide/rules/list/selector-pseudo-class-parentheses-space-inside"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-class-whitelist"
+	to = "/user-guide/rules/list/selector-pseudo-class-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-element-allowed-list"
+	to = "/user-guide/rules/list/selector-pseudo-element-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-element-blacklist"
+	to = "/user-guide/rules/list/selector-pseudo-element-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-element-case"
+	to = "/user-guide/rules/list/selector-pseudo-element-case"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-element-colon-notation"
+	to = "/user-guide/rules/list/selector-pseudo-element-colon-notation"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-element-disallowed-list"
+	to = "/user-guide/rules/list/selector-pseudo-element-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-element-no-unknown"
+	to = "/user-guide/rules/list/selector-pseudo-element-no-unknown"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-pseudo-element-whitelist"
+	to = "/user-guide/rules/list/selector-pseudo-element-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-type-case"
+	to = "/user-guide/rules/list/selector-type-case"
+
+[[redirects]]
+	from = "/user-guide/rules/selector-type-no-unknown"
+	to = "/user-guide/rules/list/selector-type-no-unknown"
+
+[[redirects]]
+	from = "/user-guide/rules/shorthand-property-no-redundant-values"
+	to = "/user-guide/rules/list/shorthand-property-no-redundant-values"
+
+[[redirects]]
+	from = "/user-guide/rules/string-no-newline"
+	to = "/user-guide/rules/list/string-no-newline"
+
+[[redirects]]
+	from = "/user-guide/rules/string-quotes"
+	to = "/user-guide/rules/list/string-quotes"
+
+[[redirects]]
+	from = "/user-guide/rules/time-min-milliseconds"
+	to = "/user-guide/rules/list/time-min-milliseconds"
+
+[[redirects]]
+	from = "/user-guide/rules/unicode-bom"
+	to = "/user-guide/rules/list/unicode-bom"
+
+[[redirects]]
+	from = "/user-guide/rules/unit-allowed-list"
+	to = "/user-guide/rules/list/unit-allowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/unit-blacklist"
+	to = "/user-guide/rules/list/unit-blacklist"
+
+[[redirects]]
+	from = "/user-guide/rules/unit-case"
+	to = "/user-guide/rules/list/unit-case"
+
+[[redirects]]
+	from = "/user-guide/rules/unit-disallowed-list"
+	to = "/user-guide/rules/list/unit-disallowed-list"
+
+[[redirects]]
+	from = "/user-guide/rules/unit-no-unknown"
+	to = "/user-guide/rules/list/unit-no-unknown"
+
+[[redirects]]
+	from = "/user-guide/rules/unit-whitelist"
+	to = "/user-guide/rules/list/unit-whitelist"
+
+[[redirects]]
+	from = "/user-guide/rules/value-keyword-case"
+	to = "/user-guide/rules/list/value-keyword-case"
+
+[[redirects]]
+	from = "/user-guide/rules/value-list-comma-newline-after"
+	to = "/user-guide/rules/list/value-list-comma-newline-after"
+
+[[redirects]]
+	from = "/user-guide/rules/value-list-comma-newline-before"
+	to = "/user-guide/rules/list/value-list-comma-newline-before"
+
+[[redirects]]
+	from = "/user-guide/rules/value-list-comma-space-after"
+	to = "/user-guide/rules/list/value-list-comma-space-after"
+
+[[redirects]]
+	from = "/user-guide/rules/value-list-comma-space-before"
+	to = "/user-guide/rules/list/value-list-comma-space-before"
+
+[[redirects]]
+	from = "/user-guide/rules/value-list-max-empty-lines"
+	to = "/user-guide/rules/list/value-list-max-empty-lines"
+
+[[redirects]]
+	from = "/user-guide/rules/value-no-vendor-prefix"
+	to = "/user-guide/rules/list/value-no-vendor-prefix"
