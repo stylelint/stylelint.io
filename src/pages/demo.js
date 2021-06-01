@@ -1,7 +1,8 @@
-/* eslint-disable node/no-unsupported-features/es-syntax, node/no-missing-import */
 import React, { useEffect, useRef } from 'react';
-import Layout from '@theme/Layout';
+/* eslint-disable node/no-missing-import */
 import { useHistory, useLocation } from '@docusaurus/router';
+import Layout from '@theme/Layout';
+/* eslint-enable node/no-missing-import */
 
 function Demo() {
 	const history = useHistory();
@@ -43,5 +44,3 @@ function Demo() {
 Demo.title = 'Demo';
 
 export default Demo;
-
-/* eslint-enable */

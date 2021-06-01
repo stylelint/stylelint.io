@@ -1,3 +1,4 @@
+/* global module */
 module.exports = {
 	title: 'Stylelint',
 	tagline: 'A mighty, modern style linter',
