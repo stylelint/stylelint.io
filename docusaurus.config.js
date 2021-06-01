@@ -5,7 +5,6 @@ module.exports = {
 	baseUrl: '/',
 	organizationName: 'stylelint',
 	projectName: 'stylelint',
-	scripts: ['/js/pattern-validity.js'],
 	favicon: 'img/favicon.ico',
 	onBrokenLinks: 'log',
 	onBrokenMarkdownLinks: 'log',

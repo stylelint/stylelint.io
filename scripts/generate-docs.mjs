@@ -4,21 +4,77 @@ import * as path from 'path';
 import { default as remark } from 'remark';
 import { visit } from 'unist-util-visit';
 
-function processMarkdown(file, { rewriter }) {
-	function rewriteLink(options) {
-		function visitor(node) {
-			node.url = options.rewriter(node.url);
-		}
-
-		function transform(tree) {
-			visit(tree, ['link'], visitor);
-		}
-
-		return transform;
+function rewriteLink(options) {
+	function visitor(node) {
+		node.url = options.rewriter(node.url);
 	}
 
+	function transform(tree) {
+		visit(tree, ['link'], visitor);
+	}
+
+	return transform;
+}
+
+function wrapViolationExample() {
+	function visitor(node, index, parent) {
+		const isValid = node.children[1]?.children[0]?.value === 'not';
+		const className = isValid ? 'valid-pattern' : 'invalid-pattern';
+		const wrapperStart = { type: 'html', value: `<div class="${className}">` };
+		const wrapperEnd = { type: 'html', value: '</div>' };
+
+		// Insert to the next position of the paragraph
+		parent.children.splice(index + 1, 0, wrapperStart);
+
+		const childrenLength = parent.children.length;
+
+		// Find the end position
+		let endIndex = index + 1;
+
+		while (endIndex < childrenLength) {
+			const child = parent.children[endIndex];
+
+			if (isTrigger(child) || child.type === 'heading') {
+				break;
+			}
+
+			endIndex++;
+		}
+
+		// Insert to the end position
+		if (endIndex === childrenLength) {
+			parent.children.push(wrapperEnd);
+		} else {
+			parent.children.splice(endIndex, 0, wrapperEnd);
+		}
+	}
+
+	function isTrigger(node) {
+		if (node.type !== 'paragraph') return false;
+
+		if (!node.children) return false;
+
+		// There can be an `emphasis` node with "not" between the `first` and `last` nodes
+		const [first, , last] = node.children;
+		const text = (first?.value ?? '').trimEnd() + (last?.value ?? '');
+
+		return [
+			'The following patterns are considered violations:',
+			'The following pattern is considered a violation:',
+		].includes(text);
+	}
+
+	function transform(tree) {
+		visit(tree, isTrigger, visitor);
+	}
+
+	return transform;
+}
+
+function processMarkdown(file, { rewriter }) {
 	const content = remark()
 		.use(rewriteLink, { rewriter })
+		.use(wrapViolationExample)
 		.processSync(fs.readFileSync(file, 'utf8'))
 		.toString();
 
