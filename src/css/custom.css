@@ -1,0 +1,14 @@
+.demo {
+  align-items: stretch;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.valid-pattern .prism-code {
+  box-shadow: 0 -3px 0 0 green;
+}
+
+.invalid-pattern .prism-code {
+  box-shadow: 0 -3px 0 0 crimson;
+}
