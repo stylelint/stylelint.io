@@ -5,10 +5,10 @@
   height: 100%;
 }
 
-.valid-pattern .prism-code {
-  box-shadow: 0 -3px 0 0 green;
+.valid-pattern > div {
+  box-shadow: 0 -3px 0 0 green !important;
 }
 
-.invalid-pattern .prism-code {
-  box-shadow: 0 -3px 0 0 crimson;
+.invalid-pattern > div {
+  box-shadow: 0 -3px 0 0 crimson !important;
 }
