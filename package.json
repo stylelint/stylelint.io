@@ -123,7 +123,7 @@
     "@docusaurus/preset-classic": "2.0.0-beta.4",
     "@stylelint/prettier-config": "^2.0.0",
     "@stylelint/remark-preset": "^2.0.0",
-    "eslint": "^7.29.0",
+    "eslint": "^7.32.0",
     "eslint-config-stylelint": "github:stylelint/eslint-config-stylelint#esm",
     "eslint-plugin-react": "^7.24.0",
     "glob": "^7.1.7",
