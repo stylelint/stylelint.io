@@ -138,7 +138,7 @@
     "stylelint": "github:stylelint/stylelint",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-order": "^4.1.0",
-    "unist-util-visit": "^3.1.0"
+    "unist-util-visit": "^4.0.0"
   },
   "engines": {
     "node": ">=14.16.0"
