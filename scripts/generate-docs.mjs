@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { default as glob } from 'glob';
-import { default as remark } from 'remark';
+import { remark } from 'remark';
 import { visit } from 'unist-util-visit';
 
 function rewriteLink(options) {
