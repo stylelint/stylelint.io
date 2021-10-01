@@ -119,7 +119,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@docusaurus/core": "2.0.0-beta.5",
+    "@docusaurus/core": "2.0.0-beta.6",
     "@docusaurus/preset-classic": "2.0.0-beta.5",
     "@stylelint/prettier-config": "^2.0.0",
     "@stylelint/remark-preset": "^3.0.0",
