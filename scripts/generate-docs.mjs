@@ -83,13 +83,13 @@ function processMarkdown(file, { rewriter }) {
 	let slug;
 
 	const titleToSidebarLabel = {
-		stylelint: 'Home',
+		Stylelint: 'Home',
 	};
 
 	const sidebarLabel = titleToSidebarLabel[title] || title;
 
 	// Check for homepage
-	if (title === 'stylelint') {
+	if (title === 'Stylelint') {
 		title = sidebarLabel;
 		slug = '/';
 	}
