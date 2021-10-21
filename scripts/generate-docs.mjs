@@ -16,7 +16,7 @@ function rewriteLink(options) {
 	return transform;
 }
 
-function wrapViolationExample() {
+function wrapProblemExample() {
 	function visitor(node, index, parent) {
 		const isValid = node.children[1]?.children[0]?.value === 'not';
 		const className = isValid ? 'valid-pattern' : 'invalid-pattern';
@@ -59,8 +59,8 @@ function wrapViolationExample() {
 		const text = (first?.value ?? '').trimEnd() + (last?.value ?? '');
 
 		return [
-			'The following patterns are considered violations:',
-			'The following pattern is considered a violation:',
+			'The following patterns are considered problems:',
+			'The following pattern is considered a problem:',
 		].includes(text);
 	}
 
@@ -74,7 +74,7 @@ function wrapViolationExample() {
 function processMarkdown(file, { rewriter }) {
 	const content = remark()
 		.use(rewriteLink, { rewriter })
-		.use(wrapViolationExample)
+		.use(wrapProblemExample)
 		.processSync(fs.readFileSync(file, 'utf8'))
 		.toString();
 
@@ -83,13 +83,13 @@ function processMarkdown(file, { rewriter }) {
 	let slug;
 
 	const titleToSidebarLabel = {
-		stylelint: 'Home',
+		Stylelint: 'Home',
 	};
 
 	const sidebarLabel = titleToSidebarLabel[title] || title;
 
 	// Check for homepage
-	if (title === 'stylelint') {
+	if (title === 'Stylelint') {
 		title = sidebarLabel;
 		slug = '/';
 	}
