@@ -83,11 +83,6 @@
       "stylelint-order"
     ],
     "rules": {
-      "alpha-value-notation": "percentage",
-      "color-function-notation": "modern",
-      "font-family-name-quotes": "always-where-recommended",
-      "function-url-quotes": "always",
-      "hue-degree-notation": "angle",
       "order/order": [
         "custom-properties",
         "declarations",
@@ -110,8 +105,7 @@
             "global"
           ]
         }
-      ],
-      "string-quotes": "double"
+      ]
     }
   },
   "dependencies": {
