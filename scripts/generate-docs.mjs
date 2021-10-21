@@ -136,7 +136,7 @@ function main(outputDir) {
 				url
 					.replace(
 						'../../lib/rules/index.js',
-						'https://github.com/stylelint/stylelint/blob/master/lib/rules/index.js',
+						'https://github.com/stylelint/stylelint/blob/main/lib/rules/index.js',
 					)
 					.replace('../../CHANGELOG.md', '../CHANGELOG.md')
 					.replace('../../VISION.md', '../VISION.md')
