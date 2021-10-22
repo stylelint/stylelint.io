@@ -131,7 +131,7 @@
     "rimraf": "^3.0.2",
     "stylelint": "github:stylelint/stylelint",
     "stylelint-config-standard": "^23.0.0",
-    "stylelint-order": "^4.1.0",
+    "stylelint-order": "^5.0.0",
     "unist-util-visit": "^4.1.0"
   }
 }
