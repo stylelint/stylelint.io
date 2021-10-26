@@ -19,8 +19,7 @@ npm start
 Or to update the website to the latest version of stylelint:
 
 ```shell
-npm install --save-dev stylelint@latest
-npm run build
+npm install --save-dev https://github.com/stylelint/stylelint/tarball/<version-number>
 ```
 
 ... then commit and push your dependency change.
