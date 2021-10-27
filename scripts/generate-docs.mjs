@@ -172,6 +172,12 @@ function main(outputDir) {
 		fs.writeFileSync(outputFile, output, 'utf8');
 	});
 
+	glob.sync('node_modules/stylelint/*.png').forEach((imagePath) => {
+		const dest = path.join(outputDir, imagePath.replace('node_modules/stylelint/', ''));
+
+		fs.copyFileSync(imagePath, dest);
+	});
+
 	console.log('Documents have been generated.'); // eslint-disable-line no-console
 }
 
