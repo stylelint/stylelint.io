@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/stylelint/stylelint.io/workflows/CI/badge.svg)](https://github.com/stylelint/stylelint.io)
 
-The source of stylelint website.
+The source of stylelint website. To edit content, go to the main repository's [documentation folder](https://github.com/stylelint/stylelint/tree/main/docs).
 
 To get started:
 
