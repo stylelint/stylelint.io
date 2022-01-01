@@ -114,7 +114,7 @@
   },
   "devDependencies": {
     "@docusaurus/core": "^2.0.0-beta.13",
-    "@docusaurus/preset-classic": "^2.0.0-beta.13",
+    "@docusaurus/preset-classic": "^2.0.0-beta.14",
     "@stylelint/prettier-config": "^2.0.0",
     "@stylelint/remark-preset": "^3.0.0",
     "eslint": "^8.5.0",
