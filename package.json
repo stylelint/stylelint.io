@@ -129,7 +129,7 @@
     "remark": "^14.0.2",
     "remark-cli": "^10.0.1",
     "rimraf": "^3.0.2",
-    "stylelint": "https://github.com/stylelint/stylelint/tarball/14.5.2",
+    "stylelint": "https://github.com/stylelint/stylelint/tarball/14.5.3",
     "stylelint-config-standard": "^25.0.0",
     "stylelint-order": "^5.0.0",
     "unist-util-visit": "^4.1.0"
