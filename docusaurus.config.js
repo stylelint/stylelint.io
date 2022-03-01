@@ -16,6 +16,7 @@ module.exports = {
 				blog: false,
 				debug: undefined,
 				docs: {
+					breadcrumbs: false,
 					routeBasePath: '/',
 					path: 'docs',
 					sidebarPath: './sidebars.json',
