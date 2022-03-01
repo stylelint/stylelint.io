@@ -57,7 +57,8 @@ module.exports = {
 			],
 		},
 		algolia: {
-			apiKey: '29d680ce97507c5cd2836c6c74783c05',
+			appId: '0T0U7YW7T7',
+			apiKey: '2164fcb348ebad562ba0340da4760f25',
 			indexName: 'stylelint',
 		},
 	},
