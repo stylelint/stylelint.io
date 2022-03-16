@@ -78,7 +78,10 @@
     ]
   },
   "stylelint": {
-    "extends": "stylelint-config-standard",
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-prettier"
+    ],
     "plugins": [
       "stylelint-order"
     ],
@@ -89,23 +92,7 @@
         "rules",
         "at-rules"
       ],
-      "order/properties-alphabetical-order": true,
-      "property-no-unknown": [
-        true,
-        {
-          "ignoreProperties": [
-            "composes"
-          ]
-        }
-      ],
-      "selector-pseudo-class-no-unknown": [
-        true,
-        {
-          "ignorePseudoClasses": [
-            "global"
-          ]
-        }
-      ]
+      "order/properties-alphabetical-order": true
     }
   },
   "dependencies": {
@@ -113,23 +100,24 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@docusaurus/core": "^2.0.0-beta.16",
-    "@docusaurus/preset-classic": "^2.0.0-beta.16",
+    "@docusaurus/core": "^2.0.0-beta.17",
+    "@docusaurus/preset-classic": "^2.0.0-beta.17",
     "@stylelint/prettier-config": "^2.0.0",
     "@stylelint/remark-preset": "^3.0.0",
-    "eslint": "^8.10.0",
+    "eslint": "^8.11.0",
     "eslint-config-stylelint": "^15.0.0",
-    "eslint-plugin-react": "^7.29.2",
+    "eslint-plugin-react": "^7.29.4",
     "glob": "^7.2.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.3.4",
+    "lint-staged": "^12.3.6",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.7",
-    "prettier": "^2.5.1",
+    "postcss": "^8.4.12",
+    "prettier": "^2.6.0",
     "remark": "^14.0.2",
     "remark-cli": "^10.0.1",
     "rimraf": "^3.0.2",
-    "stylelint": "https://github.com/stylelint/stylelint/tarball/14.5.3",
+    "stylelint": "https://github.com/stylelint/stylelint/tarball/14.6.0",
+    "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^25.0.0",
     "stylelint-order": "^5.0.0",
     "unist-util-visit": "^4.1.0"
