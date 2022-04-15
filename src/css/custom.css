@@ -5,16 +5,16 @@
 	height: 100%;
 }
 
-.valid-pattern > div {
+.valid-pattern .prism-code {
 	box-shadow: 0 -3px 0 0 green !important;
 }
 
-.invalid-pattern > div {
+.invalid-pattern .prism-code {
 	box-shadow: 0 -3px 0 0 crimson !important;
 }
 
 /* Hide generated list of rules in sidebar */
-/* stylelint-disable-next-line selector-class-pattern */
+/* stylelint-disable selector-class-pattern */
 .menu__list-item:nth-of-type(2) .menu__list-item:nth-of-type(3) .menu__list-item:last-child {
 	display: none;
 }

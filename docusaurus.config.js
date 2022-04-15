@@ -1,4 +1,5 @@
-/* global module */
+/* global module, require */
+
 module.exports = {
 	title: 'Stylelint',
 	tagline: 'A mighty, modern style linter',
@@ -22,7 +23,7 @@ module.exports = {
 					sidebarPath: './sidebars.json',
 				},
 				theme: {
-					customCss: '../src/css/custom.css',
+					customCss: [require.resolve('./src/css/custom.css')],
 				},
 			},
 		],
