@@ -1,6 +1,10 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   test:
@@ -9,16 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Get Node.js version from .nvmrc
-        id: node-version
-        run: echo "::set-output name=value::$(< .nvmrc)"
+      - uses: actions/checkout@v3
 
       - name: Install Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '${{ steps.node-version.outputs.value }}'
+          node-version-file: .nvmrc
           cache: npm
 
       - name: Install latest npm
