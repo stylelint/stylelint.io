@@ -8,6 +8,6 @@ on:
 
 jobs:
   test:
-    uses: stylelint/.github/.github/workflows/test.yml@reusable-workflow
+    uses: stylelint/.github/.github/workflows/test.yml@reusable-workflow # TODO: Change to `@main`
     with:
       node-version: '["16"]'
