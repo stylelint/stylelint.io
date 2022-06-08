@@ -117,9 +117,9 @@
     "remark": "^14.0.2",
     "remark-cli": "^10.0.1",
     "rimraf": "^3.0.2",
-    "stylelint": "https://github.com/stylelint/stylelint/tarball/14.8.5",
+    "stylelint": "https://github.com/stylelint/stylelint/tarball/14.9.0",
     "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-standard": "^26.0.0",
     "stylelint-order": "^5.0.0",
     "unist-util-visit": "^4.1.0"
   },
