@@ -8,3 +8,7 @@ updates:
     versioning-strategy: increase
     labels:
       - 'pr: dependencies'
+    # TODO: We cannot update React to v18. See https://github.com/facebook/docusaurus/issues/7264
+    ignore:
+      - dependency-name: 'react'
+        versions: ['18.x']
