@@ -106,7 +106,7 @@
     "@stylelint/prettier-config": "^2.0.0",
     "@stylelint/remark-preset": "^4.0.0",
     "eslint": "^8.24.0",
-    "eslint-config-stylelint": "^16.0.0",
+    "eslint-config-stylelint": "^17.0.0",
     "eslint-plugin-react": "^7.31.8",
     "glob": "^8.0.3",
     "husky": "^8.0.1",
