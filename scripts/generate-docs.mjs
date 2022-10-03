@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 import { default as glob } from 'glob';
 import { remark } from 'remark';
 import { visit } from 'unist-util-visit';
@@ -113,6 +113,7 @@ function processMarkdown(file, { rewriter }) {
 }
 
 function main(outputDir) {
+	fs.rmSync(outputDir, { force: true, recursive: true });
 	fs.mkdirSync(outputDir);
 
 	glob.sync('node_modules/stylelint/*.md').forEach((file) => {
