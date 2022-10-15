@@ -15,6 +15,8 @@
 
 /* Hide generated list of rules in sidebar */
 /* stylelint-disable selector-class-pattern */
-.menu__list-item:nth-of-type(2) .menu__list-item:nth-of-type(3) .menu__list-item:last-child {
+.theme-doc-sidebar-menu
+	.theme-doc-sidebar-item-category-level-1:nth-child(2)
+	.theme-doc-sidebar-item-category-level-2:nth-child(4) {
 	display: none;
 }

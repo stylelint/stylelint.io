@@ -141,7 +141,7 @@ function main(outputDir) {
 					)
 					.replace('../../CHANGELOG.md', '../CHANGELOG.md')
 					.replace('../../VISION.md', '../VISION.md')
-					.replace('../../lib/rules/', 'rules/list/')
+					.replace('../../lib/rules/', 'rules/')
 					.replace('/README.md', '.md')
 					.replace('CONTRIBUTING.md', 'CONTRIBUTING'),
 		});
@@ -158,13 +158,13 @@ function main(outputDir) {
 			rewriter: (url) =>
 				url
 					.replace(/\.\.\/([a-z-]+)\/README.md/, '$1.md')
-					.replace(/\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-/]+)\.md/, '../../$1.md'),
+					.replace(/\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-/]+)\.md/, '../$1.md'),
 		});
 
 		const outputFile = path.join(
 			outputDir,
 			file
-				.replace('node_modules/stylelint/lib/rules', 'user-guide/rules/list')
+				.replace('node_modules/stylelint/lib/rules', 'user-guide/rules')
 				.replace('/README.md', '.md'),
 		);
 
