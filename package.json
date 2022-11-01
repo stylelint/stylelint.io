@@ -104,7 +104,7 @@
     "@docusaurus/preset-classic": "^2.1.0",
     "@stylelint/prettier-config": "^2.0.0",
     "@stylelint/remark-preset": "^4.0.0",
-    "eslint": "^8.25.0",
+    "eslint": "^8.26.0",
     "eslint-config-stylelint": "^17.0.0",
     "eslint-plugin-react": "^7.31.10",
     "glob": "^8.0.3",
