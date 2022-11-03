@@ -100,8 +100,8 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@docusaurus/core": "^2.1.0",
-    "@docusaurus/preset-classic": "^2.1.0",
+    "@docusaurus/core": "^2.2.0",
+    "@docusaurus/preset-classic": "^2.2.0",
     "@stylelint/prettier-config": "^2.0.0",
     "@stylelint/remark-preset": "^4.0.0",
     "eslint": "^8.26.0",
@@ -115,13 +115,13 @@
     "prettier": "^2.7.1",
     "remark": "^14.0.2",
     "remark-cli": "^11.0.0",
-    "stylelint": "https://github.com/stylelint/stylelint/tarball/14.14.0",
+    "stylelint": "https://github.com/stylelint/stylelint/tarball/14.14.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^29.0.0",
     "stylelint-order": "^5.0.0",
     "unist-util-visit": "^4.1.1"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   }
 }
