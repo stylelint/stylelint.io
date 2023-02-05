@@ -17,6 +17,6 @@
 /* stylelint-disable selector-class-pattern */
 .theme-doc-sidebar-menu
 	.theme-doc-sidebar-item-category-level-1:nth-child(2)
-	.theme-doc-sidebar-item-category-level-2:nth-child(4) {
+	.theme-doc-sidebar-item-category-level-2:nth-child(5) {
 	display: none;
 }

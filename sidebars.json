@@ -4,6 +4,7 @@
 		{
 			"User guide": [
 				"user-guide/get-started",
+				"user-guide/customize",
 				"user-guide/configure",
 				"user-guide/rules",
 				{
@@ -16,43 +17,25 @@
 						}
 					]
 				},
-				{
-					"type": "category",
-					"label": "Usage",
-					"items": [
-						"user-guide/usage/cli",
-						"user-guide/usage/node-api",
-						"user-guide/usage/postcss-plugin",
-						"user-guide/usage/options"
-					]
-				},
-				{
-					"type": "category",
-					"label": "Integrations",
-					"items": [
-						"user-guide/integrations/editor",
-						"user-guide/integrations/task-runner",
-						"user-guide/integrations/other"
-					]
-				},
 				"user-guide/ignore-code",
-				"user-guide/combine",
-				"user-guide/regex",
+				"user-guide/cli",
+				"user-guide/node-api",
+				"user-guide/postcss-plugin",
+				"user-guide/options",
 				"user-guide/errors"
 			]
 		},
 		{
 			"Developer guide": [
 				"developer-guide/rules",
-				"developer-guide/syntaxes",
 				"developer-guide/plugins",
+				"developer-guide/syntaxes",
 				"developer-guide/formatters",
-				"developer-guide/system-tests",
-				"developer-guide/processors"
+				"developer-guide/system-tests"
 			]
 		},
 		{
-			"Migration guide": ["migration-guide/to-14"]
+			"Migration guide": ["migration-guide/to-15", "migration-guide/to-14"]
 		},
 		{
 			"Maintainer guide": [
