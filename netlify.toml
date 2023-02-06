@@ -3,16 +3,24 @@
   publish = "build/"
 
 [[redirects]]
+  from = "/user-guide/usage/cli"
+  to = "/user-guide/cli"
+
+[[redirects]]
+  from = "/user-guide/usage/node-api"
+  to = "/user-guide/node-api"
+
+[[redirects]]
+  from = "/user-guide/usage/postcss-plugin"
+  to = "/user-guide/postcss-plugin"
+
+[[redirects]]
+  from = "/user-guide/usage/options"
+  to = "/user-guide/options"
+
+[[redirects]]
   from = "/user-guide/rules/list"
   to = "/user-guide/rules"
-
-[[redirects]]
-  from = "/user-guide/rules/combine"
-  to = "/user-guide/combine"
-
-[[redirects]]
-  from = "/user-guide/rules/regex"
-  to = "/user-guide/regex"
 
 [[redirects]]
   from = "/user-guide/rules/list/alpha-value-notation"
