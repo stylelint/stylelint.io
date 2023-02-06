@@ -141,7 +141,7 @@ function main(outputDir) {
 					)
 					.replace('../../CHANGELOG.md', '../CHANGELOG.md')
 					.replace('../../VISION.md', '../VISION.md')
-					.replace('../../lib/rules/', 'rules/')
+					.replace('../../lib/rules/', '/user-guide/rules/')
 					.replace('/README.md', '.md')
 					.replace('CONTRIBUTING.md', 'CONTRIBUTING'),
 		});
