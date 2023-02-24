@@ -22,6 +22,7 @@ module.exports = {
 					routeBasePath: '/',
 					path: 'docs',
 					sidebarPath: './sidebars.json',
+					rehypePlugins: [require('./rehype-plugin-crossorigin-attr.js')],
 				},
 				theme: {
 					customCss: [require.resolve('./src/css/custom.css')],
