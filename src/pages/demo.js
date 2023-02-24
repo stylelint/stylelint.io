@@ -5,21 +5,21 @@ import Layout from '@theme/Layout';
 /* eslint-enable node/no-missing-import */
 
 function Demo() {
-	if (!window.crossOriginIsolated) {
-		// Reload to apply headers for COI (cross-origin isolated)
-		//   This control is not necessary when applying COI to all pages. However,
-		//   some external images cannot be loaded on pages using COI.
-		//   Another reason is that SPA cannot control the header for each page.
-		window.location.reload();
-
-		return null;
-	}
-
 	const history = useHistory();
 	const location = useLocation();
 	const iframeEl = useRef();
 
 	useEffect(() => {
+		if (!window.crossOriginIsolated) {
+			// Reload to apply headers for COI (cross-origin isolated)
+			//   This control is not necessary when applying COI to all pages. However,
+			//   some external images cannot be loaded on pages using COI.
+			//   Another reason is that SPA cannot control the header for each page.
+			window.location.reload();
+
+			return;
+		}
+
 		const FRAME_ORIGIN = 'https://deploy-preview-352--chimerical-trifle-8d3c21.netlify.app';
 
 		if (iframeEl.current) {
