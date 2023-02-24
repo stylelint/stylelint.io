@@ -22,7 +22,6 @@ module.exports = {
 					routeBasePath: '/',
 					path: 'docs',
 					sidebarPath: './sidebars.json',
-					rehypePlugins: [require('./rehype-plugin-crossorigin-attr.js')],
 				},
 				theme: {
 					customCss: [require.resolve('./src/css/custom.css')],
@@ -78,10 +77,16 @@ module.exports = {
 
 					/** @type {import('webpack-dev-server').Configuration} */
 					const devServer = {
-						headers: [
-							{ key: 'Cross-Origin-Embedder-Policy', value: 'require-corp' },
-							{ key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
-						],
+						headers: (req) => {
+							if (req.baseUrl !== '/demo') {
+								return [];
+							}
+
+							return [
+								{ key: 'Cross-Origin-Embedder-Policy', value: 'require-corp' },
+								{ key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+							];
+						},
 					};
 
 					return {
@@ -91,4 +96,5 @@ module.exports = {
 			};
 		},
 	],
+	clientModules: [require.resolve('./src/stylelint-io-global-script.js')],
 };

@@ -3,9 +3,7 @@
   publish = "build/"
 
 [[headers]]
-  # We cannot use `for="/demo"`.
-	# Because the header is not set if you access the demo page with SPA from another page.
-  for = "/*"
+  for="/demo"
   [headers.values]
     Cross-Origin-Embedder-Policy = "require-corp"
     Cross-Origin-Opener-Policy = "same-origin"
