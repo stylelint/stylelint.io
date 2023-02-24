@@ -1,5 +1,6 @@
 /* global module, require */
 
+/** @type {typeof import('@generated/docusaurus.config').default} */
 module.exports = {
 	title: 'Stylelint',
 	tagline: 'A mighty, modern style linter',
@@ -64,4 +65,29 @@ module.exports = {
 			indexName: 'stylelint',
 		},
 	},
+	plugins: [
+		// Sets response headers for development.
+		function coiPlugin() {
+			return {
+				name: 'docusaurus-plugin-coi',
+				configureWebpack(_config, isServer) {
+					if (isServer) {
+						return {};
+					}
+
+					/** @type {import('webpack-dev-server').Configuration} */
+					const devServer = {
+						headers: [
+							{ key: 'Cross-Origin-Embedder-Policy', value: 'require-corp' },
+							{ key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+						],
+					};
+
+					return {
+						devServer,
+					};
+				},
+			};
+		},
+	],
 };

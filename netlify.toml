@@ -2,6 +2,12 @@
   command = "npm run build"
   publish = "build/"
 
+[[headers]]
+  for = "/demo"
+  [headers.values]
+    Cross-Origin-Embedder-Policy = "require-corp"
+    Cross-Origin-Opener-Policy = "same-origin"
+
 [[redirects]]
   from = "/user-guide/usage/cli"
   to = "/user-guide/cli"
