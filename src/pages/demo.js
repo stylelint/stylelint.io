@@ -10,7 +10,17 @@ function Demo() {
 	const iframeEl = useRef();
 
 	useEffect(() => {
-		const FRAME_ORIGIN = 'https://stylelint-demo.herokuapp.com';
+		if (!window.crossOriginIsolated) {
+			// Reload to apply headers for COI (cross-origin isolated)
+			//   This control is not necessary when applying COI to all pages. However,
+			//   some external images cannot be loaded on pages using COI.
+			//   Another reason is that SPA cannot control the header for each page.
+			window.location.reload();
+
+			return;
+		}
+
+		const FRAME_ORIGIN = 'https://chimerical-trifle-8d3c21.netlify.app';
 
 		if (iframeEl.current) {
 			window.addEventListener(
@@ -30,6 +40,7 @@ function Demo() {
 	return (
 		<Layout title="Demo" wrapperClassName="demo">
 			<iframe
+				allow="cross-origin-isolated"
 				ref={iframeEl}
 				id="demo"
 				frameBorder="0"
