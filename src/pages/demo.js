@@ -20,7 +20,7 @@ function Demo() {
 			return;
 		}
 
-		const FRAME_ORIGIN = 'https://deploy-preview-352--chimerical-trifle-8d3c21.netlify.app';
+		const FRAME_ORIGIN = 'https://chimerical-trifle-8d3c21.netlify.app';
 
 		if (iframeEl.current) {
 			window.addEventListener(
