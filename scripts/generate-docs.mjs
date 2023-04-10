@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { default as glob } from 'glob';
+import { glob } from 'glob';
 import { remark } from 'remark';
 import { visit } from 'unist-util-visit';
 
