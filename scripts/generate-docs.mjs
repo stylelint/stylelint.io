@@ -71,10 +71,66 @@ function wrapProblemExample() {
 	return transform;
 }
 
+/**
+ * Convert GFM notes and warnings (beta) to Docusaurus Admonitions.
+ *
+ * @see https://docusaurus.io/docs/markdown-features/admonitions
+ * @see https://github.com/facebook/docusaurus/issues/7471
+ * @see https://github.com/orgs/community/discussions/16925
+ */
+function convertToAdmonitions() {
+	const gfmToAdmonitions = new Map([
+		['Note', 'note'],
+		['Warning', 'caution'],
+	]);
+
+	function visitor(blockquote, index, parent) {
+		const [paragraph] = blockquote.children;
+
+		if (paragraph.type !== 'paragraph') return;
+
+		const [strong, ...restChildren] = paragraph.children;
+
+		if (strong.type !== 'strong') return;
+
+		const [text] = strong.children;
+		const gfmType = text?.value;
+		const admType = gfmToAdmonitions.get(gfmType);
+
+		if (!admType) return;
+
+		// Trim a whitespace at the beginning of a sentence.
+		restChildren.forEach((child, i) => {
+			if (i === 0 && child.value) {
+				child.value = child.value.trimStart();
+			}
+		});
+
+		// Insert new nodes after the current one.
+		parent.children.splice(
+			index + 1,
+			0,
+			{ type: 'paragraph', children: [{ type: 'text', value: `:::${admType} ${gfmType}` }] },
+			{ type: 'paragraph', children: restChildren },
+			{ type: 'paragraph', children: [{ type: 'text', value: ':::' }] },
+		);
+
+		// Delete an old node.
+		parent.children.splice(index, 1);
+	}
+
+	function transform(tree) {
+		visit(tree, ['blockquote'], visitor);
+	}
+
+	return transform;
+}
+
 function processMarkdown(file, { rewriter }) {
 	const content = remark()
 		.use(rewriteLink, { rewriter })
 		.use(wrapProblemExample)
+		.use(convertToAdmonitions)
 		.processSync(fs.readFileSync(file, 'utf8'))
 		.toString();
 
