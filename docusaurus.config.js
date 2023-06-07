@@ -41,7 +41,7 @@ module.exports = {
 					to: '/',
 					label: 'Docs',
 					position: 'left',
-					activeBaseRegex: '^((?!/user-guide/rules).)*$',
+					activeBaseRegex: '^(?!/user-guide/rules|/demo)',
 				},
 				{
 					to: '/user-guide/rules',
