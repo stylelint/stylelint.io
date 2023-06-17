@@ -56,7 +56,7 @@
     ],
     "rules": {
       "require-await": "error",
-      "node/no-unpublished-import": [
+      "n/no-unpublished-import": [
         "error",
         {
           "allowModules": [

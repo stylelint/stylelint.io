@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-/* eslint-disable node/no-missing-import */
+/* eslint-disable n/no-missing-import */
 import { useHistory, useLocation } from '@docusaurus/router';
 import Layout from '@theme/Layout';
-/* eslint-enable node/no-missing-import */
+/* eslint-enable n/no-missing-import */
 
 function Demo() {
 	const history = useHistory();

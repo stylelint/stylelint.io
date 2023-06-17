@@ -1,5 +1,3 @@
-/* global module, require */
-
 /** @type {typeof import('@generated/docusaurus.config').default} */
 module.exports = {
 	title: 'Stylelint',
