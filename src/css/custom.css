@@ -27,6 +27,6 @@
 }
 
 /* Make a rule name stand out */
-.docs-doc-id-user-guide\/rules .markdown table tbody tr td:first-child code {
+.docs-doc-id-user-guide\/rules .markdown table tbody tr td:first-child :link code {
 	font-weight: bold;
 }
