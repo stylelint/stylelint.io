@@ -20,3 +20,12 @@
 	.theme-doc-sidebar-item-category-level-2:nth-child(5) {
 	display: none;
 }
+
+.docs-doc-id-user-guide\/rules .markdown table {
+	display: table;
+	width: 100%;
+}
+
+.docs-doc-id-user-guide\/rules .markdown table tbody tr td:first-child code {
+	font-weight: bold;
+}
