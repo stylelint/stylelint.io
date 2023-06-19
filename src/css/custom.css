@@ -26,6 +26,7 @@
 	width: 100%;
 }
 
+/* Make a rule name stand out */
 .docs-doc-id-user-guide\/rules .markdown table tbody tr td:first-child code {
 	font-weight: bold;
 }
