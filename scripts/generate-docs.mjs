@@ -137,6 +137,7 @@ function makeRuleSymbolsAccessbile() {
 	function visitor(node, _index, parent) {
 		const symbol = node.value;
 		const name = symbols.get(symbol);
+
 		parent.children = [
 			{
 				type: 'html',
@@ -147,6 +148,7 @@ function makeRuleSymbolsAccessbile() {
 
 	function transform(tree) {
 		const test = [...symbols.keys()].map((value) => ({ type: 'text', value }));
+
 		visit(tree, test, visitor);
 	}
 
