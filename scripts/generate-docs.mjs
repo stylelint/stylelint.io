@@ -2,6 +2,7 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { glob } from 'glob';
 import { remark } from 'remark';
+import remarkGFM from 'remark-gfm';
 import { visit } from 'unist-util-visit';
 
 function rewriteLink(options) {
@@ -126,11 +127,39 @@ function convertToAdmonitions() {
 	return transform;
 }
 
+function makeRuleSymbolsAccessbile() {
+	const symbols = new Map([
+		['⭐️', 'Recommended'],
+		['💅', 'Standard'],
+		['🔧', 'Autofixable'],
+	]);
+
+	function visitor(node, _index, parent) {
+		const symbol = node.value;
+		const name = symbols.get(symbol);
+		parent.children = [
+			{
+				type: 'html',
+				value: `<span title="${name}">${symbol}</span>`,
+			},
+		];
+	}
+
+	function transform(tree) {
+		const test = [...symbols.keys()].map((value) => ({ type: 'text', value }));
+		visit(tree, test, visitor);
+	}
+
+	return transform;
+}
+
 function processMarkdown(file, { rewriter }) {
 	const content = remark()
+		.use(remarkGFM)
 		.use(rewriteLink, { rewriter })
 		.use(wrapProblemExample)
 		.use(convertToAdmonitions)
+		.use(makeRuleSymbolsAccessbile)
 		.processSync(fs.readFileSync(file, 'utf8'))
 		.toString();
 
