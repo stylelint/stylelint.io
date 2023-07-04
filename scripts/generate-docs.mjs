@@ -129,8 +129,7 @@ function convertToAdmonitions() {
 
 function makeRuleSymbolsAccessbile() {
 	const symbols = new Map([
-		['⭐️', 'Recommended'],
-		['💅', 'Standard'],
+		['✅', 'Standard'],
 		['🔧', 'Autofixable'],
 	]);
 
