@@ -100,7 +100,7 @@
     "remark": "^14.0.3",
     "remark-cli": "^11.0.0",
     "remark-gfm": "^3.0.1",
-    "stylelint": "https://github.com/stylelint/stylelint/tarball/15.10.0",
+    "stylelint": "https://github.com/stylelint/stylelint/tarball/15.10.1",
     "stylelint-config-standard": "^33.0.0",
     "unist-util-visit": "^4.1.2"
   },
