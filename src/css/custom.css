@@ -30,3 +30,8 @@
 .docs-doc-id-user-guide\/rules .markdown table tbody tr td:first-child :link code {
 	font-weight: bold;
 }
+
+/* Remove table header */
+.docs-doc-id-user-guide\/rules .markdown table thead {
+	display: none;
+}
