@@ -1,6 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { glob } from 'glob';
+import process from 'node:process';
 import { remark } from 'remark';
 import remarkGFM from 'remark-gfm';
 import { visit } from 'unist-util-visit';
