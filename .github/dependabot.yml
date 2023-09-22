@@ -4,7 +4,7 @@ updates:
     directory: '/'
     schedule:
       interval: monthly
-    open-pull-requests-limit: 1
+    open-pull-requests-limit: 5
     versioning-strategy: increase
     labels:
       - 'pr: dependencies'
@@ -12,3 +12,14 @@ updates:
     ignore:
       - dependency-name: 'react'
         versions: ['18.x']
+    groups:
+      docusaurus:
+        patterns: ['@docusaurus/*']
+      react:
+        patterns: ['react', 'react-dom']
+      development-dependencies:
+        dependency-type: 'development'
+        exclude-patterns:
+          - '@docusaurus/*'
+          - 'stylelint'
+          - 'stylelint-config-standard'
