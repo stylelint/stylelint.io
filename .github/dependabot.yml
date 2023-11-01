@@ -8,17 +8,10 @@ updates:
     versioning-strategy: increase
     labels:
       - 'pr: dependencies'
-    # TODO: We cannot update React to v18. See https://github.com/facebook/docusaurus/issues/7264
-    ignore:
-      - dependency-name: 'react'
-        versions: ['18.x']
-      - dependency-name: 'react-dom'
-        versions: ['18.x']
     groups:
-      docusaurus:
-        patterns: ['@docusaurus/*']
-      react:
-        patterns: ['react', 'react-dom']
+      # Note: React is a peer dependency of Docusaurus.
+      docusaurus-and-react:
+        patterns: ['@docusaurus/*', 'react', 'react-dom']
       development-dependencies:
         dependency-type: 'development'
         exclude-patterns:
