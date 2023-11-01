@@ -82,8 +82,8 @@ function wrapProblemExample() {
  */
 function convertToAdmonitions() {
 	const gfmToAdmonitions = new Map([
-		['Note', 'note'],
-		['Warning', 'caution'],
+		['Note', 'info'],
+		['Warning', 'warning'],
 	]);
 
 	function visitor(blockquote, index, parent) {
@@ -215,6 +215,15 @@ function main(outputDir) {
 
 		fs.mkdirSync(path.dirname(outputFile), { recursive: true });
 
+		// TODO: Prevent the parse error. Remove this code when the error is fixed.
+		if (outputFile.endsWith('CHANGELOG.md')) {
+			output = output.replace(' #{&}', ' `#{&}`');
+
+			console.warn(
+				`Warning: The parse error in '${outputFile}' was prevented: 'Could not parse expression with acorn'.`,
+			); // eslint-disable-line no-console
+		}
+
 		fs.writeFileSync(outputFile, output, 'utf8');
 	});
 
@@ -266,7 +275,7 @@ function main(outputDir) {
 		fs.copyFileSync(imagePath, dest);
 	});
 
-	console.log('Documents have been generated.'); // eslint-disable-line no-console
+	console.log(`Documents have been generated to '${outputDir}'.`); // eslint-disable-line no-console
 }
 
 main(process.argv[2]);
