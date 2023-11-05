@@ -1,5 +1,5 @@
-/** @type {typeof import('@generated/docusaurus.config').default} */
-module.exports = {
+/** @type {import('@docusaurus/types').Config} */
+const config = {
 	title: 'Stylelint',
 	tagline: 'A mighty, modern style linter',
 	url: 'https://stylelint.io',
@@ -14,7 +14,7 @@ module.exports = {
 			'@docusaurus/preset-classic',
 			{
 				blog: false,
-				debug: undefined,
+				debug: false,
 				docs: {
 					breadcrumbs: false,
 					routeBasePath: '/',
@@ -22,7 +22,7 @@ module.exports = {
 					sidebarPath: './sidebars.json',
 				},
 				theme: {
-					customCss: [require.resolve('./src/css/custom.css')],
+					customCss: ['./src/css/custom.css'],
 				},
 			},
 		],
@@ -100,5 +100,7 @@ module.exports = {
 			};
 		},
 	],
-	clientModules: [require.resolve('./src/stylelint-io-global-script.js')],
+	clientModules: ['./src/stylelint-io-global-script.js'],
 };
+
+export default config;

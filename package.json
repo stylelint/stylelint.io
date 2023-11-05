@@ -16,14 +16,14 @@
     "serve": "docusaurus serve",
     "docusaurus": "docusaurus",
     "format": "prettier . --write",
-    "gendoc": "node ./scripts/generate-docs.mjs docs",
+    "gendoc": "node ./scripts/generate-docs.mjs docs/",
     "lint": "npm-run-all --parallel lint:*",
     "lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore ",
     "lint:formatting": "prettier . --check",
     "lint:js": "eslint . --ignore-path .gitignore  --ext .js,.mjs",
     "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
     "prepare": "husky install",
-    "start": "npm run gendoc && docusaurus start --no-open",
+    "start": "npm run gendoc && docusaurus start",
     "pretest": "npm run lint",
     "test": "npm run build"
   },
@@ -47,12 +47,13 @@
     },
     "settings": {
       "react": {
-        "version": "17.0.2"
+        "version": "detect"
       }
     },
     "extends": [
       "stylelint",
-      "plugin:react/recommended"
+      "plugin:react/recommended",
+      "plugin:react/jsx-runtime"
     ],
     "rules": {
       "require-await": "error",
@@ -80,12 +81,12 @@
     ]
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "@docusaurus/core": "^3.0.0",
+    "@docusaurus/preset-classic": "^3.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@docusaurus/core": "^2.4.3",
-    "@docusaurus/preset-classic": "^2.4.3",
     "@stylelint/prettier-config": "^3.0.0",
     "@stylelint/remark-preset": "^5.0.0",
     "eslint": "^8.52.0",

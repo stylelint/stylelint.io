@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 /* eslint-disable n/no-missing-import */
 import { useHistory, useLocation } from '@docusaurus/router';
 import Layout from '@theme/Layout';
