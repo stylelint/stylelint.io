@@ -214,16 +214,6 @@ function main(outputDir) {
 		);
 
 		fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-
-		// TODO: Prevent the parse error. Remove this code when the error is fixed.
-		if (outputFile.endsWith('CHANGELOG.md')) {
-			output = output.replace(' #{&}', ' `#{&}`');
-
-			console.warn(
-				`Warning: The parse error in '${outputFile}' was prevented: 'Could not parse expression with acorn'.`,
-			); // eslint-disable-line no-console
-		}
-
 		fs.writeFileSync(outputFile, output, 'utf8');
 	});
 
