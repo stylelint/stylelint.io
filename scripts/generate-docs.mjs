@@ -231,8 +231,12 @@ function main(outputDir) {
 			rewriter: (url) =>
 				url
 					.replace(
-						'../../lib/rules/index.js',
-						'https://github.com/stylelint/stylelint/blob/main/lib/rules/index.js',
+						/\.\.\/\.\.\/lib\/rules\/([a-z.]+)/,
+						'https://github.com/stylelint/stylelint/blob/main/lib/rules/$1',
+					)
+					.replace(
+						/\.\.\/\.\.\/types\/stylelint\/([a-z.]+)/,
+						'https://github.com/stylelint/stylelint/blob/main/types/stylelint/$1',
 					)
 					.replace('../../CHANGELOG.md', '../CHANGELOG.md')
 					.replace('../../VISION.md', '../VISION.md')
