@@ -35,7 +35,7 @@
 			]
 		},
 		{
-			"Migration guide": ["migration-guide/to-15", "migration-guide/to-14"]
+			"Migration guide": ["migration-guide/to-16", "migration-guide/to-15", "migration-guide/to-14"]
 		},
 		{
 			"Maintainer guide": [
