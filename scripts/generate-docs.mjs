@@ -82,8 +82,9 @@ function wrapProblemExample() {
  */
 function convertToAdmonitions() {
 	const gfmToAdmonitions = new Map([
-		['Note', 'info'],
-		['Warning', 'warning'],
+		['NOTE', 'note'],
+		['IMPORTANT', 'info'],
+		['WARNING', 'warning'],
 	]);
 
 	function visitor(blockquote, index, parent) {
@@ -91,29 +92,27 @@ function convertToAdmonitions() {
 
 		if (paragraph.type !== 'paragraph') return;
 
-		const [strong, ...restChildren] = paragraph.children;
+		const [text, ...restChildren] = paragraph.children;
 
-		if (strong.type !== 'strong') return;
+		if (text.type !== 'text') return;
 
-		const [text] = strong.children;
-		const gfmType = text?.value;
+		const [, gfmType, description] = text.value.match(/^\[!(\w+)\]\n(.+)/s) ?? [];
+
+		if (!gfmType || !description) return;
+
 		const admType = gfmToAdmonitions.get(gfmType);
 
 		if (!admType) return;
-
-		// Trim a whitespace at the beginning of a sentence.
-		restChildren.forEach((child, i) => {
-			if (i === 0 && child.value) {
-				child.value = child.value.trimStart();
-			}
-		});
 
 		// Insert new nodes after the current one.
 		parent.children.splice(
 			index + 1,
 			0,
-			{ type: 'paragraph', children: [{ type: 'text', value: `:::${admType} ${gfmType}` }] },
-			{ type: 'paragraph', children: restChildren },
+			{
+				type: 'paragraph',
+				children: [{ type: 'html', value: `:::${admType}[${gfmType}]` }],
+			},
+			{ type: 'paragraph', children: [{ type: 'text', value: description }, ...restChildren] },
 			{ type: 'paragraph', children: [{ type: 'text', value: ':::' }] },
 		);
 
