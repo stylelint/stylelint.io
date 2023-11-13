@@ -6,7 +6,7 @@ const config = {
 	baseUrl: '/',
 	organizationName: 'stylelint',
 	projectName: 'stylelint',
-	favicon: 'img/favicon.ico',
+	favicon: 'img/favicon.svg',
 	onBrokenLinks: 'log',
 	onBrokenMarkdownLinks: 'log',
 	presets: [
