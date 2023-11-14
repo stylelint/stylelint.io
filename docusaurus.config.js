@@ -28,6 +28,9 @@ const config = {
 		],
 	],
 	themeConfig: {
+		colorMode: {
+			respectPrefersColorScheme: true,
+		},
 		navbar: {
 			logo: {
 				alt: 'Stylelint',
