@@ -68,6 +68,10 @@ const config = {
 			apiKey: '2164fcb348ebad562ba0340da4760f25',
 			indexName: 'stylelint',
 		},
+		prism: {
+			// See https://prismjs.com/#supported-languages
+			additionalLanguages: ['bash', 'css', 'diff', 'json', 'markdown', 'shell-session'],
+		},
 	},
 	plugins: [
 		// Sets response headers for development.
