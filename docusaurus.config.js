@@ -6,7 +6,7 @@ const config = {
 	baseUrl: '/',
 	organizationName: 'stylelint',
 	projectName: 'stylelint',
-	favicon: 'img/favicon.ico',
+	favicon: 'img/favicon.svg',
 	onBrokenLinks: 'log',
 	onBrokenMarkdownLinks: 'log',
 	presets: [
@@ -28,6 +28,9 @@ const config = {
 		],
 	],
 	themeConfig: {
+		colorMode: {
+			respectPrefersColorScheme: true,
+		},
 		navbar: {
 			logo: {
 				alt: 'Stylelint',
@@ -67,6 +70,10 @@ const config = {
 			appId: '0T0U7YW7T7',
 			apiKey: '2164fcb348ebad562ba0340da4760f25',
 			indexName: 'stylelint',
+		},
+		prism: {
+			// See https://prismjs.com/#supported-languages
+			additionalLanguages: ['bash', 'css', 'diff', 'json', 'markdown', 'shell-session'],
 		},
 	},
 	plugins: [
