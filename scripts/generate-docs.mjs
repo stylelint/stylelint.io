@@ -221,7 +221,7 @@ function main(outputDir) {
 			rewriter: (url) =>
 				url
 					.replace(
-						/\.\.\/\.\.\/lib\/rules\/([a-z.]+)/,
+						/\.\.\/\.\.\/lib\/rules\/([a-z-]+\.[a-z]+)/,
 						'https://github.com/stylelint/stylelint/blob/main/lib/rules/$1',
 					)
 					.replace(
