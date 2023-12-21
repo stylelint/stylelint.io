@@ -1,7 +1,7 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'Stylelint',
-	tagline: 'A mighty, modern style linter',
+	tagline: 'A mighty CSS linter that helps you avoid errors and enforce conventions',
 	url: 'https://stylelint.io',
 	baseUrl: '/',
 	organizationName: 'stylelint',
