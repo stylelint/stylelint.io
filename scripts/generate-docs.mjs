@@ -203,7 +203,7 @@ function main(outputDir) {
 	fs.mkdirSync(outputDir);
 
 	glob.sync('node_modules/stylelint/*.md').forEach((file) => {
-		let output = processMarkdown(file, {
+		const output = processMarkdown(file, {
 			rewriter: (url) => url.replace(/^\/?docs\//, '/').replace('README.md', 'index.md'),
 		});
 
@@ -232,7 +232,12 @@ function main(outputDir) {
 					.replace('../../VISION.md', '../VISION.md')
 					.replace('../../lib/rules/', '/user-guide/rules/')
 					.replace('/README.md', '.md')
-					.replace('CONTRIBUTING.md', 'CONTRIBUTING'),
+					.replace('CONTRIBUTING.md', 'CONTRIBUTING')
+					.replace(/\/awesome-stylelint\/?#readme$/, '/awesome-stylelint')
+					.replace(
+						/^https:\/\/github.com\/stylelint\/awesome-stylelint(#.+)?$/,
+						'/awesome-stylelint.md$1',
+					),
 		});
 
 		const outputFile = path.join(outputDir, file.replace('node_modules/stylelint/docs', ''));
@@ -266,6 +271,12 @@ function main(outputDir) {
 		const dest = path.join(outputDir, imagePath.replace('node_modules/stylelint/', ''));
 
 		fs.copyFileSync(imagePath, dest);
+	});
+
+	glob.sync('node_modules/awesome-stylelint/README.md').forEach((src) => {
+		const dest = path.join(outputDir, 'awesome-stylelint.md');
+
+		fs.copyFileSync(src, dest);
 	});
 
 	console.log(`Documents have been generated to '${outputDir}'.`); // eslint-disable-line no-console

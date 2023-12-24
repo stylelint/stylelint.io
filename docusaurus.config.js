@@ -55,6 +55,11 @@ const config = {
 					position: 'left',
 				},
 				{
+					to: '/awesome-stylelint',
+					label: 'Awesome',
+					position: 'right',
+				},
+				{
 					href: 'https://github.com/stylelint/stylelint',
 					label: 'GitHub',
 					position: 'right',
