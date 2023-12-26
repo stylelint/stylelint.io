@@ -1,0 +1,29 @@
+name: Update Awesome Stylelint
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Every day at 00:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update-awesome-stylelint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Update Awesome Stylelint
+        run: npm update awesome-stylelint
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: Update Awesome Stylelint
+          title: Update Awesome Stylelint
+          body: |
+            This pull request updates [Awesome Stylelint](https://github.com/stylelint/awesome-stylelint).
