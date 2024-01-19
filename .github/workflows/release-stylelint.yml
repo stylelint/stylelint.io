@@ -1,0 +1,36 @@
+name: Release Stylelint
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Update Stylelint
+        id: update-stylelint
+        run: |
+          new_version="$(npm view stylelint version)"
+          npm install "https://github.com/stylelint/stylelint/tarball/${new_version}" --save-dev
+          echo "new_version=${new_version}" >> "$GITHUB_OUTPUT"
+      - name: Test
+        run: npm test
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: Release ${{ steps.update-stylelint.outputs.new_version }}
+          title: Release ${{ steps.update-stylelint.outputs.new_version }}
+          body: |
+            See https://github.com/stylelint/stylelint/releases/tag/${{ steps.update-stylelint.outputs.new_version }}
