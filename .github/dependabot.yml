@@ -18,3 +18,10 @@ updates:
           - '@docusaurus/*'
           - 'stylelint'
           - 'stylelint-config-standard'
+
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: monthly
+    labels:
+      - 'pr: dependencies'
