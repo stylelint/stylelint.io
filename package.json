@@ -91,7 +91,7 @@
     "@stylelint/remark-preset": "^5.0.0",
     "awesome-stylelint": "github:stylelint/awesome-stylelint",
     "eslint": "^8.56.0",
-    "eslint-config-stylelint": "^20.0.0",
+    "eslint-config-stylelint": "^21.0.0",
     "eslint-plugin-react": "^7.33.2",
     "glob": "^10.3.10",
     "husky": "^9.0.7",
