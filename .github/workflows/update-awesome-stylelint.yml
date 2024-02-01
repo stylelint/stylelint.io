@@ -24,7 +24,7 @@ jobs:
       - name: Update Awesome Stylelint
         run: npm update awesome-stylelint
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         with:
           commit-message: Update Awesome Stylelint
           title: Update Awesome Stylelint
