@@ -30,3 +30,4 @@ jobs:
           title: Update Awesome Stylelint
           body: |
             This pull request updates [Awesome Stylelint](https://github.com/stylelint/awesome-stylelint).
+          branch: update-awesome-stylelint
