@@ -14,15 +14,31 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: npm
+
       - name: Install dependencies
         run: npm ci
+
+      - name: Get current version
+        id: current
+        run: |
+          current_version=$(npm ls awesome-stylelint --json | jq -r '.dependencies."awesome-stylelint".resolved' | grep --only -E '[0-9a-z]+$')
+          echo "version=${current_version}" >> "$GITHUB_OUTPUT"
+
       - name: Update Awesome Stylelint
         run: npm update awesome-stylelint
+
+      - name: Get new version
+        id: new
+        run: |
+          new_version=$(npm ls awesome-stylelint --json | jq -r '.dependencies."awesome-stylelint".resolved' | grep --only -E '[0-9a-z]+$')
+          echo "version=${new_version}" >> "$GITHUB_OUTPUT"
+
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
         with:
@@ -30,4 +46,6 @@ jobs:
           title: Update Awesome Stylelint
           body: |
             This pull request updates [Awesome Stylelint](https://github.com/stylelint/awesome-stylelint).
+
+            https://github.com/stylelint/awesome-stylelint/compare/${{ steps.current.outputs.version }}...${{ steps.new.outputs.version }}
           branch: update-awesome-stylelint
