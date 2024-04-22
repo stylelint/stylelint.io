@@ -26,6 +26,19 @@
 	width: 100%;
 }
 
+/* Align all table columns */
+
+/* Make cells with rule name as wide as possible */
+.docs-doc-id-user-guide\/rules .markdown table td:first-child {
+	width: 100%;
+}
+
+/* Make cells without symbol (empty) have the same width as cells with symbol */
+.docs-doc-id-user-guide\/rules .markdown table td:not(:first-child) {
+	box-sizing: content-box;
+	min-width: 1rem;
+}
+
 /* Make a rule name stand out */
 .docs-doc-id-user-guide\/rules .markdown table tbody tr td:first-child :link code {
 	font-weight: bold;
