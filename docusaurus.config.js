@@ -1,3 +1,5 @@
+import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'Stylelint',
@@ -20,6 +22,7 @@ const config = {
 					routeBasePath: '/',
 					path: 'docs',
 					sidebarPath: './sidebars.json',
+					beforeDefaultRemarkPlugins: [remarkGithubAdmonitionsToDirectives],
 				},
 				theme: {
 					customCss: ['./src/css/custom.css'],
