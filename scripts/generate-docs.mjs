@@ -73,60 +73,6 @@ function wrapProblemExample() {
 	return transform;
 }
 
-/**
- * Convert GFM notes and warnings (beta) to Docusaurus Admonitions.
- *
- * @see https://docusaurus.io/docs/markdown-features/admonitions
- * @see https://github.com/facebook/docusaurus/issues/7471
- * @see https://github.com/orgs/community/discussions/16925
- */
-function convertToAdmonitions() {
-	const gfmToAdmonitions = new Map([
-		['NOTE', 'note'],
-		['IMPORTANT', 'info'],
-		['WARNING', 'warning'],
-	]);
-
-	function visitor(blockquote, index, parent) {
-		const [paragraph] = blockquote.children;
-
-		if (paragraph.type !== 'paragraph') return;
-
-		const [text, ...restChildren] = paragraph.children;
-
-		if (text.type !== 'text') return;
-
-		const [, gfmType, description] = text.value.match(/^\[!(\w+)\]\n(.+)/s) ?? [];
-
-		if (!gfmType || !description) return;
-
-		const admType = gfmToAdmonitions.get(gfmType);
-
-		if (!admType) return;
-
-		// Insert new nodes after the current one.
-		parent.children.splice(
-			index + 1,
-			0,
-			{
-				type: 'paragraph',
-				children: [{ type: 'html', value: `:::${admType}[${gfmType}]` }],
-			},
-			{ type: 'paragraph', children: [{ type: 'text', value: description }, ...restChildren] },
-			{ type: 'paragraph', children: [{ type: 'text', value: ':::' }] },
-		);
-
-		// Delete an old node.
-		parent.children.splice(index, 1);
-	}
-
-	function transform(tree) {
-		visit(tree, ['blockquote'], visitor);
-	}
-
-	return transform;
-}
-
 function makeRuleSymbolsAccessbile() {
 	const symbols = new Map([
 		['✅', 'Standard'],
@@ -159,7 +105,6 @@ function processMarkdown(file, { rewriter }) {
 		.use(remarkGFM)
 		.use(rewriteLink, { rewriter })
 		.use(wrapProblemExample)
-		.use(convertToAdmonitions)
 		.use(makeRuleSymbolsAccessbile)
 		.processSync(fs.readFileSync(file, 'utf8'))
 		.toString();
