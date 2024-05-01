@@ -18,6 +18,7 @@ updates:
           - '@docusaurus/*'
           - 'stylelint'
           - 'stylelint-config-standard'
+          - 'eslint'
 
   - package-ecosystem: github-actions
     directory: '/'
