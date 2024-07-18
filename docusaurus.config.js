@@ -68,8 +68,8 @@ const config = {
 					position: 'right',
 				},
 				{
-					href: 'https://twitter.com/stylelint',
-					label: 'Twitter',
+					href: 'https://x.com/stylelint',
+					label: 'X',
 					position: 'right',
 				},
 			],
