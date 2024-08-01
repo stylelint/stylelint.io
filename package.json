@@ -86,7 +86,7 @@
     "@stylelint/prettier-config": "^3.0.0",
     "@stylelint/remark-preset": "^5.1.1",
     "awesome-stylelint": "github:stylelint/awesome-stylelint",
-    "eslint": "^8.57.0",
+    "eslint": "^9.8.0",
     "eslint-config-stylelint": "^22.0.0",
     "eslint-plugin-react": "^7.35.0",
     "glob": "^11.0.0",
