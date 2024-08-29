@@ -45,7 +45,7 @@
 			]
 		},
 		{
-			"About": ["about/vision", "about/semantic-versioning", "CONTRIBUTING", "CHANGELOG"]
+			"About": ["about/vision", "about/semantic-versioning", "CONTRIBUTING", "CHANGELOG", "SUPPORT"]
 		}
 	]
 }
