@@ -100,12 +100,26 @@ function makeRuleSymbolsAccessbile() {
 	return transform;
 }
 
+// NOTE: Prism doesn't support JSONC.
+function jsoncToJson() {
+	function visitor(node) {
+		node.lang = 'json';
+	}
+
+	function transform(tree) {
+		visit(tree, { type: 'code', lang: 'jsonc' }, visitor);
+	}
+
+	return transform;
+}
+
 function processMarkdown(file, { rewriter }) {
 	const content = remark()
 		.use(remarkGFM)
 		.use(rewriteLink, { rewriter })
 		.use(wrapProblemExample)
 		.use(makeRuleSymbolsAccessbile)
+		.use(jsoncToJson)
 		.processSync(fs.readFileSync(file, 'utf8'))
 		.toString();
 
