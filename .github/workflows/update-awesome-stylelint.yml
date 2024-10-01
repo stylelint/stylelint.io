@@ -40,7 +40,7 @@ jobs:
           echo "version=${new_version}" >> "$GITHUB_OUTPUT"
 
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           commit-message: Update Awesome Stylelint
           title: Update Awesome Stylelint
