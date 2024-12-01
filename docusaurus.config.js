@@ -2,6 +2,9 @@ import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-di
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+	future: {
+		experimental_faster: true,
+	},
 	title: 'Stylelint',
 	tagline: 'A mighty CSS linter that helps you avoid errors and enforce conventions',
 	url: 'https://stylelint.io',
