@@ -9,13 +9,13 @@
     Cross-Origin-Opener-Policy = "same-origin"
 
 [[redirects]]
-  from = "https://stylelint.netlify.app"
+  from = "https://master--stylelint.netlify.app"
   to = "https://stylelint.io"
   status = 301
   force = true
 
 [[redirects]]
-  from = "https://stylelint.netlify.app/*"
+  from = "https://master--stylelint.netlify.app/*"
   to = "https://stylelint.io/:splat"
   status = 301
   force = true
