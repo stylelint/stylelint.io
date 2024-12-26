@@ -76,6 +76,7 @@ const config = {
 					position: 'right',
 				},
 			],
+			hideOnScroll: true,
 		},
 		algolia: {
 			appId: '0T0U7YW7T7',
