@@ -70,11 +70,6 @@ const config = {
 					label: 'GitHub',
 					position: 'right',
 				},
-				{
-					href: 'https://x.com/stylelint',
-					label: 'X',
-					position: 'right',
-				},
 			],
 		},
 		algolia: {
