@@ -6,11 +6,11 @@
 }
 
 .valid-pattern .prism-code {
-	box-shadow: 0 -3px 0 0 green !important;
+	box-shadow: inset 3px 0 0 0 forestgreen !important;
 }
 
 .invalid-pattern .prism-code {
-	box-shadow: 0 -3px 0 0 crimson !important;
+	box-shadow: inset 3px 0 0 0 firebrick !important;
 }
 
 /* Hide generated list of rules in sidebar */

@@ -1,3 +1,4 @@
+import { themes as prismThemes } from 'prism-react-renderer'; // eslint-disable-line n/no-extraneous-import
 import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives';
 
 /** @type {import('@docusaurus/types').Config} */
@@ -83,6 +84,8 @@ const config = {
 			indexName: 'stylelint',
 		},
 		prism: {
+			theme: prismThemes.github,
+			darkTheme: prismThemes.palenight,
 			// See https://prismjs.com/#supported-languages
 			additionalLanguages: ['bash', 'css', 'diff', 'json', 'markdown', 'shell-session'],
 		},
