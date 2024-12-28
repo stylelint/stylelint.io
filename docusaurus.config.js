@@ -47,9 +47,9 @@ const config = {
 			items: [
 				{
 					to: '/',
-					label: 'Docs',
+					label: 'Home',
 					position: 'left',
-					activeBaseRegex: '^(?!/user-guide/rules|/demo)',
+					activeBaseRegex: '^/$',
 				},
 				{
 					to: '/user-guide/rules',
