@@ -1,3 +1,4 @@
+import { themes as prismThemes } from 'prism-react-renderer'; // eslint-disable-line n/no-extraneous-import
 import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives';
 
 /** @type {import('@docusaurus/types').Config} */
@@ -46,9 +47,9 @@ const config = {
 			items: [
 				{
 					to: '/',
-					label: 'Docs',
+					label: 'Home',
 					position: 'left',
-					activeBaseRegex: '^(?!/user-guide/rules|/demo)',
+					activeBaseRegex: '^/$',
 				},
 				{
 					to: '/user-guide/rules',
@@ -70,12 +71,8 @@ const config = {
 					label: 'GitHub',
 					position: 'right',
 				},
-				{
-					href: 'https://x.com/stylelint',
-					label: 'X',
-					position: 'right',
-				},
 			],
+			hideOnScroll: true,
 		},
 		algolia: {
 			appId: '0T0U7YW7T7',
@@ -83,6 +80,8 @@ const config = {
 			indexName: 'stylelint',
 		},
 		prism: {
+			theme: prismThemes.github,
+			darkTheme: prismThemes.palenight,
 			// See https://prismjs.com/#supported-languages
 			additionalLanguages: ['bash', 'css', 'diff', 'json', 'markdown', 'shell-session'],
 		},
