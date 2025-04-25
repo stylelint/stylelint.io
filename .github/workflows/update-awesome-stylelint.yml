@@ -49,3 +49,4 @@ jobs:
 
             https://github.com/stylelint/awesome-stylelint/compare/${{ steps.current.outputs.version }}...${{ steps.new.outputs.version }}
           branch: update-awesome-stylelint
+          sign-commits: true
