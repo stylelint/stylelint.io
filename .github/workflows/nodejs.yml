@@ -9,6 +9,8 @@ on:
       - opened
       - reopened
       - synchronize
+      # NOTE: The purpose of `ready_for_review` is to trigger workflow runs when a pull request is created in GitHub Actions.
+      # See https://github.com/peter-evans/create-pull-request/blob/v7/docs/concepts-guidelines.md#triggering-further-workflow-runs
       - ready_for_review
 
 jobs:
