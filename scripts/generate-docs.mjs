@@ -113,6 +113,21 @@ function jsoncToJson() {
 	return transform;
 }
 
+function insertFrontMatter(content, props) {
+	const lines = ['---'];
+
+	for (const [key, value] of Object.entries(props)) {
+		if (!value) continue;
+
+		lines.push(`${key}: ${value}`);
+	}
+
+	lines.push('---');
+	lines.push('');
+
+	return lines.join('\n') + '\n' + content; // eslint-disable-line prefer-template
+}
+
 function processMarkdown(file, { rewriter }) {
 	const content = remark()
 		.use(remarkGFM)
@@ -139,22 +154,11 @@ function processMarkdown(file, { rewriter }) {
 		slug = '/';
 	}
 
-	const meta = [
-		['title', title],
-		['sidebar_label', sidebarLabel],
-	];
-
-	if (slug) meta.push(['slug', slug]);
-
-	let frontMatter = '---\n';
-
-	for (const item of meta) {
-		frontMatter += `${item[0]}: ${item[1]}\n`;
-	}
-
-	frontMatter += '---';
-
-	return `${frontMatter}\n\n${content}`;
+	return insertFrontMatter(content, {
+		title,
+		sidebar_label: sidebarLabel,
+		slug,
+	});
 }
 
 function main(outputDir) {
@@ -236,6 +240,14 @@ function main(outputDir) {
 		const dest = path.join(outputDir, 'awesome-stylelint.md');
 
 		fs.copyFileSync(src, dest);
+
+		const content = fs.readFileSync(dest, 'utf8');
+		const newContent = insertFrontMatter(content, {
+			title: 'Awesome Stylelint',
+			sidebar_label: 'Awesome',
+		});
+
+		fs.writeFileSync(dest, newContent);
 	});
 
 	console.log(`Documents have been generated to '${outputDir}'.`); // eslint-disable-line no-console
