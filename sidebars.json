@@ -53,6 +53,7 @@
 				"CHANGELOG",
 				"SUPPORT"
 			]
-		}
+		},
+		"awesome-stylelint"
 	]
 }
