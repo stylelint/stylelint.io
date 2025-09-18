@@ -12,8 +12,8 @@ updates:
       # Note: React is a peer dependency of Docusaurus.
       docusaurus-and-react:
         patterns: ['@docusaurus/*', 'react', 'react-dom']
-      development-dependencies:
-        dependency-type: 'development'
+      dev-deps:
+        dependency-type: development
         exclude-patterns:
           - '@docusaurus/*'
           - 'stylelint'
