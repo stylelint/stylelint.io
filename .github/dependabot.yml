@@ -18,6 +18,8 @@ updates:
           - '@docusaurus/*'
           - 'stylelint'
           - 'stylelint-config-standard'
+    cooldown:
+      default-days: 7
 
   - package-ecosystem: github-actions
     directory: '/'
@@ -25,3 +27,5 @@ updates:
       interval: monthly
     labels:
       - 'pr: dependencies'
+    cooldown:
+      default-days: 7
