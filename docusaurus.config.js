@@ -15,7 +15,11 @@ const config = {
 	projectName: 'stylelint',
 	favicon: 'img/favicon.svg',
 	onBrokenLinks: 'log',
-	onBrokenMarkdownLinks: 'log',
+	markdown: {
+		hooks: {
+			onBrokenMarkdownLinks: 'log',
+		},
+	},
 	presets: [
 		[
 			'@docusaurus/preset-classic',
