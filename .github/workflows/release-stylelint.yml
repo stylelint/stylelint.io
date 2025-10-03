@@ -9,31 +9,42 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
       - name: Set up Node.js
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version-file: .nvmrc
-          cache: npm
+
+      - name: Install latest npm
+        run: npm install --global npm@latest
+
       - name: Install dependencies
         run: npm ci
+
       - name: Update Stylelint
         id: update-stylelint
         run: |
           new_version="$(npm view stylelint version)"
           npm install "https://github.com/stylelint/stylelint/tarball/${new_version}" --save-dev
-          echo "new_version=${new_version}" >> "$GITHUB_OUTPUT"
+          echo "new-version=${new_version}" >> "${GITHUB_OUTPUT}"
+
       - name: Test
         run: npm test
+
       - name: Create pull request
         uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
         with:
-          commit-message: Release ${{ steps.update-stylelint.outputs.new_version }}
-          title: Release ${{ steps.update-stylelint.outputs.new_version }}
+          commit-message: Release ${{ steps.update-stylelint.outputs.new-version }}
+          title: Release ${{ steps.update-stylelint.outputs.new-version }}
           body: |
-            See https://github.com/stylelint/stylelint/releases/tag/${{ steps.update-stylelint.outputs.new_version }}
-          branch: release-${{ steps.update-stylelint.outputs.new_version }}
+            See https://github.com/stylelint/stylelint/releases/tag/${{ steps.update-stylelint.outputs.new-version }}
+          branch: release/${{ steps.update-stylelint.outputs.new-version }}
           sign-commits: true
           draft: always-true
