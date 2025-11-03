@@ -13,7 +13,6 @@
   "author": "stylelint",
   "scripts": {
     "build": "npm run gendoc && docusaurus build",
-    "serve": "docusaurus serve",
     "docusaurus": "docusaurus",
     "format": "prettier . --write",
     "gendoc": "node ./scripts/generate-docs.mjs docs/",
@@ -23,6 +22,7 @@
     "lint:js": "eslint .",
     "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
     "prepare": "husky",
+    "serve": "docusaurus serve",
     "start": "npm run gendoc && docusaurus start",
     "pretest": "npm run lint",
     "test": "npm run build"
