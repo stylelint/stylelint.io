@@ -47,11 +47,11 @@
     ]
   },
   "dependencies": {
-    "@docusaurus/core": "^3.9.1",
-    "@docusaurus/faster": "^3.9.1",
-    "@docusaurus/preset-classic": "^3.9.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/faster": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@stylelint/prettier-config": "^3.0.0",
