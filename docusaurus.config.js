@@ -41,6 +41,7 @@ const config = {
 	],
 	themeConfig: {
 		colorMode: {
+			disableSwitch: true,
 			respectPrefersColorScheme: true,
 		},
 		navbar: {
