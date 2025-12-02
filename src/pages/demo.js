@@ -40,7 +40,7 @@ function Demo() {
 	return (
 		<Layout title="Demo" wrapperClassName="demo">
 			<iframe
-				allow="cross-origin-isolated"
+				allow="cross-origin-isolated; clipboard-write"
 				ref={iframeEl}
 				id="demo"
 				frameBorder="0"
