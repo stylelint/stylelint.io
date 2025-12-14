@@ -20,7 +20,8 @@ function Demo() {
 			return;
 		}
 
-		const FRAME_ORIGIN = 'https://chimerical-trifle-8d3c21.netlify.app';
+		// TODO: Revert after testing https://github.com/stylelint/stylelint-demo/pull/520
+		const FRAME_ORIGIN = 'https://deploy-preview-520--chimerical-trifle-8d3c21.netlify.app';
 
 		if (iframeEl.current) {
 			window.addEventListener(
