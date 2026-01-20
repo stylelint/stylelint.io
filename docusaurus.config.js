@@ -86,6 +86,9 @@ const config = {
 			// See https://prismjs.com/#supported-languages
 			additionalLanguages: ['bash', 'css', 'diff', 'json', 'markdown', 'shell-session'],
 		},
+		footer: {
+			copyright: 'Copyright (c) 2015 - present Maxime Thirouin, David Clark & Richard Hallows',
+		},
 	},
 	plugins: [
 		// Sets response headers for development.
