@@ -32,6 +32,45 @@ const config = {
 					path: 'docs',
 					sidebarPath: './sidebars.json',
 					beforeDefaultRemarkPlugins: [remarkGithubAdmonitionsToDirectives],
+
+					editUrl: ({ docPath }) => {
+						const branch = 'main';
+						let repo = 'stylelint';
+						let path = undefined;
+
+						switch (docPath) {
+							case 'index.md':
+								path = 'README.md';
+								break;
+							case 'CHANGELOG.md':
+							case 'CONTRIBUTING.md':
+							case 'SUPPORT.md':
+								path = docPath;
+								break;
+							case 'awesome-stylelint.md':
+								repo = 'awesome-stylelint';
+								path = 'README.md';
+								break;
+							default:
+								if (docPath.startsWith('user-guide/rules/')) {
+									const rule = docPath.replace('user-guide/rules/', '').replace('.md', '');
+
+									path = `lib/rules/${rule}/README.md`;
+								} else {
+									path = `docs/${docPath}`;
+								}
+
+								break;
+						}
+
+						if (!path) {
+							console.error(`Failed to construct an Edit URL from "${docPath}"`);
+
+							return undefined;
+						}
+
+						return `https://github.com/stylelint/${repo}/edit/${branch}/${path}`;
+					},
 				},
 				theme: {
 					customCss: ['./src/css/custom.css'],
