@@ -71,7 +71,7 @@
     "remark-cli": "^12.0.1",
     "remark-gfm": "^4.0.1",
     "remark-github-admonitions-to-directives": "^2.1.0",
-    "stylelint": "https://github.com/stylelint/stylelint/tarball/17.0.0",
+    "stylelint": "https://github.com/stylelint/stylelint/tarball/17.1.0",
     "stylelint-config-standard": "^40.0.0",
     "unist-util-visit": "^5.0.0"
   },
