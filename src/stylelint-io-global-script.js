@@ -29,7 +29,7 @@ export function onRouteDidUpdate({ location }) {
 	}
 
 	function isSameOrigin(sUrl) {
-		let loc = window.location;
+		const loc = window.location;
 
 		const url = new URL(sUrl);
 
