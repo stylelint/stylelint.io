@@ -21,6 +21,14 @@
   force = true
 
 [[redirects]]
+  from = "/developer-guide/rules"
+  to = "/contributor-guide/rules"
+
+[[redirects]]
+  from = "/developer-guide/system-tests"
+  to = "/contributor-guide/system-tests"
+
+[[redirects]]
   from = "/user-guide/usage/cli"
   to = "/user-guide/cli"
 

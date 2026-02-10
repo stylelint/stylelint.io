@@ -27,11 +27,9 @@
 		},
 		{
 			"Developer guide": [
-				"developer-guide/rules",
 				"developer-guide/plugins",
 				"developer-guide/syntaxes",
-				"developer-guide/formatters",
-				"developer-guide/system-tests"
+				"developer-guide/formatters"
 			]
 		},
 		{
@@ -43,6 +41,14 @@
 			]
 		},
 		{
+			"Contributor guide": [
+				"CONTRIBUTING",
+				"contributor-guide/rules",
+				"contributor-guide/system-tests",
+				"contributor-guide/benchmarks"
+			]
+		},
+		{
 			"Maintainer guide": [
 				"maintainer-guide/issues",
 				"maintainer-guide/pull-requests",
@@ -50,15 +56,9 @@
 			]
 		},
 		{
-			"About": [
-				"about/vision",
-				"about/governance",
-				"about/semantic-versioning",
-				"CONTRIBUTING",
-				"CHANGELOG",
-				"SUPPORT"
-			]
+			"About": ["about/vision", "about/governance", "about/semantic-versioning", "SUPPORT"]
 		},
+		"CHANGELOG",
 		"awesome-stylelint"
 	]
 }
