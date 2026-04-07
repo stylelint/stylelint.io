@@ -1,13 +1,24 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 /* eslint-disable n/no-missing-import */
 import { useHistory, useLocation } from '@docusaurus/router';
 import Layout from '@theme/Layout';
 /* eslint-enable n/no-missing-import */
 
+const FRAME_ORIGIN = 'https://chimerical-trifle-8d3c21.netlify.app';
+
 function Demo() {
 	const history = useHistory();
 	const location = useLocation();
-	const iframeEl = useRef();
+	const iframeRef = useRef();
+
+	const handleMessage = useCallback(
+		(e) => {
+			if (e.origin === FRAME_ORIGIN) {
+				history.replace(`${location.pathname}#${e.data}`);
+			}
+		},
+		[history, location.pathname],
+	);
 
 	useEffect(() => {
 		if (!window.crossOriginIsolated) {
@@ -20,28 +31,22 @@ function Demo() {
 			return;
 		}
 
-		const FRAME_ORIGIN = 'https://chimerical-trifle-8d3c21.netlify.app';
+		if (iframeRef.current) {
+			window.addEventListener('message', handleMessage, false);
 
-		if (iframeEl.current) {
-			window.addEventListener(
-				'message',
-				(e) => {
-					if (e.origin === FRAME_ORIGIN) {
-						history.replace(`${location.pathname}#${e.data}`);
-					}
-				},
-				false,
-			);
-
-			iframeEl.current.src = `${FRAME_ORIGIN}${location.hash}`;
+			iframeRef.current.src = `${FRAME_ORIGIN}${location.hash}`;
 		}
-	}, []);
+
+		return () => {
+			window.removeEventListener('message', handleMessage);
+		};
+	}, [handleMessage, location.hash]);
 
 	return (
 		<Layout title="Demo" wrapperClassName="demo">
 			<iframe
 				allow="cross-origin-isolated; clipboard-write"
-				ref={iframeEl}
+				ref={iframeRef}
 				id="demo"
 				frameBorder="0"
 				style={{
