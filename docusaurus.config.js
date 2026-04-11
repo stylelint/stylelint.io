@@ -36,7 +36,7 @@ const config = {
 					editUrl: ({ docPath }) => {
 						const branch = 'main';
 						let repo = 'stylelint';
-						let path = undefined;
+						let path;
 
 						switch (docPath) {
 							case 'index.md':

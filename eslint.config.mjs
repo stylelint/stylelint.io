@@ -1,5 +1,4 @@
 import globals from 'globals';
-import reactPlugin from 'eslint-plugin-react';
 import stylelintConfig from 'eslint-config-stylelint';
 
 export default [
@@ -7,17 +6,15 @@ export default [
 		ignores: ['.docusaurus/*', 'docs/*', 'build/*'],
 	},
 	...stylelintConfig,
-	reactPlugin.configs.flat.recommended,
-	reactPlugin.configs.flat['jsx-runtime'],
 	{
 		languageOptions: {
 			globals: {
 				...globals.browser,
 			},
-		},
-		settings: {
-			react: {
-				version: 'detect',
+			parserOptions: {
+				ecmaFeatures: {
+					jsx: true,
+				},
 			},
 		},
 		rules: {
