@@ -54,7 +54,6 @@
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
-    "@eslint-react/eslint-plugin": "^4.2.3",
     "@stylelint/prettier-config": "^4.0.0",
     "@stylelint/remark-preset": "^5.1.1",
     "awesome-stylelint": "github:stylelint/awesome-stylelint",

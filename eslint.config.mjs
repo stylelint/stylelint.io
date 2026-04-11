@@ -1,4 +1,3 @@
-import eslintReact from '@eslint-react/eslint-plugin';
 import globals from 'globals';
 import stylelintConfig from 'eslint-config-stylelint';
 
@@ -7,7 +6,6 @@ export default [
 		ignores: ['.docusaurus/*', 'docs/*', 'build/*'],
 	},
 	...stylelintConfig,
-	eslintReact.configs.recommended,
 	{
 		languageOptions: {
 			globals: {
