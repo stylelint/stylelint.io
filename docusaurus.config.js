@@ -5,7 +5,7 @@ import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-di
 const config = {
 	future: {
 		v4: true,
-		experimental_faster: true,
+		faster: true,
 	},
 	title: 'Stylelint',
 	tagline: 'A mighty CSS linter that helps you avoid errors and enforce conventions',
