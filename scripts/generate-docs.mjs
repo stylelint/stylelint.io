@@ -1,10 +1,10 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { SKIP, visit } from 'unist-util-visit';
 import { glob } from 'glob';
 import process from 'node:process';
 import { remark } from 'remark';
 import remarkGFM from 'remark-gfm';
-import { visit } from 'unist-util-visit';
 
 function rewriteLink(options) {
 	function visitor(node) {
@@ -100,6 +100,23 @@ function makeRuleSymbolsAccessbile() {
 	return transform;
 }
 
+function removeHtmlComments() {
+	const isHtmlComment = (node) =>
+		node.type === 'html' && /^<!--[\s\S]*-->$/.test(node.value.trim());
+
+	function visitor(_node, index, parent) {
+		parent.children.splice(index, 1);
+
+		return [SKIP, index];
+	}
+
+	function transform(tree) {
+		visit(tree, isHtmlComment, visitor);
+	}
+
+	return transform;
+}
+
 // NOTE: Prism doesn't support JSONC.
 function jsoncToJson() {
 	function visitor(node) {
@@ -135,6 +152,7 @@ function processMarkdown(file, { rewriter }) {
 		.use(wrapProblemExample)
 		.use(makeRuleSymbolsAccessbile)
 		.use(jsoncToJson)
+		.use(removeHtmlComments)
 		.processSync(fs.readFileSync(file, 'utf8'))
 		.toString();
 
