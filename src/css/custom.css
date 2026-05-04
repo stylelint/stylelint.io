@@ -1,16 +1,16 @@
 .demo {
 	align-items: stretch;
-	display: flex;
+	block-size: 100%;
+	display: block flex;
 	flex-flow: column;
-	height: 100%;
 }
 
 .valid-pattern .prism-code {
-	box-shadow: inset 3px 0 0 0 forestgreen !important;
+	box-shadow: inset 3px 0 0 0 oklch(50% 0.169 140deg) !important;
 }
 
 .invalid-pattern .prism-code {
-	box-shadow: inset 3px 0 0 0 firebrick !important;
+	box-shadow: inset 3px 0 0 0 oklch(50% 0.179 20deg) !important;
 }
 
 /* Hide generated list of rules in sidebar */
@@ -22,21 +22,21 @@
 }
 
 .docs-doc-id-user-guide\/rules .markdown table {
-	display: table;
-	width: 100%;
+	display: block table;
+	inline-size: 100%;
 }
 
 /* Align all table columns */
 
 /* Make cells with rule name as wide as possible */
 .docs-doc-id-user-guide\/rules .markdown table td:first-child {
-	width: 100%;
+	inline-size: 100%;
 }
 
 /* Make cells without symbol (empty) have the same width as cells with symbol */
 .docs-doc-id-user-guide\/rules .markdown table td:not(:first-child) {
 	box-sizing: content-box;
-	min-width: 1rem;
+	min-inline-size: 1rem;
 }
 
 /* Make a rule name stand out */
