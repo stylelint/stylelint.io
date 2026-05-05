@@ -37,7 +37,9 @@ jobs:
           echo "version=${current_version}" >> "${GITHUB_OUTPUT}"
 
       - name: Update Awesome Stylelint
-        run: npm update awesome-stylelint
+        run: |
+          new_sha=$(git ls-remote https://github.com/stylelint/awesome-stylelint.git HEAD | cut -f1)
+          npm install --save-dev "awesome-stylelint@https://github.com/stylelint/awesome-stylelint/tarball/${new_sha}"
 
       - name: Get new version
         id: new
