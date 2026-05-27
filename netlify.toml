@@ -30,7 +30,7 @@
 
 [[redirects]]
   from = "/user-guide"
-  to = "/#guides"
+  to = "/user-guide/get-started"
 
 [[redirects]]
   from = "/user-guide/usage/cli"
