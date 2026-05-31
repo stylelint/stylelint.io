@@ -29,6 +29,10 @@
   to = "/contributor-guide/system-tests"
 
 [[redirects]]
+  from = "/user-guide"
+  to = "/user-guide/get-started"
+
+[[redirects]]
   from = "/user-guide/usage/cli"
   to = "/user-guide/cli"
 
