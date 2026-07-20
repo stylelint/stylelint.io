@@ -47,4 +47,3 @@ jobs:
             See https://github.com/stylelint/stylelint/releases/tag/${{ steps.update-stylelint.outputs.new-version }}
           branch: release/${{ steps.update-stylelint.outputs.new-version }}
           sign-commits: true
-          draft: always-true
