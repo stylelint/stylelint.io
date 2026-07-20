@@ -9,6 +9,8 @@ on:
 jobs:
   lint:
     uses: stylelint/.github/.github/workflows/call-lint.yml@6ac761787832e417273f7bb071ec8cf35abcc3d6 # 1.0.0
+    with:
+      node-version-file: .nvmrc
     permissions:
       contents: read
 
