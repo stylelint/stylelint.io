@@ -58,7 +58,7 @@
   "devDependencies": {
     "@stylelint/prettier-config": "^4.0.0",
     "@stylelint/remark-preset": "^5.1.1",
-    "awesome-stylelint": "https://github.com/stylelint/awesome-stylelint/tarball/af0320debc584f7659807576dbaa924f36a97d23",
+    "awesome-stylelint": "https://github.com/stylelint/awesome-stylelint/tarball/e6af9d952633197b044f4bc04bc44ce000ce6235",
     "eslint": "^10.8.0",
     "eslint-config-stylelint": "^27.0.0",
     "glob": "^13.0.6",
