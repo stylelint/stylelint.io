@@ -73,8 +73,8 @@
     "remark-github-admonitions-to-directives": "^2.1.0",
     "stylelint": "https://github.com/stylelint/stylelint/tarball/18.0.0",
     "stylelint-config-alphabetical-order": "^2.0.0",
-    "stylelint-config-modern": "^1.0.0",
-    "stylelint-config-standard": "^40.0.0",
+    "stylelint-config-modern": "^2.0.0",
+    "stylelint-config-standard": "^41.0.0",
     "unist-util-visit": "^5.2.0"
   },
   "engines": {
