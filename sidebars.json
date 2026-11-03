@@ -34,6 +34,7 @@
 		},
 		{
 			"Migration guide": [
+				"migration-guide/to-18",
 				"migration-guide/to-17",
 				"migration-guide/to-16",
 				"migration-guide/to-15",
@@ -45,7 +46,8 @@
 				"CONTRIBUTING",
 				"contributor-guide/rules",
 				"contributor-guide/system-tests",
-				"contributor-guide/benchmarks"
+				"contributor-guide/benchmarks",
+				"contributor-guide/glossary"
 			]
 		},
 		{
