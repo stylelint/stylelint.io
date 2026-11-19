@@ -77,9 +77,6 @@
     "stylelint-config-standard": "^41.0.0",
     "unist-util-visit": "^5.2.0"
   },
-  "engines": {
-    "node": "24"
-  },
   "devEngines": {
     "runtime": {
       "name": "node",
