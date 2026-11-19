@@ -9,15 +9,11 @@ on:
 jobs:
   lint:
     uses: stylelint/.github/.github/workflows/call-lint.yml@84d33533ebe0929b48fc85479f543fd5d41b221f # 3.0.0
-    with:
-      node-version-file: .nvmrc
     permissions:
       contents: read
 
   test:
     uses: stylelint/.github/.github/workflows/call-test.yml@84d33533ebe0929b48fc85479f543fd5d41b221f # 3.0.0
-    with:
-      node-version-file: .nvmrc
     permissions:
       contents: read
 
