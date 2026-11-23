@@ -1,9 +1,9 @@
 [build]
   command = "npm run build"
-  publish = "build/"
+  publish = "dist/"
 
 [build.environment]
-  NODE_VERSION = "24"
+  NODE_VERSION = "26"
 
 [[headers]]
   for="/demo"
@@ -22,6 +22,14 @@
   to = "https://stylelint.io/:splat"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/search"
+  to = "/"
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
 
 [[redirects]]
   from = "/developer-guide/rules"

@@ -1,50 +1,92 @@
-.demo {
-	align-items: stretch;
-	block-size: 100%;
+/* Lay out the header nav that comes after the logo */
+.header-nav {
+	align-items: center;
 	display: block flex;
-	flex-flow: column;
+	gap: 1.5rem;
+	margin-inline-start: 1.5rem;
+
+	a {
+		color: var(--sl-color-gray-2);
+		text-decoration: none;
+
+		&:hover {
+			color: var(--sl-color-white);
+		}
+
+		&[aria-current='page'] {
+			color: var(--sl-color-text-accent);
+		}
+	}
+
+	@media (width < 50rem) {
+		gap: 1rem;
+		margin-inline-start: 1rem;
+	}
 }
 
-.valid-pattern .prism-code {
-	box-shadow: inset 3px 0 0 0 oklch(50% 0.169 140deg) !important;
+/* Remove the divider, as we've hidden the theme switch */
+.social-icons {
+	&::after {
+		content: none;
+	}
 }
 
-.invalid-pattern .prism-code {
-	box-shadow: inset 3px 0 0 0 oklch(50% 0.179 20deg) !important;
+/* Keep badges on one line, as Starlight displays images as blocks */
+.sl-markdown-content {
+	a {
+		> img {
+			display: inline flow-root;
+		}
+	}
 }
 
-/* Hide generated list of rules in sidebar */
-/* stylelint-disable selector-class-pattern */
-.theme-doc-sidebar-menu
-	.theme-doc-sidebar-item-category-level-1:nth-child(2)
-	.theme-doc-sidebar-item-category-level-2:nth-child(5) {
-	display: none;
+/* Mark the invalid and valid examples on rule pages */
+.expressive-code {
+	pre {
+		.invalid-pattern & {
+			box-shadow: inset 3px 0 0 0 oklch(50% 0.179 20deg);
+		}
+
+		.valid-pattern & {
+			box-shadow: inset 3px 0 0 0 oklch(50% 0.169 140deg);
+		}
+	}
 }
 
-.docs-doc-id-user-guide\/rules .markdown table {
-	display: block table;
-	inline-size: 100%;
-}
+/* Refine the layout of the tables on the rules page */
+.rules {
+	table {
+		display: block table;
+		inline-size: 100%;
 
-/* Align all table columns */
+		/* Remove table header */
+		thead {
+			display: none;
+		}
 
-/* Make cells with rule name as wide as possible */
-.docs-doc-id-user-guide\/rules .markdown table td:first-child {
-	inline-size: 100%;
-}
+		tbody {
+			tr {
+				/* Align all table columns */
+				td {
+					/* Make cells with rule name as wide as possible */
+					&:first-child {
+						inline-size: 100%;
 
-/* Make cells without symbol (empty) have the same width as cells with symbol */
-.docs-doc-id-user-guide\/rules .markdown table td:not(:first-child) {
-	box-sizing: content-box;
-	min-inline-size: 1rem;
-}
+						/* Make a rule name stand out */
+						:link {
+							code {
+								font-weight: bold;
+							}
+						}
+					}
 
-/* Make a rule name stand out */
-.docs-doc-id-user-guide\/rules .markdown table tbody tr td:first-child :link code {
-	font-weight: bold;
-}
-
-/* Remove table header */
-.docs-doc-id-user-guide\/rules .markdown table thead {
-	display: none;
+					/* Make cells without symbol (empty) have the same width as cells with symbol */
+					&:not(:first-child) {
+						box-sizing: content-box;
+						min-inline-size: 1rem;
+					}
+				}
+			}
+		}
+	}
 }

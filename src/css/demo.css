@@ -1,0 +1,25 @@
+/* Make the demo fill the page */
+main {
+	--sl-content-width: 100%;
+	--sl-main-pad: 0;
+
+	.content-panel {
+		border: 0;
+		padding: 0;
+
+		&:first-child {
+			display: none;
+		}
+	}
+
+	#demo {
+		block-size: calc(100dvb - var(--sl-nav-height));
+		border: 0;
+		display: block flow;
+		inline-size: 100%;
+	}
+
+	footer {
+		display: none;
+	}
+}

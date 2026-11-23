@@ -9,13 +9,11 @@ updates:
     labels:
       - 'pr: dependencies'
     groups:
-      # Note: React is a peer dependency of Docusaurus.
-      docusaurus-and-react:
-        patterns: ['@docusaurus/*', 'react', 'react-dom']
+      astro:
+        patterns: ['astro', '@astrojs/*']
       dev-deps:
         dependency-type: development
         exclude-patterns:
-          - '@docusaurus/*'
           - 'stylelint'
           - 'stylelint-config-standard'
 

@@ -1,64 +1,188 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { SKIP, visit } from 'unist-util-visit';
-import { glob } from 'glob';
+import { getPageSlug, getSlug, getUrl, stylelintDir } from './slug.mjs';
+import remarkGithubAdmonitionsToDirectives, {
+	DEFAULT_MAPPING,
+} from 'remark-github-admonitions-to-directives';
+import assert from 'node:assert/strict';
 import process from 'node:process';
 import { remark } from 'remark';
+import remarkDirective from 'remark-directive';
 import remarkGFM from 'remark-gfm';
+import { toString } from 'mdast-util-to-string';
 
+/** @import { Code, Html, Nodes, Root } from 'mdast' */
+/** @import { BuildVisitor } from 'unist-util-visit' */
+/** @import { VFile } from 'vfile' */
+
+const rulesSlug = 'user-guide/rules';
+
+// Starlight has no `info` or `warning` aside, which the plugin maps these alerts to.
+const asideByAlert = { ...DEFAULT_MAPPING, IMPORTANT: 'note', WARNING: 'caution' };
+
+/**
+ * @param {string} outputDir
+ */
+function main(outputDir) {
+	fs.rmSync(outputDir, { force: true, recursive: true });
+	fs.mkdirSync(outputDir, { recursive: true });
+
+	const ruleSlugs = getRuleSlugs();
+	const files = fs.globSync(['*.md', 'docs/**/*.md', 'lib/rules/*/README.md'], {
+		cwd: stylelintDir,
+	});
+
+	for (const file of files) {
+		const slug = getPageSlug(file);
+		const content = processMarkdown(
+			path.join(stylelintDir, file),
+			{
+				// Starlight would otherwise title the homepage "Stylelint | Stylelint".
+				head: slug === 'index' ? [{ tag: 'title', content: 'Stylelint' }] : undefined,
+				editUrl: `https://github.com/stylelint/stylelint/edit/main/${file}`,
+				...getRulePagination(ruleSlugs, slug),
+			},
+			{
+				rewriter: (url) => rewriteUrl(url, file),
+				isRules: slug === rulesSlug,
+			},
+		);
+
+		writePage(outputDir, slug, content);
+	}
+
+	for (const image of fs.globSync('*.png', { cwd: stylelintDir })) {
+		fs.copyFileSync(path.join(stylelintDir, image), path.join(outputDir, image));
+	}
+
+	const awesome = processMarkdown('node_modules/awesome-stylelint/README.md', {
+		editUrl: 'https://github.com/stylelint/awesome-stylelint/edit/main/README.md',
+	});
+
+	writePage(outputDir, 'awesome-stylelint', awesome);
+
+	console.log(`Documents have been generated to '${outputDir}'.`); // eslint-disable-line no-console
+}
+
+/**
+ * @returns {string[]}
+ */
+function getRuleSlugs() {
+	const rules = fs.readFileSync(`${stylelintDir}/docs/${rulesSlug}.md`, 'utf8');
+	const files = rules.match(/lib\/rules\/[^/]+\/README\.md/g);
+
+	assert(files, `${rulesSlug}.md links to no rules`);
+
+	return [...new Set(files.map(getPageSlug))];
+}
+
+/**
+ * @param {string} file
+ * @param {Record<string, unknown>} frontMatter
+ * @param {{ rewriter?: (url: string) => string, isRules?: boolean }} [options]
+ * @returns {string}
+ */
+function processMarkdown(file, frontMatter, { rewriter = (url) => url, isRules = false } = {}) {
+	const processor = remark()
+		.use(remarkGFM)
+		.use(remarkGithubAdmonitionsToDirectives, { mapping: asideByAlert })
+		.use(remarkDirective)
+		.use(removeTitle)
+		.use(rewriteLink, { rewriter })
+		.use(wrapProblemExample)
+		.use(rewriteSponsorsSvg)
+		.use(makeRuleSymbolsAccessbile)
+		.use(setDiffLanguage)
+		.use(removeHtmlComments);
+
+	if (isRules) processor.use(wrapRules);
+
+	const output = processor.processSync(fs.readFileSync(file, 'utf8'));
+
+	return insertFrontMatter(String(output), { title: output.data.title, ...frontMatter });
+}
+
+// Starlight renders the title of the front matter as the H1.
+function removeTitle() {
+	/**
+	 * @param {Root} tree
+	 * @param {VFile} file
+	 */
+	function transform(tree, file) {
+		const [title] = tree.children.splice(tree.children.findIndex(isTitle), 1);
+
+		file.data.title = toString(title, { includeImageAlt: false }).trim();
+	}
+
+	return transform;
+}
+
+/**
+ * @param {Nodes} node
+ * @returns {boolean}
+ */
+function isTitle(node) {
+	return node.type === 'heading' && node.depth === 1;
+}
+
+/**
+ * @param {{ rewriter: (url: string) => string }} options
+ */
 function rewriteLink(options) {
+	/** @type {Array<'definition' | 'link'>} */
+	const nodeTypes = ['link', 'definition'];
+
+	/** @type {BuildVisitor<Root, typeof nodeTypes>} */
 	function visitor(node) {
 		node.url = options.rewriter(node.url);
 	}
 
+	/**
+	 * @param {Root} tree
+	 */
 	function transform(tree) {
-		visit(tree, ['link'], visitor);
+		visit(tree, nodeTypes, visitor);
 	}
 
 	return transform;
 }
 
 function wrapProblemExample() {
+	/** @type {BuildVisitor<Root, 'paragraph'>} */
 	function visitor(node, index, parent) {
-		const isValid = node.children[1]?.children[0]?.value === 'not';
+		if (!parent || index === undefined) return;
+
+		if (!isTrigger(node)) return;
+
+		const isValid = toString(node.children[1]) === 'not';
 		const className = isValid ? 'valid-pattern' : 'invalid-pattern';
-		const wrapperStart = { type: 'html', value: `<div class="${className}">` };
-		const wrapperEnd = { type: 'html', value: '</div>' };
 
 		// Insert to the next position of the paragraph
-		parent.children.splice(index + 1, 0, wrapperStart);
-
-		const childrenLength = parent.children.length;
+		parent.children.splice(index + 1, 0, { type: 'html', value: `<div class="${className}">` });
 
 		// Find the end position
-		let endIndex = index + 1;
-
-		while (endIndex < childrenLength) {
-			const child = parent.children[endIndex];
-
-			if (isTrigger(child) || child.type === 'heading') {
-				break;
-			}
-
-			endIndex++;
-		}
+		const endIndex = parent.children.findIndex(
+			(child, childIndex) => childIndex > index && (isTrigger(child) || child.type === 'heading'),
+		);
 
 		// Insert to the end position
-		if (endIndex === childrenLength) {
-			parent.children.push(wrapperEnd);
-		} else {
-			parent.children.splice(endIndex, 0, wrapperEnd);
-		}
+		parent.children.splice(endIndex === -1 ? parent.children.length : endIndex, 0, {
+			type: 'html',
+			value: '</div>',
+		});
 	}
 
+	/**
+	 * @param {Nodes} node
+	 * @returns {boolean}
+	 */
 	function isTrigger(node) {
 		if (node.type !== 'paragraph') return false;
 
-		if (!node.children) return false;
-
 		// There can be an `emphasis` node with "not" between the `first` and `last` nodes
 		const [first, , last] = node.children;
-		const text = (first?.value ?? '').trimEnd() + (last?.value ?? '');
+		const text = toString(first).trimEnd() + toString(last);
 
 		return [
 			'The following patterns are considered problems:',
@@ -66,11 +190,49 @@ function wrapProblemExample() {
 		].includes(text);
 	}
 
+	/**
+	 * @param {Root} tree
+	 */
 	function transform(tree) {
-		visit(tree, isTrigger, visitor);
+		visit(tree, 'paragraph', visitor);
 	}
 
 	return transform;
+}
+
+function rewriteSponsorsSvg() {
+	/** @type {BuildVisitor<Root, 'html'>} */
+	function visitor(node) {
+		const data = node.value.match(/^<object\b[^>]*\sdata="([^"]+)"/)?.[1];
+		const url = data && URL.parse(data);
+
+		if (!url || !isSponsorsSvg(url)) return;
+
+		// Open Collective embeds each logo at twice this height, so a smaller height makes the SVG much smaller.
+		url.searchParams.set('avatarHeight', '32');
+		// The SVG has a fixed width, so it must fit a narrow viewport.
+		url.searchParams.set('width', '320');
+
+		// Browsers download the fallback image too.
+		node.value = `<object data="${url}" type="image/svg+xml"></object>`;
+	}
+
+	/**
+	 * @param {Root} tree
+	 */
+	function transform(tree) {
+		visit(tree, 'html', visitor);
+	}
+
+	return transform;
+}
+
+/**
+ * @param {URL} url
+ * @returns {boolean}
+ */
+function isSponsorsSvg(url) {
+	return url.hostname === 'opencollective.com' && url.pathname.endsWith('/sponsors.svg');
 }
 
 function makeRuleSymbolsAccessbile() {
@@ -79,9 +241,14 @@ function makeRuleSymbolsAccessbile() {
 		['🔧', 'Autofixable'],
 	]);
 
+	/** @type {BuildVisitor<Root, 'text'>} */
 	function visitor(node, _index, parent) {
+		if (!parent) return;
+
 		const symbol = node.value;
 		const name = symbols.get(symbol);
+
+		if (!name) return;
 
 		parent.children = [
 			{
@@ -91,184 +258,171 @@ function makeRuleSymbolsAccessbile() {
 		];
 	}
 
+	/**
+	 * @param {Root} tree
+	 */
 	function transform(tree) {
-		const test = [...symbols.keys()].map((value) => ({ type: 'text', value }));
-
-		visit(tree, test, visitor);
+		visit(tree, 'text', visitor);
 	}
 
 	return transform;
 }
 
-function removeHtmlComments() {
-	const isHtmlComment = (node) =>
-		node.type === 'html' && /^<!--[\s\S]*-->$/.test(node.value.trim());
+// Expressive Code reads the language of a diff from a `lang` attribute.
+function setDiffLanguage() {
+	/** @type {BuildVisitor<Root, 'code'>} */
+	function visitor(node) {
+		if (!isDiffOfLanguage(node)) return;
 
-	function visitor(_node, index, parent) {
+		node.meta = `lang="${node.meta}"`;
+	}
+
+	/**
+	 * @param {Root} tree
+	 */
+	function transform(tree) {
+		visit(tree, 'code', visitor);
+	}
+
+	return transform;
+}
+
+/**
+ * @param {Code} node
+ * @returns {boolean}
+ */
+function isDiffOfLanguage(node) {
+	return node.lang === 'diff' && Boolean(node.meta);
+}
+
+function removeHtmlComments() {
+	/**
+	 * @param {Html} node
+	 * @returns {boolean}
+	 */
+	const isHtmlComment = (node) => /^<!--[\s\S]*-->$/.test(node.value.trim());
+
+	/** @type {BuildVisitor<Root, 'html'>} */
+	function visitor(node, index, parent) {
+		if (!parent || index === undefined) return;
+
+		if (!isHtmlComment(node)) return;
+
 		parent.children.splice(index, 1);
 
 		return [SKIP, index];
 	}
 
+	/**
+	 * @param {Root} tree
+	 */
 	function transform(tree) {
-		visit(tree, isHtmlComment, visitor);
+		visit(tree, 'html', visitor);
 	}
 
 	return transform;
 }
 
-// NOTE: Prism doesn't support JSONC.
-function jsoncToJson() {
-	function visitor(node) {
-		node.lang = 'json';
-	}
-
+// Starlight gives a page no class for the styles of the tables to use.
+function wrapRules() {
+	/**
+	 * @param {Root} tree
+	 */
 	function transform(tree) {
-		visit(tree, { type: 'code', lang: 'jsonc' }, visitor);
+		tree.children = [
+			{ type: 'html', value: '<div class="rules">' },
+			...tree.children,
+			{ type: 'html', value: '</div>' },
+		];
 	}
 
 	return transform;
 }
 
+/**
+ * @param {string} content
+ * @param {Record<string, unknown>} props
+ * @returns {string}
+ */
 function insertFrontMatter(content, props) {
-	const lines = ['---'];
+	const lines = Object.entries(props)
+		.filter(([, value]) => value !== undefined)
+		.map(([key, value]) => `${key}: ${JSON.stringify(value)}`);
 
-	for (const [key, value] of Object.entries(props)) {
-		if (!value) continue;
-
-		lines.push(`${key}: ${value}`);
-	}
-
-	lines.push('---');
-	lines.push('');
-
-	return lines.join('\n') + '\n' + content; // eslint-disable-line prefer-template
+	return ['---', ...lines, '---', '', content].join('\n');
 }
 
-function processMarkdown(file, { rewriter }) {
-	const content = remark()
-		.use(remarkGFM)
-		.use(rewriteLink, { rewriter })
-		.use(wrapProblemExample)
-		.use(makeRuleSymbolsAccessbile)
-		.use(jsoncToJson)
-		.use(removeHtmlComments)
-		.processSync(fs.readFileSync(file, 'utf8'))
-		.toString();
+/**
+ * @param {string} url
+ * @param {string} file Path, in the Stylelint repository, of the file that holds the link.
+ * @returns {string}
+ */
+function rewriteUrl(url, file) {
+	if (!isRelative(url)) {
+		return url.replace(
+			/^https:\/\/github\.com\/stylelint\/awesome-stylelint\/?(?:#readme)?(#.+)?$/,
+			(_match, hash = '') => `${getUrl('awesome-stylelint')}${hash}`,
+		);
+	}
 
-	// Add Docusaurus-specific fields. See https://docusaurus.io/docs/en/doc-markdown
-	let title = content.match(/\n?# ([^\n]+)\n/)[1];
-	let slug;
+	const { pathname, hash } = new URL(url, `file:///${file}`);
+	const linkedFile = pathname.slice(1);
+	const slug = getSlug(linkedFile);
 
-	const titleToSidebarLabel = {
-		Stylelint: 'Home',
+	if (!slug) return `https://github.com/stylelint/stylelint/blob/main/${linkedFile}`;
+
+	return `${getUrl(slug)}${hash}`;
+}
+
+/**
+ * @param {string} url
+ * @returns {boolean}
+ */
+function isRelative(url) {
+	return !url.startsWith('#') && !URL.canParse(url);
+}
+
+/**
+ * Starlight paginates from the sidebar, which doesn't list the rules.
+ *
+ * @param {string[]} ruleSlugs
+ * @param {string} slug
+ */
+function getRulePagination(ruleSlugs, slug) {
+	const index = ruleSlugs.indexOf(slug);
+
+	if (index === -1) return {};
+
+	const prev = ruleSlugs[index - 1];
+	const next = ruleSlugs[index + 1];
+
+	return {
+		prev: prev ? getRuleLink(prev) : { link: getUrl(rulesSlug), label: 'Rules' },
+		next: next && getRuleLink(next),
 	};
-
-	const sidebarLabel = titleToSidebarLabel[title] || title;
-
-	// Check for homepage
-	if (title === 'Stylelint') {
-		title = sidebarLabel;
-		slug = '/';
-	}
-
-	return insertFrontMatter(content, {
-		title,
-		sidebar_label: sidebarLabel,
-		slug,
-	});
 }
 
-function main(outputDir) {
-	fs.rmSync(outputDir, { force: true, recursive: true });
-	fs.mkdirSync(outputDir);
-
-	glob.sync('node_modules/stylelint/*.md').forEach((file) => {
-		const output = processMarkdown(file, {
-			rewriter: (url) => url.replace(/^\/?docs\//, '/').replace('README.md', 'index.md'),
-		});
-
-		const outputFile = path.join(
-			outputDir,
-			file.replace('node_modules/stylelint', '').replace('README.md', 'index.md'),
-		);
-
-		fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-		fs.writeFileSync(outputFile, output, 'utf8');
-	});
-
-	glob.sync('node_modules/stylelint/docs/**/!(toc).md').forEach((file) => {
-		const output = processMarkdown(file, {
-			rewriter: (url) =>
-				url
-					.replace(
-						/\.\.\/\.\.\/lib\/rules\/([a-z-]+\.[a-z]+)/,
-						'https://github.com/stylelint/stylelint/blob/main/lib/rules/$1',
-					)
-					.replace(
-						/\.\.\/\.\.\/types\/stylelint\/([a-z.]+)/,
-						'https://github.com/stylelint/stylelint/blob/main/types/stylelint/$1',
-					)
-					.replace('../../CHANGELOG.md', '../CHANGELOG.md')
-					.replace('../../VISION.md', '../VISION.md')
-					.replace('../../lib/rules/', '/user-guide/rules/')
-					.replace('/README.md', '.md')
-					.replace('CONTRIBUTING.md', 'CONTRIBUTING')
-					.replace(/\/awesome-stylelint\/?#readme$/, '/awesome-stylelint')
-					.replace(
-						/^https:\/\/github.com\/stylelint\/awesome-stylelint(#.+)?$/,
-						'/awesome-stylelint.md$1',
-					),
-		});
-
-		const outputFile = path.join(outputDir, file.replace('node_modules/stylelint/docs', ''));
-
-		fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-
-		fs.writeFileSync(outputFile, output, 'utf8');
-	});
-
-	glob.sync('node_modules/stylelint/lib/rules/**/*.md').forEach((file) => {
-		const output = processMarkdown(file, {
-			rewriter: (url) =>
-				url
-					.replace(/\.\.\/([a-z-]+)\/README.md/, '$1.md')
-					.replace(/\.\.\/\.\.\/\.\.\/docs\/user-guide\/([a-z-/]+)\.md/, '../$1.md'),
-		});
-
-		const outputFile = path.join(
-			outputDir,
-			file
-				.replace('node_modules/stylelint/lib/rules', 'user-guide/rules')
-				.replace('/README.md', '.md'),
-		);
-
-		fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-
-		fs.writeFileSync(outputFile, output, 'utf8');
-	});
-
-	glob.sync('node_modules/stylelint/*.png').forEach((imagePath) => {
-		const dest = path.join(outputDir, imagePath.replace('node_modules/stylelint/', ''));
-
-		fs.copyFileSync(imagePath, dest);
-	});
-
-	glob.sync('node_modules/awesome-stylelint/README.md').forEach((src) => {
-		const dest = path.join(outputDir, 'awesome-stylelint.md');
-
-		fs.copyFileSync(src, dest);
-
-		const content = fs.readFileSync(dest, 'utf8');
-		const newContent = insertFrontMatter(content, {
-			title: 'Awesome Stylelint',
-			sidebar_label: 'Awesome',
-		});
-
-		fs.writeFileSync(dest, newContent);
-	});
-
-	console.log(`Documents have been generated to '${outputDir}'.`); // eslint-disable-line no-console
+/**
+ * @param {string} slug
+ */
+function getRuleLink(slug) {
+	return { link: getUrl(slug), label: path.basename(slug) };
 }
 
-main(process.argv[2]);
+/**
+ * @param {string} outputDir
+ * @param {string} slug
+ * @param {string} content
+ */
+function writePage(outputDir, slug, content) {
+	const outputFile = path.join(outputDir, `${slug}.md`);
+
+	fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+	fs.writeFileSync(outputFile, content, 'utf8');
+}
+
+const outputDir = process.argv[2];
+
+assert(outputDir, 'Pass the directory to generate the docs in');
+
+main(outputDir);
