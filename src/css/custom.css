@@ -31,6 +31,18 @@
 	}
 }
 
+/* Remove the empty band that a visually hidden title leaves */
+.content-panel {
+	&:has(> .sl-container > .sr-only) {
+		padding: 0;
+
+		+ .content-panel {
+			border-block-start: 0;
+			margin-block-start: 1rem;
+		}
+	}
+}
+
 /* Keep badges on one line, as Starlight displays images as blocks */
 .sl-markdown-content {
 	a {

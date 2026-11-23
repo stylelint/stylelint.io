@@ -1,0 +1,16 @@
+---
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+
+// On the homepage, the title repeats the logo.
+const isHomepage = Astro.locals.starlightRoute.id === '';
+---
+
+{
+	isHomepage ? (
+		<div class="sr-only">
+			<Default />
+		</div>
+	) : (
+		<Default />
+	)
+}

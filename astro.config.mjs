@@ -25,6 +25,7 @@ export default defineConfig({
 			sidebar: getSidebar(),
 			customCss: ['./src/css/custom.css'],
 			components: {
+				PageTitle: './src/components/PageTitle.astro',
 				SiteTitle: './src/components/SiteTitle.astro',
 				ThemeSelect: './src/components/ThemeSelect.astro',
 			},
