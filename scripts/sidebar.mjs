@@ -25,7 +25,11 @@ export function getSidebar() {
 
 		const slugs = unlistedSlugs.filter((slug) => hasPageInDirectory(guide, path.dirname(slug)));
 
-		return { ...guide, items: [...guide.items, ...slugs] };
+		return {
+			...guide,
+			items: [...guide.items, ...slugs],
+			collapsed: guide.label !== 'User guide',
+		};
 	});
 
 	return [
