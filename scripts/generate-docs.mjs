@@ -21,6 +21,9 @@ const rulesSlug = 'user-guide/rules';
 // Starlight has no `info` or `warning` aside, which the plugin maps these alerts to.
 const asideByAlert = { ...DEFAULT_MAPPING, IMPORTANT: 'note', WARNING: 'caution' };
 
+// The meta of a diff fence starts with the language of its lines, such as `json`.
+const languagePattern = /^[\w-]+(?=\s|$)/;
+
 /**
  * @param {string} outputDir
  */
@@ -32,6 +35,7 @@ function main(outputDir) {
 	const files = fs.globSync(['*.md', 'docs/**/*.md', 'lib/rules/*/README.md'], {
 		cwd: stylelintDir,
 	});
+	const pageSlugs = new Set(files.map(getPageSlug));
 
 	for (const file of files) {
 		const slug = getPageSlug(file);
@@ -44,7 +48,7 @@ function main(outputDir) {
 				...getRulePagination(ruleSlugs, slug),
 			},
 			{
-				rewriter: (url) => rewriteUrl(url, file),
+				rewriter: (url) => rewriteUrl(url, file, pageSlugs),
 				isRules: slug === rulesSlug,
 			},
 		);
@@ -92,13 +96,13 @@ function processMarkdown(file, frontMatter, { rewriter = (url) => url, isRules =
 		.use(rewriteLink, { rewriter })
 		.use(wrapProblemExample)
 		.use(rewriteSponsorsSvg)
-		.use(makeRuleSymbolsAccessbile)
+		.use(makeRuleSymbolsAccessible)
 		.use(setDiffLanguage)
 		.use(removeHtmlComments);
 
 	if (isRules) processor.use(wrapRules);
 
-	const output = processor.processSync(fs.readFileSync(file, 'utf8'));
+	const output = processor.processSync({ path: file, value: fs.readFileSync(file, 'utf8') });
 
 	return insertFrontMatter(String(output), { title: output.data.title, ...frontMatter });
 }
@@ -110,7 +114,11 @@ function removeTitle() {
 	 * @param {VFile} file
 	 */
 	function transform(tree, file) {
-		const [title] = tree.children.splice(tree.children.findIndex(isTitle), 1);
+		const titleIndex = tree.children.findIndex(isTitle);
+
+		assert(titleIndex !== -1, `${file.path} has no H1`);
+
+		const [title] = tree.children.splice(titleIndex, 1);
 
 		file.data.title = toString(title, { includeImageAlt: false }).trim();
 	}
@@ -158,15 +166,12 @@ function wrapProblemExample() {
 		const isValid = toString(node.children[1]) === 'not';
 		const className = isValid ? 'valid-pattern' : 'invalid-pattern';
 
-		// Insert to the next position of the paragraph
 		parent.children.splice(index + 1, 0, { type: 'html', value: `<div class="${className}">` });
 
-		// Find the end position
 		const endIndex = parent.children.findIndex(
-			(child, childIndex) => childIndex > index && (isTrigger(child) || child.type === 'heading'),
+			(child, childIndex) => childIndex > index && isEndOfExample(child),
 		);
 
-		// Insert to the end position
 		parent.children.splice(endIndex === -1 ? parent.children.length : endIndex, 0, {
 			type: 'html',
 			value: '</div>',
@@ -188,6 +193,14 @@ function wrapProblemExample() {
 			'The following patterns are considered problems:',
 			'The following pattern is considered a problem:',
 		].includes(text);
+	}
+
+	/**
+	 * @param {Nodes} node
+	 * @returns {boolean}
+	 */
+	function isEndOfExample(node) {
+		return isTrigger(node) || node.type === 'heading';
 	}
 
 	/**
@@ -235,7 +248,7 @@ function isSponsorsSvg(url) {
 	return url.hostname === 'opencollective.com' && url.pathname.endsWith('/sponsors.svg');
 }
 
-function makeRuleSymbolsAccessbile() {
+function makeRuleSymbolsAccessible() {
 	const symbols = new Map([
 		['✅', 'Standard'],
 		['🔧', 'Autofixable'],
@@ -274,7 +287,7 @@ function setDiffLanguage() {
 	function visitor(node) {
 		if (!isDiffOfLanguage(node)) return;
 
-		node.meta = `lang="${node.meta}"`;
+		node.meta = node.meta.replace(languagePattern, (language) => `lang="${language}"`);
 	}
 
 	/**
@@ -289,10 +302,10 @@ function setDiffLanguage() {
 
 /**
  * @param {Code} node
- * @returns {boolean}
+ * @returns {node is Code & { meta: string }}
  */
 function isDiffOfLanguage(node) {
-	return node.lang === 'diff' && Boolean(node.meta);
+	return node.lang === 'diff' && languagePattern.test(node.meta ?? '');
 }
 
 function removeHtmlComments() {
@@ -355,9 +368,10 @@ function insertFrontMatter(content, props) {
 /**
  * @param {string} url
  * @param {string} file Path, in the Stylelint repository, of the file that holds the link.
+ * @param {Set<string>} pageSlugs
  * @returns {string}
  */
-function rewriteUrl(url, file) {
+function rewriteUrl(url, file, pageSlugs) {
 	if (!isRelative(url)) {
 		return url.replace(
 			/^https:\/\/github\.com\/stylelint\/awesome-stylelint\/?(?:#readme)?(#.+)?$/,
@@ -365,11 +379,14 @@ function rewriteUrl(url, file) {
 		);
 	}
 
-	const { pathname, hash } = new URL(url, `file:///${file}`);
+	const { pathname, search, hash } = new URL(url, `file:///${file}`);
 	const linkedFile = pathname.slice(1);
 	const slug = getSlug(linkedFile);
 
-	if (!slug) return `https://github.com/stylelint/stylelint/blob/main/${linkedFile}`;
+	if (!slug)
+		return `https://github.com/stylelint/stylelint/blob/main/${linkedFile}${search}${hash}`;
+
+	if (!pageSlugs.has(slug)) console.warn(`${file} links to ${url}, which isn't a page`);
 
 	return `${getUrl(slug)}${hash}`;
 }
