@@ -6,8 +6,15 @@ const links = [
 	{ href: '/demo/', label: 'Demo' },
 ];
 
-function isCurrent(href: string) {
-	return Astro.url.pathname.startsWith(href);
+// A page below a link, such as a rule page, is within the link's section but isn't its page.
+function getAriaCurrent(href: string) {
+	const { pathname } = Astro.url;
+
+	if (pathname === href) return 'page';
+
+	if (pathname.startsWith(href)) return 'true';
+
+	return undefined;
 }
 ---
 
@@ -15,7 +22,7 @@ function isCurrent(href: string) {
 <nav class="header-nav" aria-label="Header">
 	{
 		links.map(({ href, label }) => (
-			<a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
+			<a href={href} aria-current={getAriaCurrent(href)}>
 				{label}
 			</a>
 		))

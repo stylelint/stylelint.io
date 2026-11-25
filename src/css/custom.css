@@ -13,7 +13,7 @@
 			color: var(--sl-color-white);
 		}
 
-		&[aria-current='page'] {
+		&[aria-current] {
 			color: var(--sl-color-text-accent);
 		}
 	}
