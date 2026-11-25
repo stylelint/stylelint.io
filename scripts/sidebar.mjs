@@ -19,11 +19,11 @@ export function getSidebar() {
 	const guides = getGuides();
 	const unlistedSlugs = getUnlistedSlugs(guides);
 
-	// A page the README doesn't list goes last in the group of its directory.
+	// A page the README doesn't list goes last in the group of its directory, or last at the top level.
 	const groups = guides.map((guide) => {
 		if (typeof guide === 'string') return guide;
 
-		const slugs = unlistedSlugs.filter((slug) => hasPageInDirectory(guide, path.dirname(slug)));
+		const slugs = unlistedSlugs.filter((slug) => isGroupOfPage(guide, slug));
 
 		return {
 			...guide,
@@ -31,10 +31,14 @@ export function getSidebar() {
 			collapsed: guide.label !== 'User guide',
 		};
 	});
+	const ungroupedSlugs = unlistedSlugs.filter(
+		(slug) => !guides.some((guide) => isGroupOfPage(guide, slug)),
+	);
 
 	return [
 		{ label: 'Home', slug: 'index' },
 		...groups,
+		...ungroupedSlugs,
 		{ label: 'Awesome', slug: 'awesome-stylelint' },
 	];
 }
@@ -98,10 +102,15 @@ function getUnlistedSlugs(guides) {
 }
 
 /**
- * @param {Group} group
- * @param {string} directory
+ * @param {Guide} guide
+ * @param {string} slug
  * @returns {boolean}
  */
-function hasPageInDirectory(group, directory) {
-	return group.items.some((slug) => path.dirname(slug) === directory);
+function isGroupOfPage(guide, slug) {
+	const directory = path.dirname(slug);
+
+	// Pages at the root, such as `contributing` and `support`, belong to different groups.
+	if (typeof guide === 'string' || directory === '.') return false;
+
+	return guide.items.some((item) => path.dirname(item) === directory);
 }
