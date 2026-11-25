@@ -16,12 +16,19 @@ Astro.response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
 	const iframe = document.querySelector('iframe');
 
 	if (iframe) {
+		const loadDemo = () => {
+			iframe.src = `${FRAME_ORIGIN}${location.hash}`;
+		};
+
 		window.addEventListener('message', (event) => {
 			if (event.origin === FRAME_ORIGIN) {
 				history.replaceState(null, '', `#${event.data}`);
 			}
 		});
 
-		iframe.src = `${FRAME_ORIGIN}${location.hash}`;
+		// Opening another link to the demo in the same tab changes only the hash.
+		window.addEventListener('hashchange', loadDemo);
+
+		loadDemo();
 	}
 </script>
