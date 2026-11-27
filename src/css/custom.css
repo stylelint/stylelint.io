@@ -43,6 +43,11 @@
 	}
 }
 
+/* Show the scroll bar of a long table of contents, as Starlight hides it */
+.right-sidebar {
+	scrollbar-width: thin;
+}
+
 /* Keep badges on one line, as Starlight displays images as blocks */
 .sl-markdown-content {
 	a {
