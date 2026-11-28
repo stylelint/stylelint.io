@@ -1,0 +1,34 @@
+---
+import '../css/demo.css';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+// For the development server, as netlify.toml sets these in production.
+Astro.response.headers.set('Cross-Origin-Embedder-Policy', 'require-corp');
+Astro.response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+---
+
+<StarlightPage frontmatter={{ title: 'Demo', template: 'splash' }}>
+	<iframe id="demo" title="Demo" allow="cross-origin-isolated; clipboard-write"></iframe>
+</StarlightPage>
+
+<script>
+	const FRAME_ORIGIN = 'https://chimerical-trifle-8d3c21.netlify.app';
+	const iframe = document.querySelector('iframe');
+
+	if (iframe) {
+		const loadDemo = () => {
+			iframe.src = `${FRAME_ORIGIN}${location.hash}`;
+		};
+
+		window.addEventListener('message', (event) => {
+			if (event.origin === FRAME_ORIGIN) {
+				history.replaceState(null, '', `#${event.data}`);
+			}
+		});
+
+		// Opening another link to the demo in the same tab changes only the hash.
+		window.addEventListener('hashchange', loadDemo);
+
+		loadDemo();
+	}
+</script>

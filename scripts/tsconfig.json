@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"module": "nodenext",
+		"target": "es2023",
+		"lib": ["ES2023"],
+		"types": ["node"],
+		"checkJs": true,
+		"noEmit": true,
+		"strict": true,
+		"allowUnusedLabels": false,
+		"allowUnreachableCode": false,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noUncheckedIndexedAccess": true,
+		"skipLibCheck": false
+	},
+	"include": ["*.mjs"]
+}

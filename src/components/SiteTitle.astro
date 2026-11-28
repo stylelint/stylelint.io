@@ -1,0 +1,30 @@
+---
+import Default from '@astrojs/starlight/components/SiteTitle.astro';
+
+const links = [
+	{ href: '/user-guide/rules/', label: 'Rules' },
+	{ href: '/demo/', label: 'Demo' },
+];
+
+// A page below a link, such as a rule page, is within the link's section but isn't its page.
+function getAriaCurrent(href: string) {
+	const { pathname } = Astro.url;
+
+	if (pathname === href) return 'page';
+
+	if (pathname.startsWith(href)) return 'true';
+
+	return undefined;
+}
+---
+
+<Default><slot /></Default>
+<nav class="header-nav" aria-label="Header">
+	{
+		links.map(({ href, label }) => (
+			<a href={href} aria-current={getAriaCurrent(href)}>
+				{label}
+			</a>
+		))
+	}
+</nav>

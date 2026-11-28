@@ -17,10 +17,4 @@ Then to making visual edits:
 npm start
 ```
 
-Or to update the website to the latest version of stylelint:
-
-```shell
-npm install --save-dev https://github.com/stylelint/stylelint/tarball/<version-number>
-```
-
-... then commit and push your dependency change.
+To update the website to the latest version of Stylelint, run the [Release Stylelint](https://github.com/stylelint/stylelint.io/actions/workflows/release-stylelint.yml) workflow and merge the pull request it creates.

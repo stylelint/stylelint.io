@@ -1,50 +1,127 @@
-.demo {
-	align-items: stretch;
-	block-size: 100%;
+/* Lay out the header nav that comes after the logo */
+.header-nav {
+	align-items: center;
 	display: block flex;
-	flex-flow: column;
+	gap: 1.5rem;
+	margin-inline-start: 1.5rem;
+
+	a {
+		color: var(--sl-color-gray-2);
+		text-decoration: none;
+
+		&:hover {
+			color: var(--sl-color-white);
+		}
+
+		&[aria-current] {
+			color: var(--sl-color-text-accent);
+		}
+	}
+
+	@media (width < 50rem) {
+		gap: 1rem;
+		margin-inline-start: 1rem;
+	}
 }
 
-.valid-pattern .prism-code {
-	box-shadow: inset 3px 0 0 0 oklch(50% 0.169 140deg) !important;
+/* Remove the divider, as we've hidden the theme switch */
+.social-icons {
+	&::after {
+		content: none;
+	}
 }
 
-.invalid-pattern .prism-code {
-	box-shadow: inset 3px 0 0 0 oklch(50% 0.179 20deg) !important;
+/* Remove the empty band that a visually hidden title leaves */
+.content-panel {
+	&:has(> .sl-container > .sr-only) {
+		padding: 0;
+
+		+ .content-panel {
+			border-block-start: 0;
+			margin-block-start: 1rem;
+		}
+	}
 }
 
-/* Hide generated list of rules in sidebar */
-/* stylelint-disable selector-class-pattern */
-.theme-doc-sidebar-menu
-	.theme-doc-sidebar-item-category-level-1:nth-child(2)
-	.theme-doc-sidebar-item-category-level-2:nth-child(5) {
-	display: none;
+/* Match the scroll bar of the table of contents */
+.sidebar-pane {
+	scrollbar-width: thin;
 }
 
-.docs-doc-id-user-guide\/rules .markdown table {
-	display: block table;
-	inline-size: 100%;
+/* Show the scroll bar of a long table of contents, which Starlight hides off screen */
+.right-sidebar {
+	@media (width >= 72rem) {
+		block-size: calc(100vb - var(--sl-nav-height));
+		inline-size: auto;
+		inset-block-start: var(--sl-nav-height);
+		margin-inline-end: var(--sl-sidebar-pad-x);
+		max-inline-size: var(--sl-sidebar-width);
+		padding-block-start: 0;
+		position: sticky;
+		scrollbar-width: thin;
+
+		.sl-container {
+			inline-size: auto;
+		}
+	}
 }
 
-/* Align all table columns */
-
-/* Make cells with rule name as wide as possible */
-.docs-doc-id-user-guide\/rules .markdown table td:first-child {
-	inline-size: 100%;
+/* Keep badges on one line, as Starlight displays images as blocks */
+.sl-markdown-content {
+	a {
+		> img {
+			display: inline flow-root;
+		}
+	}
 }
 
-/* Make cells without symbol (empty) have the same width as cells with symbol */
-.docs-doc-id-user-guide\/rules .markdown table td:not(:first-child) {
-	box-sizing: content-box;
-	min-inline-size: 1rem;
+/* Mark the invalid and valid examples on rule pages */
+.expressive-code {
+	pre {
+		.invalid-pattern & {
+			box-shadow: inset 3px 0 0 0 oklch(50% 0.179 20deg);
+		}
+
+		.valid-pattern & {
+			box-shadow: inset 3px 0 0 0 oklch(50% 0.169 140deg);
+		}
+	}
 }
 
-/* Make a rule name stand out */
-.docs-doc-id-user-guide\/rules .markdown table tbody tr td:first-child :link code {
-	font-weight: bold;
-}
+/* Refine the layout of the tables on the rules page */
+.rules {
+	table {
+		display: block table;
+		inline-size: 100%;
 
-/* Remove table header */
-.docs-doc-id-user-guide\/rules .markdown table thead {
-	display: none;
+		/* Remove table header */
+		thead {
+			display: none;
+		}
+
+		tbody {
+			tr {
+				/* Align all table columns */
+				td {
+					/* Make cells with rule name as wide as possible */
+					&:first-child {
+						inline-size: 100%;
+
+						/* Make a rule name stand out */
+						:link {
+							code {
+								font-weight: bold;
+							}
+						}
+					}
+
+					/* Make cells without symbol (empty) have the same width as cells with symbol */
+					&:not(:first-child) {
+						box-sizing: content-box;
+						min-inline-size: 1rem;
+					}
+				}
+			}
+		}
+	}
 }
