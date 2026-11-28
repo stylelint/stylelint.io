@@ -227,7 +227,7 @@ function rewriteSponsorsSvg() {
 		url.searchParams.set('width', '320');
 
 		// Browsers download the fallback image too.
-		node.value = `<object data="${url}" type="image/svg+xml"></object>`;
+		node.value = `<object data="${url}" type="image/svg+xml" aria-label="Sponsors"></object>`;
 	}
 
 	/**
