@@ -43,9 +43,27 @@
 	}
 }
 
-/* Show the scroll bar of a long table of contents, as Starlight hides it */
-.right-sidebar {
+/* Match the scroll bar of the table of contents */
+.sidebar-pane {
 	scrollbar-width: thin;
+}
+
+/* Show the scroll bar of a long table of contents, which Starlight hides off screen */
+.right-sidebar {
+	@media (width >= 72rem) {
+		block-size: calc(100vb - var(--sl-nav-height));
+		inline-size: auto;
+		inset-block-start: var(--sl-nav-height);
+		margin-inline-end: var(--sl-sidebar-pad-x);
+		max-inline-size: var(--sl-sidebar-width);
+		padding-block-start: 0;
+		position: sticky;
+		scrollbar-width: thin;
+
+		.sl-container {
+			inline-size: auto;
+		}
+	}
 }
 
 /* Keep badges on one line, as Starlight displays images as blocks */
