@@ -69,7 +69,7 @@
     "stylelint": "https://github.com/stylelint/stylelint/tarball/18.1.0",
     "stylelint-config-alphabetical-order": "^3.0.0",
     "stylelint-config-modern": "^2.0.1",
-    "stylelint-config-standard": "^41.0.0",
+    "stylelint-config-standard": "^41.1.0",
     "typescript": "^7.0.2",
     "unist-util-visit": "^5.2.0",
     "vfile": "^6.0.3"
